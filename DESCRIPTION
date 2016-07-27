@@ -1,0 +1,15 @@
+Package: icesDatras
+Version: 1.1-0
+Date: 2016-05-22
+Title: DATRAS trawl database webservices
+Authors@R: c(person("Colin", "Millar", role=c("aut","cre"), email="colin.millar@ices.dk"),
+             person("Einar", "Hjorliefsson", role="aut"))
+Suggests: knitr
+Imports: RCurl,
+         XML,
+         utils
+VignetteBuilder: knitr
+Description: Functions that access the webservices of the ICES (International
+             Council for the Exploration of the Sea) DATRAS trawl database.
+License: GPL (>= 2)
+RoxygenNote: 5.0.1

@@ -1,0 +1,31 @@
+# .travis.yml for ices-tools packages
+
+warnings_are_errors: false
+
+os:
+  - linux
+
+language: r
+r:
+  - oldrel
+  - release
+  - devel
+
+sudo: false
+
+repos:
+  CRAN: https://cloud.r-project.org
+
+r_packages:
+  - rmarkdown
+
+cache: packages
+
+notifications:
+  email:
+    on_success: change
+    on_failure: change
+
+branches:
+  only:
+    - master
