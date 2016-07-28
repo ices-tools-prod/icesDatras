@@ -7,7 +7,7 @@
 icesDatras
 ======
 
-icesDatras implements R functions that access the webservices of the [ICES (International
+icesDatras implements R functions that access the web services of the [ICES (International
 Council for the Exploration of the Sea)](http://www.ices.dk/Pages/default.aspx) [DATRAS trawl database](http://ices.dk/marine-data/data-portals/Pages/DATRAS.aspx).
 
 icesDatras is implemented as an [R](https://www.r-project.org) package and will in future be available on
@@ -18,10 +18,10 @@ icesDatras is implemented as an [R](https://www.r-project.org) package and will 
 Installation
 ------------
 
-icesDatras can be installed from CRAN using the `install.packages` command:
+icesDatras can be installed from GitHub using the `install_github` command:
 
 ```R
-install.packages('icesDatras')
+install_github('ices-tools-prod/icesDatras')
 ```
 
 
