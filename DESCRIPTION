@@ -3,13 +3,14 @@ Version: 1.0-0
 Date: 2016-05-22
 Title: DATRAS trawl database webservices
 Authors@R: c(person("Colin", "Millar", role=c("aut","cre"), email="colin.millar@ices.dk"),
-             person("Einar", "Hjorliefsson", role="aut"))
+             person("Einar", "Hjorleifsson", role="aut"))
 Suggests: knitr
 Imports: RCurl,
          XML,
          utils
 VignetteBuilder: knitr
 Description: Functions that access the webservices of the ICES (International
-             Council for the Exploration of the Sea) DATRAS trawl database.
+             Council for the Exploration of the Sea) DATRAS trawl survey
+             database.
 License: GPL (>= 2)
 RoxygenNote: 5.0.1
