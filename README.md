@@ -7,21 +7,19 @@
 icesDatras
 ======
 
-icesDatras implements R functions that access the web services of the [ICES (International
-Council for the Exploration of the Sea)](http://www.ices.dk/Pages/default.aspx) [DATRAS trawl database](http://ices.dk/marine-data/data-portals/Pages/DATRAS.aspx).
+icesDatras implements R functions that access the [web services](https://datras.ices.dk/WebServices/Webservices.aspx) of the [ICES (International Council for the Exploration of the Sea)](http://www.ices.dk/Pages/default.aspx) [DATRAS trawl database](http://ices.dk/marine-data/data-portals/Pages/DATRAS.aspx).
 
-icesDatras is implemented as an [R](https://www.r-project.org) package and will in future be available on
-[CRAN](https://cran.r-project.org/package=icesDatras).
+icesDatras is implemented as an [R](https://www.r-project.org) package and available on [CRAN](https://cran.r-project.org/package=icesDatras).
 
 
 
 Installation
 ------------
 
-icesDatras can be installed from GitHub using the `install_github` command:
+icesDatras can be installed from CRAN using the `install.packages` command:
 
 ```R
-install_github('ices-tools-prod/icesDatras')
+install.packages('icesDatras')
 ```
 
 
@@ -49,7 +47,7 @@ ICES list of software applications:
 
 [http://ices.dk/marine-data/tools/Pages/Software.aspx](http://ices.dk/marine-data/tools/Pages/Software.aspx).
 
-ICES Datras Webservices:
+ICES DATRAS web services:
 
 [https://datras.ices.dk/WebServices/Webservices.aspx](https://datras.ices.dk/WebServices/Webservices.aspx).
 
