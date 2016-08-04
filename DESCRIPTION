@@ -4,7 +4,8 @@ Date: 2016-08-04
 Title: DATRAS Trawl Database Web Services
 Authors@R: c(person("Colin", "Millar", role=c("aut","cre"), email="colin.millar@ices.dk"),
              person("Einar", "Hjorleifsson", role="aut"))
-Suggests: knitr
+Suggests: knitr,
+          testthat
 Imports: RCurl,
          XML,
          utils
