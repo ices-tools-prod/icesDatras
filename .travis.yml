@@ -26,6 +26,9 @@ notifications:
     on_success: change
     on_failure: change
 
+r_github_packages:
+  - jimhester/covr
+
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
+  - Rscript -e 'library(covr);codecov()'
   
