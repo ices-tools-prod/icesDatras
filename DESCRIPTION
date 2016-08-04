@@ -10,6 +10,7 @@ Imports: RCurl,
          utils
 Description: Functions that access the web services of the ICES (International
              Council for the Exploration of the Sea) DATRAS trawl survey
-             database.
+             database <https://datras.ices.dk/WebServices/Webservices.aspx>.
 License: GPL (>= 2)
+URL: https://datras.ices.dk/WebServices/Webservices.aspx
 RoxygenNote: 5.0.1
