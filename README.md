@@ -59,7 +59,7 @@ Development
 -----------
 
 icesDatras is developed openly on [GitHub](https://github.com/ices-tools-prod/icesDatras). 
-Feel free to open an [issue](https://github.com/ices-tools-prod/icesDatras/issues) there if you encounter problems or have suggestions for future versions.
+Feel free to open an [issue](https://github.com/ices-tools-prod/icesDatras/issues) there if you encounter problems or have suggestions for future versions. 
 
 The current development version can be installed using:
 
