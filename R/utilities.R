@@ -23,7 +23,7 @@ parseDatras <- function(x) {
   #   "xmlns: URI ices.dk.local/DATRAS is not absolute"
 
   # return
-  xmlToDataFrame(x)
+  xmlToDataFrame(x, stringsAsFactors = FALSE)
 }
 
 
