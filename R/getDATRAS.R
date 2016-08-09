@@ -66,7 +66,7 @@ getDATRAS <- function(record = "HH", survey, years, quarters) {
   }
 
   # work out year and quarter combinations to extract
-  amat <- mat[quarters,]
+  amat <- mat[quarters,,drop = FALSE]
   qvec <- quarters[row(amat)[amat == 1]]
   yvec <- available_years_req[col(amat)[amat == 1]]
 
