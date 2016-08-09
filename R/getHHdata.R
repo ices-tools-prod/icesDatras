@@ -20,6 +20,8 @@
 #'
 #' @author Colin Millar.
 #'
+#' @note All columns are returned as characters with any trailing white space removed
+#'
 #' @examples
 #' # read meta data
 #' hhdata <- getHHdata(survey = "NS-IBTS", year = 2016, quarter = 1)
@@ -61,6 +63,10 @@ getHHdata <- function(survey, year, quarter) {
       survey, year, quarter)
   out <- curlDatras(url = url)
   out <- parseDatras(out)
+
+  # clean white space from text columns
+  charcol <- which(sapply(out, is.character))
+  out[charcol] <- lapply(out[charcol], function(x) gsub("[[:space:]]*$", "", x))
 
   # return
   out

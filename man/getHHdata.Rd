@@ -19,6 +19,9 @@ A data.frame.
 \description{
 Returns detailed haul-based meta-data of the survey such as haul position, sampling method etc.
 }
+\note{
+All columns are returned as characters with any trailing white space removed
+}
 \examples{
 # read meta data
 hhdata <- getHHdata(survey = "NS-IBTS", year = 2016, quarter = 1)
