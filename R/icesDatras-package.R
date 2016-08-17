@@ -10,8 +10,7 @@
 #' Functions that access the webservices of the ICES (International
 #' Council for the Exploration of the Sea) DATRAS trawl database.
 #'
-#'
-#' @author Colin Millar.
+#' @author Colin Millar, Einar Hjorleifsson, Scott Large, and Arni Magnusson.
 #'
 #' @references
 #' Overview of the ICES advisory process:
