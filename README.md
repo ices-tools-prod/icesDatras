@@ -44,17 +44,13 @@ library(icesDatras)
 References
 ----------
 
-Overview of the ICES advisory process:
+Description of ICES DATRAS web services:
 
-[http://ices.dk/community/advisory-process/Pages/default.aspx](http://ices.dk/community/advisory-process/Pages/default.aspx).
+[https://datras.ices.dk/WebServices/Webservices.aspx](https://datras.ices.dk/WebServices/Webservices.aspx).
 
 ICES list of software applications:
 
 [http://ices.dk/marine-data/tools/Pages/Software.aspx](http://ices.dk/marine-data/tools/Pages/Software.aspx).
-
-ICES DATRAS web services:
-
-[https://datras.ices.dk/WebServices/Webservices.aspx](https://datras.ices.dk/WebServices/Webservices.aspx).
 
 
 Development
