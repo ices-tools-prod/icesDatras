@@ -13,10 +13,7 @@
 #' @author Colin Millar
 #'
 #' @examples \dontrun{
-#'  getDATRAS(record = "HH",
-#'            survey = "NS-IBTS",
-#'            years = 2011:2015,
-#'            quarters = c(1,4))
+#'  hhdata <- getDATRAS(record = "HH", survey = "NS-IBTS", years = 1966:1967, quarters = c(1,4))
 #' }
 #'
 #' @export
