@@ -64,10 +64,6 @@ getHHdata <- function(survey, year, quarter) {
   out <- curlDatras(url = url)
   out <- parseDatras(out)
 
-  # clean white space from text columns
-  charcol <- which(sapply(out, is.character))
-  out[charcol] <- lapply(out[charcol], function(x) gsub("[[:space:]]*$", "", x))
-
   # return
   out
 }

@@ -22,8 +22,13 @@ parseDatras <- function(x) {
   # capture.output is used to stiffle the output message from xmlns:
   #   "xmlns: URI ices.dk.local/DATRAS is not absolute"
 
-  # return
-  simplify(xmlToDataFrame(x, stringsAsFactors = FALSE))
+  # convert xml to data frame, with appropriate column types
+  x <- simplify(xmlToDataFrame(x, stringsAsFactors = FALSE))
+
+  # clean white space from text columns
+  charcol <- which(sapply(x, is.character))
+  x[charcol] <- lapply(x[charcol], function(x) gsub("[[:space:]]*$", "", x))
+  x
 }
 
 

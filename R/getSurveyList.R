@@ -31,9 +31,6 @@ getSurveyList <- function() {
   out <- curlDatras(url = url)
   out <- parseDatras(out)
 
-  # remove strange whitespace in EVHOE....
-  out <- gsub("[[:space:]]*$", "", out $ Survey)
-
   # return
   out
 }
