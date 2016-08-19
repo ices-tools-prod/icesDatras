@@ -2,7 +2,7 @@
 % Please edit documentation in R/getDatrasDataOverview.R
 \name{getDatrasDataOverview}
 \alias{getDatrasDataOverview}
-\title{Summarise data availability}
+\title{Summarize Data Availability}
 \usage{
 getDatrasDataOverview()
 }

@@ -1,16 +1,15 @@
-#' getDATRAS.R
+#' Get Any DATRAS Data
 #'
-#' Downloads and parses data from ICES DATRAS database using web services
+#' Get any DATRAS data. This function combines the functionality of getCAdata, getHHdata, and getHLdata.
 #'
 #' @param record the data type required: "HH" haul meta data, "HL" length-based data, "CA" age-based data
 #' @param survey the survey accronym e.g. NS-IBTS, BITS.
 #' @param years a vector of numeric years of the survey, e.g. c(2010, 2012), or 2005:2010.
 #' @param quarters a vector of quarters of the year the survey took place, i.e. c(1, 4) or 1:4.
 #'
-#' @return a data.frame
+#' @return A data frame.
 #'
-#' @author Scott Large
-#' @author Colin Millar
+#' @author Scott Large and Colin Millar
 #'
 #' @examples \dontrun{
 #'  getDATRAS(record = "HH",
@@ -95,4 +94,3 @@ getDATRAS <- function(record = "HH", survey, years, quarters) {
   # return
   out
 }
-

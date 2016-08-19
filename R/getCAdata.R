@@ -1,13 +1,12 @@
-#' Age based data
+#' Get Age-Based Data
 #'
-#' Returns age-based information such as sex, maturity, and age counts per length of sampled species.
+#' Get age-based information such as sex, maturity, and age counts per length of sampled species.
 #'
-#' @param survey the survey accronym e.g. NS-IBTS, BITS.
+#' @param survey the survey acronym e.g. NS-IBTS, BITS.
 #' @param year the numeric year of the survey, e.g. 2010.
 #' @param quarter the quarter of the year the survey took place, i.e. 1, 2, 3 or 4.
 #'
-#'
-#' @return A data.frame.
+#' @return A data frame.
 #'
 #' @seealso
 #' \code{\link{getSurveyList}} returns the acronyms for available surveys.
@@ -21,16 +20,12 @@
 #' @author Colin Millar.
 #'
 #' @examples
-#' # read age data
 #' cadata <- getCAdata(survey = "BTS", year = 2015, quarter = 3)
 #' str(cadata)
-#'
 #'
 #' @export
 
 getCAdata <- function(survey, year, quarter) {
-  # Returns age-based information such as sex, maturity, and age counts per length of sampled species.
-
   # check survey name
   if (!checkSurveyOK(survey)) return(FALSE)
 
@@ -51,5 +46,3 @@ getCAdata <- function(survey, year, quarter) {
   # return
   out
 }
-
-

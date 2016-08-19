@@ -2,7 +2,7 @@
 % Please edit documentation in R/getDATRAS.R
 \name{getDATRAS}
 \alias{getDATRAS}
-\title{getDATRAS.R}
+\title{Get Any DATRAS Data}
 \usage{
 getDATRAS(record = "HH", survey, years, quarters)
 }
@@ -16,10 +16,10 @@ getDATRAS(record = "HH", survey, years, quarters)
 \item{quarters}{a vector of quarters of the year the survey took place, i.e. c(1, 4) or 1:4.}
 }
 \value{
-a data.frame
+A data frame.
 }
 \description{
-Downloads and parses data from ICES DATRAS database using web services
+Get any DATRAS data. This function combines the functionality of getCAdata, getHHdata, and getHLdata.
 }
 \examples{
 \dontrun{
@@ -31,8 +31,6 @@ Downloads and parses data from ICES DATRAS database using web services
 
 }
 \author{
-Scott Large
-
-Colin Millar
+Scott Large and Colin Millar
 }
 

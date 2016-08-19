@@ -1,7 +1,6 @@
-#' Summarise data availability
+#' Summarize Data Availability
 #'
 #' Returns a table for each survey with '1' where there is data and '0' (printed as '.') otherwise.
-#'
 #'
 #' @return A list of tables.
 #'
@@ -23,10 +22,7 @@
 #'
 #' @export
 
-# table data available
 getDatrasDataOverview <- function() {
-  # get a list of available quarters
-
   # check websevices are running
   if (!checkDatrasWebserviceOK()) return (FALSE)
 
@@ -51,4 +47,3 @@ print.datrasoverview <- function(x) {
   x <- as.table(x)
   print.table(x, zero.print = ".")
 }
-
