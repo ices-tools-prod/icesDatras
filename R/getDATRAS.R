@@ -10,6 +10,9 @@
 #' @return A data frame.
 #'
 #' @seealso
+#' \code{\link{getHHdata}}, \code{\link{getHLdata}}, and \code{\link{getCAdata}}
+#' get haul data, length-based data, and age-based data.
+#'
 #' \code{\link{icesDatras-package}} gives an overview of the package.
 #'
 #' @author Scott Large and Colin Millar.
