@@ -7,9 +7,9 @@
 getDATRAS(record = "HH", survey, years, quarters)
 }
 \arguments{
-\item{record}{the data type required: "HH" haul meta data, "HL" length-based data, "CA" age-based data}
+\item{record}{the data type required: "HH" haul meta data, "HL" length-based data, "CA" age-based data.}
 
-\item{survey}{the survey accronym e.g. NS-IBTS, BITS.}
+\item{survey}{the survey acronym e.g. NS-IBTS.}
 
 \item{years}{a vector of numeric years of the survey, e.g. c(2010, 2012), or 2005:2010.}
 
@@ -19,7 +19,7 @@ getDATRAS(record = "HH", survey, years, quarters)
 A data frame.
 }
 \description{
-Get any DATRAS data. This function combines the functionality of getCAdata, getHHdata, and getHLdata.
+Get any DATRAS data. This function combines the functionality of getHHdata, getHLdata, and getCAdata.
 }
 \examples{
 \dontrun{
@@ -28,6 +28,9 @@ Get any DATRAS data. This function combines the functionality of getCAdata, getH
 
 }
 \author{
-Scott Large and Colin Millar
+Scott Large and Colin Millar.
+}
+\seealso{
+\code{\link{icesDatras-package}} gives an overview of the package.
 }
 

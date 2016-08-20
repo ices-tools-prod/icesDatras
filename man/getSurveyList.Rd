@@ -2,28 +2,26 @@
 % Please edit documentation in R/getSurveyList.R
 \name{getSurveyList}
 \alias{getSurveyList}
-\title{Query data availability}
+\title{Get a List of All Surveys}
 \usage{
 getSurveyList()
 }
 \value{
-A numeric vector.
+A character vector.
 }
 \description{
-Returns list of survey acronyms.
+Get a list of all survey acronyms.
 }
 \examples{
 getSurveyList()
-
 
 }
 \author{
 Colin Millar.
 }
 \seealso{
-\code{\link{getSurveyYearList}} returns the years available for a given survey.
-
-\code{\link{getSurveyYearQuarterList}} returns the quarters available for a given survey and year.
+\code{\link{getSurveyYearList}}, \code{\link{getSurveyYearQuarterList}}, and
+\code{\link{getDatrasDataOverview}} also list available data.
 
 \code{\link{icesDatras-package}} gives an overview of the package.
 }

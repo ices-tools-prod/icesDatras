@@ -1,15 +1,12 @@
 #' Summarize Data Availability
 #'
-#' Returns a table for each survey with '1' where there is data and '0' (printed as '.') otherwise.
+#' Evaluate a presence-absence table for each survey with '1' where there is data and '0' (printed as '.') otherwise.
 #'
 #' @return A list of tables.
 #'
 #' @seealso
-#' \code{\link{getSurveyList}} returns the acronyms for available surveys.
-#'
-#' \code{\link{getSurveyYearList}} returns the years available for a given survey.
-#'
-#' \code{\link{getSurveyYearQuarterList}} returns the quarters available for a given survey and year.
+#' \code{\link{getSurveyList}}, \code{\link{getSurveyYearList}}, and
+#' \code{\link{getSurveyYearQuarterList}} also list available data.
 #'
 #' \code{\link{icesDatras-package}} gives an overview of the package.
 #'
@@ -23,7 +20,7 @@
 #' @export
 
 getDatrasDataOverview <- function() {
-  # check websevices are running
+  # check web services are running
   if (!checkDatrasWebserviceOK()) return (FALSE)
 
   available_data <-
@@ -42,7 +39,7 @@ getDatrasDataOverview <- function() {
   available_data
 }
 
-# print method for datrasoverview class produces in 'getDatrasDataOverview()'
+# print method for datrasoverview class produced in 'getDatrasDataOverview()'
 #' @export
 print.datrasoverview <- function(x, ...) {
   x <- as.table(x)

@@ -2,22 +2,22 @@
 % Please edit documentation in R/getHLdata.R
 \name{getHLdata}
 \alias{getHLdata}
-\title{length based data}
+\title{Get Length-Based Data}
 \usage{
 getHLdata(survey, year, quarter)
 }
 \arguments{
-\item{survey}{the survey accronym e.g. NS-IBTS, BITS.}
+\item{survey}{the survey acronym, e.g. NS-IBTS.}
 
 \item{year}{the numeric year of the survey, e.g. 2010.}
 
 \item{quarter}{the quarter of the year the survey took place, i.e. 1, 2, 3 or 4.}
 }
 \value{
-A data.frame.
+A data frame.
 }
 \description{
-Returns length-based information such as measured length, individual counts,
+Get length-based information such as measured length, individual counts,
   and subfactors of sampled species.
 }
 \examples{
@@ -30,11 +30,12 @@ str(hldata)
 Colin Millar.
 }
 \seealso{
-\code{\link{getSurveyList}} returns the acronyms for available surveys.
+\code{\link{getHHdata}} and \code{\link{getCAdata}} get haul data and
+age-based data.
 
-\code{\link{getSurveyYearList}} returns the years available for a given survey.
-
-\code{\link{getSurveyYearQuarterList}} returns the quarters available for a given survey and year.
+\code{\link{getSurveyList}}, \code{\link{getSurveyYearList}},
+\code{\link{getSurveyYearQuarterList}}, and
+\code{\link{getDatrasDataOverview}} list available data.
 
 \code{\link{icesDatras-package}} gives an overview of the package.
 }

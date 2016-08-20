@@ -6,7 +6,7 @@
 \alias{icesDatras-package}
 \title{DATRAS Trawl Database Web Services}
 \description{
-Functions that access the web services of the ICES (International
+R interface to access the web services of the ICES (International
 Council for the Exploration of the Sea) DATRAS trawl database.
 }
 \details{

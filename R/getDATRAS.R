@@ -1,25 +1,29 @@
 #' Get Any DATRAS Data
 #'
-#' Get any DATRAS data. This function combines the functionality of getCAdata, getHHdata, and getHLdata.
+#' Get any DATRAS data. This function combines the functionality of getHHdata, getHLdata, and getCAdata.
 #'
-#' @param record the data type required: "HH" haul meta data, "HL" length-based data, "CA" age-based data
-#' @param survey the survey accronym e.g. NS-IBTS, BITS.
+#' @param record the data type required: "HH" haul meta data, "HL" length-based data, "CA" age-based data.
+#' @param survey the survey acronym e.g. NS-IBTS.
 #' @param years a vector of numeric years of the survey, e.g. c(2010, 2012), or 2005:2010.
 #' @param quarters a vector of quarters of the year the survey took place, i.e. c(1, 4) or 1:4.
 #'
 #' @return A data frame.
 #'
-#' @author Scott Large and Colin Millar
+#' @seealso
+#' \code{\link{icesDatras-package}} gives an overview of the package.
+#'
+#' @author Scott Large and Colin Millar.
 #'
 #' @examples \dontrun{
 #'  hhdata <- getDATRAS(record = "HH", survey = "NS-IBTS", years = 1966:1967, quarters = c(1,4))
 #' }
 #'
 #' @export
+
 getDATRAS <- function(record = "HH", survey, years, quarters) {
 
   # check record type
-  if(!record %in% c("HL", "HH", "CA")) {
+  if (!record %in% c("HL", "HH", "CA")) {
     message("Please specify record type:",
             "\n\t\tHH (haul meta-data)",
             "\n\t\tHL (Species length-based data)",
@@ -70,13 +74,13 @@ getDATRAS <- function(record = "HH", survey, years, quarters) {
   message("Data being extracted for:\n",
           paste(capture.output(print(cbind.data.frame(survey = survey, year = yvec, quarter = qvec))), collapse = "\n"))
 
-  # Create list of web service URLs
+  # create list of web service URLs
   url <-
     sprintf(
       "https://datras.ices.dk/WebServices/DATRASWebService.asmx/get%sdata?survey=%s&year=%i&quarter=%i",
       record, survey, yvec, qvec)
 
-  # read and parse XML from api
+  # read and parse XML from API
   out <- lapply(url,
                 function(x) {
                   out <- curlDatras(url = x)

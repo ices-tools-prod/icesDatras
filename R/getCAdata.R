@@ -1,19 +1,20 @@
 #' Get Age-Based Data
 #'
-#' Get age-based information such as sex, maturity, and age counts per length of sampled species.
+#' Get age-based data such as sex, maturity, and age counts per length of sampled species.
 #'
-#' @param survey the survey acronym e.g. NS-IBTS, BITS.
+#' @param survey the survey acronym e.g. NS-IBTS.
 #' @param year the numeric year of the survey, e.g. 2010.
 #' @param quarter the quarter of the year the survey took place, i.e. 1, 2, 3 or 4.
 #'
 #' @return A data frame.
 #'
 #' @seealso
-#' \code{\link{getSurveyList}} returns the acronyms for available surveys.
+#' \code{\link{getHHdata}} and \code{\link{getHLdata}} get haul data and
+#' length-based data.
 #'
-#' \code{\link{getSurveyYearList}} returns the years available for a given survey.
-#'
-#' \code{\link{getSurveyYearQuarterList}} returns the quarters available for a given survey and year.
+#' \code{\link{getSurveyList}}, \code{\link{getSurveyYearList}},
+#' \code{\link{getSurveyYearQuarterList}}, and
+#' \code{\link{getDatrasDataOverview}} list available data.
 #'
 #' \code{\link{icesDatras-package}} gives an overview of the package.
 #'
@@ -35,7 +36,7 @@ getCAdata <- function(survey, year, quarter) {
   # check quarter
   if (!checkSurveyYearQuarterOK(survey, year, quarter, checksurvey = FALSE, checkyear = FALSE)) return(FALSE)
 
-  # read and parse XML from api
+  # read and parse XML from API
   url <-
     sprintf(
       "https://datras.ices.dk/WebServices/DATRASWebService.asmx/getCAdata?survey=%s&year=%i&quarter=%i",

@@ -15,7 +15,6 @@ checkSurveyOK <- function(survey) {
 
 checkSurveyYearOK <- function(survey, year, checksurvey = TRUE) {
   # check year against available years for a given survey
-
   if (checksurvey) {
     # check survey name
     if (!checkSurveyOK(survey)) return(FALSE)
@@ -33,7 +32,6 @@ checkSurveyYearOK <- function(survey, year, checksurvey = TRUE) {
 
 checkSurveyYearQuarterOK <- function(survey, year, quarter, checksurvey = TRUE, checkyear = TRUE) {
   # check year against available years for a given survey
-
   if (checksurvey) {
     # check survey name
     if (!checkSurveyOK(survey)) return(FALSE)

@@ -7,7 +7,7 @@
 getCAdata(survey, year, quarter)
 }
 \arguments{
-\item{survey}{the survey acronym e.g. NS-IBTS, BITS.}
+\item{survey}{the survey acronym e.g. NS-IBTS.}
 
 \item{year}{the numeric year of the survey, e.g. 2010.}
 
@@ -17,7 +17,7 @@ getCAdata(survey, year, quarter)
 A data frame.
 }
 \description{
-Get age-based information such as sex, maturity, and age counts per length of sampled species.
+Get age-based data such as sex, maturity, and age counts per length of sampled species.
 }
 \examples{
 cadata <- getCAdata(survey = "BTS", year = 2015, quarter = 3)
@@ -28,11 +28,12 @@ str(cadata)
 Colin Millar.
 }
 \seealso{
-\code{\link{getSurveyList}} returns the acronyms for available surveys.
+\code{\link{getHHdata}} and \code{\link{getHLdata}} get haul data and
+length-based data.
 
-\code{\link{getSurveyYearList}} returns the years available for a given survey.
-
-\code{\link{getSurveyYearQuarterList}} returns the quarters available for a given survey and year.
+\code{\link{getSurveyList}}, \code{\link{getSurveyYearList}},
+\code{\link{getSurveyYearQuarterList}}, and
+\code{\link{getDatrasDataOverview}} list available data.
 
 \code{\link{icesDatras-package}} gives an overview of the package.
 }

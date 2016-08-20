@@ -1,29 +1,27 @@
-#' Haul meta data
+#' Get Haul Data
 #'
-#' Returns detailed haul-based meta-data of the survey such as haul position, sampling method etc.
+#' Get haul data such as position, depth, sampling method, etc.
 #'
-#' @param survey the survey accronym e.g. NS-IBTS, BITS.
-#' @param year the numeric year of the survey, e.g. 2010.
+#' @param survey the survey acronym, e.g. NS-IBTS.
+#' @param year the year of the survey, e.g. 2010.
 #' @param quarter the quarter of the year the survey took place, i.e. 1, 2, 3 or 4.
 #'
-#'
-#' @return A data.frame.
+#' @return A data frame.
 #'
 #' @seealso
-#' \code{\link{getSurveyList}} returns the acronyms for available surveys.
+#' \code{\link{getHLdata}} and \code{\link{getCAdata}} get length-based data and
+#' age-based data.
 #'
-#' \code{\link{getSurveyYearList}} returns the years available for a given survey.
-#'
-#' \code{\link{getSurveyYearQuarterList}} returns the quarters available for a given survey and year.
+#' \code{\link{getSurveyList}}, \code{\link{getSurveyYearList}},
+#' \code{\link{getSurveyYearQuarterList}}, and
+#' \code{\link{getDatrasDataOverview}} list available data.
 #'
 #' \code{\link{icesDatras-package}} gives an overview of the package.
 #'
 #' @author Colin Millar.
 #'
-#' @note All columns are returned as characters with any trailing white space removed
-#'
 #' @examples
-#' # read meta data
+#' # read haul data
 #' hhdata <- getHHdata(survey = "NS-IBTS", year = 2016, quarter = 1)
 #' str(hhdata)
 #'
@@ -41,12 +39,9 @@
 #'                  )
 #' str(hhdata)
 #'
-#'
 #' @export
 
 getHHdata <- function(survey, year, quarter) {
-  # 	Returns detailed haul-based meta-data of the survey such as haul position, sampling method etc.
-
   # check survey name
   if (!checkSurveyOK(survey)) return(FALSE)
 
@@ -56,7 +51,7 @@ getHHdata <- function(survey, year, quarter) {
   # check quarter
   if (!checkSurveyYearQuarterOK(survey, year, quarter, checksurvey = FALSE, checkyear = FALSE)) return(FALSE)
 
-  # read and parse XML from api
+  # read and parse XML from API
   url <-
     sprintf(
       "https://datras.ices.dk/WebServices/DATRASWebService.asmx/getHHdata?survey=%s&year=%i&quarter=%i",
@@ -67,4 +62,3 @@ getHHdata <- function(survey, year, quarter) {
   # return
   out
 }
-

@@ -2,28 +2,25 @@
 % Please edit documentation in R/getHHdata.R
 \name{getHHdata}
 \alias{getHHdata}
-\title{Haul meta data}
+\title{Get Haul Data}
 \usage{
 getHHdata(survey, year, quarter)
 }
 \arguments{
-\item{survey}{the survey accronym e.g. NS-IBTS, BITS.}
+\item{survey}{the survey acronym, e.g. NS-IBTS.}
 
-\item{year}{the numeric year of the survey, e.g. 2010.}
+\item{year}{the year of the survey, e.g. 2010.}
 
 \item{quarter}{the quarter of the year the survey took place, i.e. 1, 2, 3 or 4.}
 }
 \value{
-A data.frame.
+A data frame.
 }
 \description{
-Returns detailed haul-based meta-data of the survey such as haul position, sampling method etc.
-}
-\note{
-All columns are returned as characters with any trailing white space removed
+Get haul data such as position, depth, sampling method, etc.
 }
 \examples{
-# read meta data
+# read haul data
 hhdata <- getHHdata(survey = "NS-IBTS", year = 2016, quarter = 1)
 str(hhdata)
 
@@ -41,17 +38,17 @@ hhdata <- do.call(rbind,
                  )
 str(hhdata)
 
-
 }
 \author{
 Colin Millar.
 }
 \seealso{
-\code{\link{getSurveyList}} returns the acronyms for available surveys.
+\code{\link{getHLdata}} and \code{\link{getCAdata}} get length-based data and
+age-based data.
 
-\code{\link{getSurveyYearList}} returns the years available for a given survey.
-
-\code{\link{getSurveyYearQuarterList}} returns the quarters available for a given survey and year.
+\code{\link{getSurveyList}}, \code{\link{getSurveyYearList}},
+\code{\link{getSurveyYearQuarterList}}, and
+\code{\link{getDatrasDataOverview}} list available data.
 
 \code{\link{icesDatras-package}} gives an overview of the package.
 }

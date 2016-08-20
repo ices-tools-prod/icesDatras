@@ -1,21 +1,21 @@
-#' length based data
+#' Get Length-Based Data
 #'
-#' Returns length-based information such as measured length, individual counts,
+#' Get length-based information such as measured length, individual counts,
 #'   and subfactors of sampled species.
 #'
-#' @param survey the survey accronym e.g. NS-IBTS, BITS.
+#' @param survey the survey acronym, e.g. NS-IBTS.
 #' @param year the numeric year of the survey, e.g. 2010.
 #' @param quarter the quarter of the year the survey took place, i.e. 1, 2, 3 or 4.
 #'
-#'
-#' @return A data.frame.
+#' @return A data frame.
 #'
 #' @seealso
-#' \code{\link{getSurveyList}} returns the acronyms for available surveys.
+#' \code{\link{getHHdata}} and \code{\link{getCAdata}} get haul data and
+#' age-based data.
 #'
-#' \code{\link{getSurveyYearList}} returns the years available for a given survey.
-#'
-#' \code{\link{getSurveyYearQuarterList}} returns the quarters available for a given survey and year.
+#' \code{\link{getSurveyList}}, \code{\link{getSurveyYearList}},
+#' \code{\link{getSurveyYearQuarterList}}, and
+#' \code{\link{getDatrasDataOverview}} list available data.
 #'
 #' \code{\link{icesDatras-package}} gives an overview of the package.
 #'
@@ -31,9 +31,6 @@
 #' @export
 
 getHLdata <- function(survey, year, quarter) {
-  # Returns length-based information such as measured length, individual counts,
-  # and subfactors of sampled species.
-
   # check survey name
   if (!checkSurveyOK(survey)) return(FALSE)
 
@@ -54,4 +51,3 @@ getHLdata <- function(survey, year, quarter) {
   # return
   out
 }
-

@@ -1,16 +1,14 @@
-#' Query data availability
+#' Get a List of Survey Years
 #'
-#' 	Returns list of years based on survey.
+#' Get a list of all data years for a given survey.
 #'
-#' @param survey the survey accronym e.g. NS-IBTS, BITS.
-#'
+#' @param survey the survey acronym, e.g. NS-IBTS.
 #'
 #' @return A numeric vector.
 #'
 #' @seealso
-#' \code{\link{getSurveyList}} returns the acronyms for available surveys.
-#'
-#' \code{\link{getSurveyYearQuarterList}} returns the quarters available for a given survey and year.
+#' \code{\link{getSurveyList}}, \code{\link{getSurveyYearQuarterList}}, and
+#' \code{\link{getDatrasDataOverview}} also list available data.
 #'
 #' \code{\link{icesDatras-package}} gives an overview of the package.
 #'
@@ -19,16 +17,13 @@
 #' @examples
 #' getSurveyYearList(survey = "NS-IBTS")
 #'
-#'
 #' @export
 
 getSurveyYearList <- function(survey) {
-  # get a list of available years
-
-  # check websevices are running
+  # check web services are running
   if (!checkDatrasWebserviceOK()) return (FALSE)
 
-  # read and parse XML from api
+  # read and parse XML from API
   url <-
     sprintf(
       "https://datras.ices.dk/WebServices/DATRASWebService.asmx/getSurveyYearList?survey=%s",
