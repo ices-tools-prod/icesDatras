@@ -44,7 +44,7 @@ getDatrasDataOverview <- function() {
 
 # print method for datrasoverview class produces in 'getDatrasDataOverview()'
 #' @export
-print.datrasoverview <- function(x) {
+print.datrasoverview <- function(x, ...) {
   x <- as.table(x)
   print.table(x, zero.print = ".")
 }
