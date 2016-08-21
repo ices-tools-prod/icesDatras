@@ -19,7 +19,7 @@ parseDatras <- function(x) {
   # parse the xml text string suppplied by the Datras webservice
   # returning a dataframe
   capture.output(x <- xmlParse(x))
-  # capture.output is used to stiffle the output message from xmlns:
+  # capture.output is used to suppress the output message from xmlns:
   #   "xmlns: URI ices.dk.local/DATRAS is not absolute"
 
   # convert xml to data frame, with appropriate column types
