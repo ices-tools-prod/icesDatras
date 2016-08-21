@@ -25,7 +25,7 @@ parseDatras <- function(x) {
   # convert xml to data frame, with appropriate column types
   x <- simplify(xmlToDataFrame(x, stringsAsFactors = FALSE))
 
-  # clean white space from text columns
+  # clean trailing white space from text columns
   charcol <- which(sapply(x, is.character))
   x[charcol] <- lapply(x[charcol], function(x) gsub("[[:space:]]*$", "", x))
   x
