@@ -33,10 +33,6 @@ Colin Millar.
 \code{\link{getHHdata}} and \code{\link{getCAdata}} get haul data and
 age-based data.
 
-\code{\link{getSurveyList}}, \code{\link{getSurveyYearList}},
-\code{\link{getSurveyYearQuarterList}}, and
-\code{\link{getDatrasDataOverview}} list available data.
-
 \code{\link{icesDatras-package}} gives an overview of the package.
 }
 \keyword{distribution}
