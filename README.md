@@ -26,7 +26,8 @@ install.packages('icesDatras')
 Usage
 -----
 
-For a summary of the package
+For a summary of the package:
+
 ```R
 library(icesDatras)
 ?icesDatras
