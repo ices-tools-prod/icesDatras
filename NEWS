@@ -1,6 +1,8 @@
 --------------------------------------------------------------------------------
 icesDatras 1.1-0 (2016-08-17)
 --------------------------------------------------------------------------------
+o Improved XML parsing, so -9 is converted to NA.
+
 o Improved XML parsing, so data frame columns are automatically coerced to the
   appropriate storage mode (character, numeric, integer).
 

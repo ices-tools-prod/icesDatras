@@ -28,6 +28,9 @@ parseDatras <- function(x) {
   # clean trailing white space from text columns
   charcol <- which(sapply(x, is.character))
   x[charcol] <- lapply(x[charcol], function(x) gsub("[[:space:]]*$", "", x))
+
+  ## DATRAS uses -9 to indicate NA
+  x[x == -9] <- NA
   x
 }
 
