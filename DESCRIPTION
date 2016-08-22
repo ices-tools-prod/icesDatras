@@ -11,7 +11,7 @@ Suggests: knitr,
 Imports: RCurl,
          XML,
          utils
-Description: Functions that access the web services of the ICES (International
+Description: R interface to access the web services of the ICES (International
              Council for the Exploration of the Sea) DATRAS trawl survey
              database <https://datras.ices.dk/WebServices/Webservices.aspx>.
 License: GPL (>= 2)
