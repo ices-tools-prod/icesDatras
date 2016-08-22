@@ -27,5 +27,5 @@ getSurveyList <- function() {
   out <- parseDatras(out)
 
   # return
-  out
+  out$Survey
 }
