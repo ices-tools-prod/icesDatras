@@ -22,7 +22,7 @@ Get length-based information such as measured length, individual counts,
 }
 \examples{
 # read length data
-hldata <- getHLdata(survey = "NS-IBTS", year = 2016, quarter = 1)
+hldata <- getHLdata(survey = "ROCKALL", year = 2015, quarter = 3)
 str(hldata)
 
 }
@@ -35,5 +35,4 @@ age-based data.
 
 \code{\link{icesDatras-package}} gives an overview of the package.
 }
-\keyword{distribution}
 

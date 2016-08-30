@@ -15,9 +15,7 @@
 #' @author Colin Millar.
 #'
 #' @examples
-#' \dontrun{
-#' getDatrasDataOverview()
-#' }
+#' getDatrasDataOverview(surveys = "ROCKALL")
 #'
 #' @export
 

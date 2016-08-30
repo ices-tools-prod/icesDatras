@@ -18,9 +18,10 @@
 #'
 #' @examples
 #' # read haul data
-#' hhdata <- getHHdata(survey = "NS-IBTS", year = 2016, quarter = 1)
+#' hhdata <- getHHdata(survey = "ROCKALL", year = 2015, quarter = 3)
 #' str(hhdata)
 #'
+#' \dontrun{
 #' # error checking examples:
 #' hhdata <- getHHdata(survey = "NS_IBTS", year = 2016, quarter = 1)
 #' hhdata <- getHHdata(survey = "NS-IBTS", year = 2018, quarter = 1)
@@ -34,6 +35,7 @@
 #'                          )
 #'                  )
 #' str(hhdata)
+#' }
 #'
 #' @export
 

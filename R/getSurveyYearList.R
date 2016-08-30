@@ -15,7 +15,7 @@
 #' @author Colin Millar.
 #'
 #' @examples
-#' getSurveyYearList(survey = "NS-IBTS")
+#' getSurveyYearList(survey = "ROCKALL")
 #'
 #' @export
 

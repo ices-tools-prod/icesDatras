@@ -20,10 +20,12 @@ A data frame.
 }
 \description{
 Get any DATRAS data. This function combines the functionality of getHHdata, getHLdata, and getCAdata.
+It supports the processing of many years and quarters in one function call.
 }
 \examples{
 \dontrun{
- hhdata <- getDATRAS(record = "HH", survey = "NS-IBTS", years = 1966:1967, quarters = c(1,4))
+hhdata <- getDATRAS(record = "HH", survey = "NS-IBTS", years = 1966:1967, quarters = c(1,4))
+cadata <- getDATRAS(record = "CA", survey = "ROCKALL", years = 2015, quarters = 1:4)
 }
 
 }

@@ -16,7 +16,7 @@ A numeric vector.
 Get a list of all data years for a given survey.
 }
 \examples{
-getSurveyYearList(survey = "NS-IBTS")
+getSurveyYearList(survey = "ROCKALL")
 
 }
 \author{

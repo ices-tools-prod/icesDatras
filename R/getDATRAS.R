@@ -1,6 +1,7 @@
 #' Get Any DATRAS Data
 #'
 #' Get any DATRAS data. This function combines the functionality of getHHdata, getHLdata, and getCAdata.
+#' It supports the processing of many years and quarters in one function call.
 #'
 #' @param record the data type required: "HH" haul meta data, "HL" length-based data, "CA" age-based data.
 #' @param survey the survey acronym e.g. NS-IBTS.
@@ -18,7 +19,8 @@
 #' @author Scott Large and Colin Millar.
 #'
 #' @examples \dontrun{
-#'  hhdata <- getDATRAS(record = "HH", survey = "NS-IBTS", years = 1966:1967, quarters = c(1,4))
+#' hhdata <- getDATRAS(record = "HH", survey = "NS-IBTS", years = 1966:1967, quarters = c(1,4))
+#' cadata <- getDATRAS(record = "CA", survey = "ROCKALL", years = 2015, quarters = 1:4)
 #' }
 #'
 #' @export
@@ -28,9 +30,9 @@ getDATRAS <- function(record = "HH", survey, years, quarters) {
   # check record type
   if (!record %in% c("HL", "HH", "CA")) {
     message("Please specify record type:",
-            "\n\t\tHH (haul meta-data)",
-            "\n\t\tHL (Species length-based data)",
-            "\n\t\tCA (species age-based data)")
+            "\n\t\tHH (haul data)",
+            "\n\t\tHL (length-based data)",
+            "\n\t\tCA (age-based data)")
     return(FALSE)
   }
 
@@ -53,9 +55,9 @@ getDATRAS <- function(record = "HH", survey, years, quarters) {
 
   # get matrix of available data for years and quarters requested
   mat <- sapply(as.character(available_years_req),
-                function(y) getSurveyYearQuarterList(survey, as.numeric(y)),
+                function(y) getSurveyYearQuarterList(survey, as.integer(y)),
                 simplify = FALSE)
-  mat <- sapply(mat, function(x) as.numeric(1:4 %in% x)) # hard wire 4 quarters
+  mat <- sapply(mat, function(x) as.integer(1:4 %in% x)) # hard wire 4 quarters
   row.names(mat) <- 1:4
 
   if (sum(mat[quarters,]) == 0) {

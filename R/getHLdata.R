@@ -19,10 +19,8 @@
 #'
 #' @examples
 #' # read length data
-#' hldata <- getHLdata(survey = "NS-IBTS", year = 2016, quarter = 1)
+#' hldata <- getHLdata(survey = "ROCKALL", year = 2015, quarter = 3)
 #' str(hldata)
-#'
-#' @keywords distribution
 #'
 #' @export
 
@@ -36,7 +34,7 @@ getHLdata <- function(survey, year, quarter) {
   # check quarter
   if (!checkSurveyYearQuarterOK(survey, year, quarter, checksurvey = FALSE, checkyear = FALSE)) return(FALSE)
 
-  # read and parse XML from api
+  # read and parse XML from API
   url <-
     sprintf(
       "https://datras.ices.dk/WebServices/DATRASWebService.asmx/getHLdata?survey=%s&year=%i&quarter=%i",
