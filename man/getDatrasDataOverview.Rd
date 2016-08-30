@@ -4,7 +4,10 @@
 \alias{getDatrasDataOverview}
 \title{Summarize Data Availability}
 \usage{
-getDatrasDataOverview()
+getDatrasDataOverview(surveys = NULL)
+}
+\arguments{
+\item{surveys}{a vector of survey names, or \code{NULL} to process all surveys.}
 }
 \value{
 A list of tables.

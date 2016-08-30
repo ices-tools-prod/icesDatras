@@ -2,6 +2,8 @@
 #'
 #' Evaluate a presence-absence table for each survey with '1' where there is data and '0' (printed as '.') otherwise.
 #'
+#' @param surveys a vector of survey names, or \code{NULL} to process all surveys.
+#'
 #' @return A list of tables.
 #'
 #' @seealso
@@ -19,17 +21,20 @@
 #'
 #' @export
 
-getDatrasDataOverview <- function() {
+getDatrasDataOverview <- function(surveys = NULL) {
   # check web services are running
   if (!checkDatrasWebserviceOK()) return (FALSE)
 
+  # include all surveys if user did not specify any
+  if (is.null(surveys)) surveys <- getSurveyList()
+
   available_data <-
-    sapply(getSurveyList(),
+    sapply(surveys,
            function(s) {
              out <- sapply(as.character(getSurveyYearList(s)),
-                           function(y) getSurveyYearQuarterList(s, as.numeric(y)),
+                           function(y) getSurveyYearQuarterList(s, as.integer(y)),
                            simplify = FALSE)
-             out <- sapply(out, function(x) as.numeric(1:4 %in% x)) # hard wire 4 quarters
+             out <- sapply(out, function(x) as.integer(1:4 %in% x)) # hard wire 4 quarters
              row.names(out) <- 1:4
              class(out) <- "datrasoverview"
              out
