@@ -73,7 +73,7 @@ getDATRAS <- function(record = "HH", survey, years, quarters) {
   qvec <- quarters[row(amat)[amat == 1]]
   yvec <- available_years_req[col(amat)[amat == 1]]
 
-  # report to user which years and wuarters are being extracted?
+  # report to user which years and quarters are being extracted?
   message("Data being extracted for:\n",
           paste(capture.output(print(cbind.data.frame(survey = survey, year = yvec, quarter = qvec))), collapse = "\n"))
 
