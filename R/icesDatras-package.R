@@ -29,7 +29,7 @@
 #' @author Colin Millar, Einar Hjorleifsson, Scott Large, and Arni Magnusson.
 #'
 #' @references
-#' Description of ICES DATRAS web services:
+#' ICES DATRAS web services:
 #' \url{https://datras.ices.dk/WebServices/Webservices.aspx}.
 #'
 #' ICES list of software applications:

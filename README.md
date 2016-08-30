@@ -36,7 +36,7 @@ library(icesDatras)
 References
 ----------
 
-Description of ICES DATRAS web services:
+ICES DATRAS web services:
 
 [https://datras.ices.dk/WebServices/Webservices.aspx](https://datras.ices.dk/WebServices/Webservices.aspx).
 
