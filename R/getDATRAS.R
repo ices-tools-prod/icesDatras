@@ -3,7 +3,7 @@
 #' Get any DATRAS data. This function combines the functionality of getHHdata, getHLdata, and getCAdata.
 #' It supports the processing of many years and quarters in one function call.
 #'
-#' @param record the data type required: "HH" haul meta data, "HL" length-based data, "CA" age-based data.
+#' @param record the data type required: "HH" haul data, "HL" length-based data, "CA" age-based data.
 #' @param survey the survey acronym e.g. NS-IBTS.
 #' @param years a vector of numeric years of the survey, e.g. c(2010, 2012), or 2005:2010.
 #' @param quarters a vector of quarters of the year the survey took place, i.e. c(1, 4) or 1:4.
@@ -19,16 +19,16 @@
 #' @author Scott Large and Colin Millar.
 #'
 #' @examples \dontrun{
-#' hhdata <- getDATRAS(record = "HH", survey = "NS-IBTS", years = 1966:1967, quarters = c(1,4))
-#' cadata <- getDATRAS(record = "CA", survey = "ROCKALL", years = 2015, quarters = 1:4)
+#' hhdata <- getDATRAS(record = "HH", survey = "ROCKALL", years = 2015, quarters = 3)
+#' hldata <- getDATRAS(record = "HL", survey = "ROCKALL", years = 2015, quarters = 3)
+#' cadata <- getDATRAS(record = "CA", survey = "ROCKALL", years = 2015, quarters = 3)
 #' }
 #'
 #' @export
 
 getDATRAS <- function(record = "HH", survey, years, quarters) {
-
   # check record type
-  if (!record %in% c("HL", "HH", "CA")) {
+  if (!record %in% c("HH", "HL", "CA")) {
     message("Please specify record type:",
             "\n\t\tHH (haul data)",
             "\n\t\tHL (length-based data)",

@@ -7,7 +7,7 @@
 getDATRAS(record = "HH", survey, years, quarters)
 }
 \arguments{
-\item{record}{the data type required: "HH" haul meta data, "HL" length-based data, "CA" age-based data.}
+\item{record}{the data type required: "HH" haul data, "HL" length-based data, "CA" age-based data.}
 
 \item{survey}{the survey acronym e.g. NS-IBTS.}
 
@@ -24,8 +24,9 @@ It supports the processing of many years and quarters in one function call.
 }
 \examples{
 \dontrun{
-hhdata <- getDATRAS(record = "HH", survey = "NS-IBTS", years = 1966:1967, quarters = c(1,4))
-cadata <- getDATRAS(record = "CA", survey = "ROCKALL", years = 2015, quarters = 1:4)
+hhdata <- getDATRAS(record = "HH", survey = "ROCKALL", years = 2015, quarters = 3)
+hldata <- getDATRAS(record = "HL", survey = "ROCKALL", years = 2015, quarters = 3)
+cadata <- getDATRAS(record = "CA", survey = "ROCKALL", years = 2015, quarters = 3)
 }
 
 }
