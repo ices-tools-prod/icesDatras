@@ -32,7 +32,7 @@ Colin Millar, Einar Hjorleifsson, Scott Large, and Arni Magnusson.
 ICES DATRAS web services:
 \url{https://datras.ices.dk/WebServices/Webservices.aspx}.
 
-ICES list of software applications:
+ICES software applications:
 \url{http://ices.dk/marine-data/tools/Pages/Software.aspx}.
 }
 
