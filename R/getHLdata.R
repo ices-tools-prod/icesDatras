@@ -18,8 +18,7 @@
 #' @author Colin Millar.
 #'
 #' @examples
-#' # read length data
-#' hldata <- getHLdata(survey = "ROCKALL", year = 2015, quarter = 3)
+#' hldata <- getHLdata(survey = "ROCKALL", year = 2002, quarter = 3)
 #' str(hldata)
 #'
 #' @export

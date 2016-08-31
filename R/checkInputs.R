@@ -38,7 +38,7 @@ checkSurveyYearQuarterOK <- function(survey, year, quarter, checksurvey = TRUE, 
   }
 
   if (checkyear) {
-    # check survey name
+    # check survey year
     if (!checkSurveyYearOK(survey, year, checksurvey = FALSE)) return(FALSE)
   }
 

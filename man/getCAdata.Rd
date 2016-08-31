@@ -20,7 +20,7 @@ A data frame.
 Get age-based data such as sex, maturity, and age counts per length of sampled species.
 }
 \examples{
-cadata <- getCAdata(survey = "ROCKALL", year = 2015, quarter = 3)
+cadata <- getCAdata(survey = "ROCKALL", year = 2002, quarter = 3)
 str(cadata)
 
 }

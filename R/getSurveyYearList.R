@@ -32,5 +32,5 @@ getSurveyYearList <- function(survey) {
   out <- parseDatras(out)
 
   # return
-  as.integer(out $ Year)
+  as.integer(out$Year)
 }

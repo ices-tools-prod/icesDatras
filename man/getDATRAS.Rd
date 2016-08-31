@@ -23,11 +23,9 @@ Get any DATRAS data. This function combines the functionality of getHHdata, getH
 It supports the processing of many years and quarters in one function call.
 }
 \examples{
-\dontrun{
-hhdata <- getDATRAS(record = "HH", survey = "ROCKALL", years = 2015, quarters = 3)
-hldata <- getDATRAS(record = "HL", survey = "ROCKALL", years = 2015, quarters = 3)
-cadata <- getDATRAS(record = "CA", survey = "ROCKALL", years = 2015, quarters = 3)
-}
+hhdata <- getDATRAS(record = "HH", survey = "ROCKALL", years = 2002, quarters = 3)
+hldata <- getDATRAS(record = "HL", survey = "ROCKALL", years = 2002, quarters = 3)
+cadata <- getDATRAS(record = "CA", survey = "ROCKALL", years = 2002, quarters = 3)
 
 }
 \author{

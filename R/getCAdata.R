@@ -17,7 +17,7 @@
 #' @author Colin Millar.
 #'
 #' @examples
-#' cadata <- getCAdata(survey = "ROCKALL", year = 2015, quarter = 3)
+#' cadata <- getCAdata(survey = "ROCKALL", year = 2002, quarter = 3)
 #' str(cadata)
 #'
 #' @export

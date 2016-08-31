@@ -16,7 +16,7 @@
 #' @author Colin Millar.
 #'
 #' @examples
-#' getSurveyYearQuarterList(survey = "ROCKALL", year = 2015)
+#' getSurveyYearQuarterList(survey = "ROCKALL", year = 2002)
 #'
 #' @export
 
@@ -33,5 +33,5 @@ getSurveyYearQuarterList <- function(survey, year) {
   out <- parseDatras(out)
 
   # return
-  as.integer(out $ Quarter)
+  as.integer(out$Quarter)
 }

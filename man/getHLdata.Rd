@@ -21,8 +21,7 @@ Get length-based information such as measured length, individual counts,
   and subfactors of sampled species.
 }
 \examples{
-# read length data
-hldata <- getHLdata(survey = "ROCKALL", year = 2015, quarter = 3)
+hldata <- getHLdata(survey = "ROCKALL", year = 2002, quarter = 3)
 str(hldata)
 
 }
