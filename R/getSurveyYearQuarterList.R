@@ -16,7 +16,7 @@
 #' @author Colin Millar.
 #'
 #' @examples
-#' getSurveyYearQuarterList(survey = "ROCKALL", year = 2010)
+#' getSurveyYearQuarterList(survey = "ROCKALL", year = 2015)
 #'
 #' @export
 

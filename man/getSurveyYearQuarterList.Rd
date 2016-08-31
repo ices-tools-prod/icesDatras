@@ -18,7 +18,7 @@ A numeric vector.
 Get a list of quarters available for a given survey and year.
 }
 \examples{
-getSurveyYearQuarterList(survey = "ROCKALL", year = 2010)
+getSurveyYearQuarterList(survey = "ROCKALL", year = 2015)
 
 }
 \author{
