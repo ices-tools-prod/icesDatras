@@ -29,9 +29,10 @@ parseDatras <- function(x) {
   charcol <- which(sapply(x, is.character))
   x[charcol] <- lapply(x[charcol], function(x) gsub("[[:space:]]*$", "", x))
 
-  ## DATRAS uses -9 to indicate NA
+  ## DATRAS uses -9 and "" to indicate NA
   x[x == -9] <- NA
-  x
+  x[x == ""] <- NA
+  simplify(x)  # simplify again, as ""->NA may enable us to coerce char->num/int
 }
 
 
