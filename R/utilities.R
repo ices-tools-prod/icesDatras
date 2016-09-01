@@ -25,11 +25,14 @@ parseDatras <- function(x) {
   # convert xml to data frame, with appropriate column types
   x <- simplify(xmlToDataFrame(x, stringsAsFactors = FALSE))
 
+  # return data frame now if empty
+  if (nrow(x) == 0) return(x)
+
   # clean trailing white space from text columns
   charcol <- which(sapply(x, is.character))
   x[charcol] <- lapply(x[charcol], function(x) gsub("[[:space:]]*$", "", x))
 
-  ## DATRAS uses -9 and "" to indicate NA
+  # DATRAS uses -9 and "" to indicate NA
   x[x == -9] <- NA
   x[x == ""] <- NA
   simplify(x)  # simplify again, as ""->NA may enable us to coerce char->num/int

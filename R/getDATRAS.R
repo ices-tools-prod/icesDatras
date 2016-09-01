@@ -92,10 +92,6 @@ getDATRAS <- function(record = "HH", survey, years, quarters) {
                 })
   out <- do.call(rbind, out)
 
-  # clean white space from text columns
-  charcol <- which(sapply(out, is.character))
-  out[charcol] <- lapply(out[charcol], function(x) gsub("[[:space:]]*$", "", x))
-
   # return
   out
 }
