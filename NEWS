@@ -4,6 +4,8 @@ icesDatras 1.1-0 (2016-08-17)
 o New argument 'surveys' in function getDatrasDataOverview() allows faster
   overviews for one or few surveys.
 
+o Improved XML parsing, so both leading and trailing white space is removed.
+
 o Improved XML parsing, so -9 and "" is converted to NA.
 
 o Improved XML parsing, so data frame columns are automatically coerced to the
