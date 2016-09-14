@@ -6,6 +6,7 @@ Authors@R: c(person("Colin", "Millar", role=c("aut","cre"), email="colin.millar@
              person("Einar", "Hjorleifsson", role="aut"),
              person("Scott", "Large", role="aut"),
              person("Arni", "Magnusson", role="aut"))
+Depends: R (>= 2.10)
 Suggests: knitr,
           testthat
 Imports: RCurl,
