@@ -26,15 +26,17 @@ parseDatras <- function(x) {
 
   # get root node
   x <- xmlRoot(x)
+  nc <- length(getChildrenStrings(x[[1]]))
 
   # restructure data into a data frame
-  x <- t(sapply(1:xmlSize(x),
+  x <- sapply(1:xmlSize(x),
                 function(i) {
                   out <- getChildrenStrings(x[[1]])
                   removeNodes(x[[1]])
                   out
-                }))
-  x <- as.data.frame(x, stringsAsFactors = FALSE)
+                })
+  if (nc == 1) x <- matrix(x, 1, length(x), dimnames = list(names(x[1])))
+  x <- as.data.frame(t(x), stringsAsFactors = FALSE)
   x <- simplify(x)
 
   # return data frame now if empty
