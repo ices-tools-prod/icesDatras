@@ -24,17 +24,18 @@ parseDatras <- function(x) {
   # capture.output is used to suppress the output message from xmlns:
   #   "xmlns: URI ices.dk.local/DATRAS is not absolute"
 
-  # get root node
+  # work with root node
   x <- xmlRoot(x)
+
   # exit if no data is being returned
   if (xmlSize(x) == 0) return(NULL)
   nc <- length(getChildrenStrings(x[[1]]))
 
-  # restructure data into a data frame
-  x <- sapply(1:xmlSize(x),
-                function(i) {
-                  out <- getChildrenStrings(x[[1]])
-                  removeNodes(x[[1]])
+  # read XML values into matrix, then convert to data frame
+  x <- replicate(xmlSize(x), {
+                  # peek and pop XML stack to optimize speed and memory
+                  out <- getChildrenStrings(x[[1]])  # peek
+                  removeNodes(x[[1]])                # pop
                   out
                 })
   if (nc == 1) x <- matrix(x, 1, length(x), dimnames = list(names(x[1])))
