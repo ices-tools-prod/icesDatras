@@ -10,8 +10,11 @@
 #' @return A data frame.
 #'
 #' @seealso
+#' \code{\link{aphia}} a data.frame of aphia codes and latin species names
+#'
 #' \code{\link{getSurveyYearList}}, \code{\link{getSurveyYearQuarterList}}, and
 #' \code{\link{getDatrasDataOverview}} also list available data.
+#'
 #'
 #' \code{\link{icesDatras-package}} gives an overview of the package.
 #'
@@ -19,6 +22,14 @@
 #'
 #' @examples
 #' getCatchWgt(survey = "ROCKALL", years = 2002, quarters = 3, aphia_codes = "126437")
+#'
+#' # look up specific species
+#' data(aphia)
+#' aphia[pmatch("Gadus", aphia$species, duplicates.ok = TRUE),]
+#' aphia[pmatch("Melano", aphia$species, duplicates.ok = TRUE),]
+#'  species <- c("Gadus morhua", "Melanogrammus aeglefinus")
+#' codes <- aphia[aphia$species %in% species,]
+#' cwt <- getCatchWgt(survey = "ROCKALL", years = 2002, quarters = 3, aphia_codes = codes$aphia_code)
 #'
 #' @export
 getCatchWgt <- function(survey, years, quarters, aphia_codes) {
