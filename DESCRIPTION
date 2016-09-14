@@ -1,5 +1,5 @@
 Package: icesDatras
-Version: 1.1-0
+Version: 1.1-1
 Date: 2016-08-17
 Title: DATRAS Trawl Database Web Services
 Authors@R: c(person("Colin", "Millar", role=c("aut","cre"), email="colin.millar@ices.dk"),
