@@ -2,6 +2,7 @@
 
 S3method(print,datrasoverview)
 export(getCAdata)
+export(getCatchWgt)
 export(getDATRAS)
 export(getDatrasDataOverview)
 export(getHHdata)
