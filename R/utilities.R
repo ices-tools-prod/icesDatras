@@ -26,6 +26,8 @@ parseDatras <- function(x) {
 
   # get root node
   x <- xmlRoot(x)
+  # exit if no data is being returned
+  if (xmlSize(x) == 0) return(NULL)
   nc <- length(getChildrenStrings(x[[1]]))
 
   # restructure data into a data frame
