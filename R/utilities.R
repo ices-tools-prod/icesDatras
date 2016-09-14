@@ -11,9 +11,10 @@ curlDatras <- function(url) {
   reader$value()
 }
 
-
 #' @importFrom XML xmlParse
-#' @importFrom XML xmlToDataFrame
+#' @importFrom XML xmlRoot
+#' @importFrom XML xmlSize
+#' @importFrom XML getChildrenStrings
 #' @importFrom utils capture.output
 parseDatras <- function(x) {
   # parse the xml text string suppplied by the Datras webservice
@@ -22,8 +23,15 @@ parseDatras <- function(x) {
   # capture.output is used to suppress the output message from xmlns:
   #   "xmlns: URI ices.dk.local/DATRAS is not absolute"
 
-  # convert xml to data frame, with appropriate column types
-  x <- simplify(xmlToDataFrame(x, stringsAsFactors = FALSE))
+  # get root node
+  x <- xmlRoot(x)
+
+  # restructure data into a data frame
+  #x <- do.call(rbind, lapply(1:xmlSize(x), function(i) getChildrenStrings(x[[i]])))
+  # or equivalently:
+  x <- t(sapply(1:xmlSize(x), function(i) getChildrenStrings(x[[i]])))
+  x <- as.data.frame(x, stringsAsFactors = FALSE)
+  x <- simplify(x)
 
   # return data frame now if empty
   if (nrow(x) == 0) return(x)
