@@ -15,6 +15,7 @@ curlDatras <- function(url) {
 #' @importFrom XML xmlRoot
 #' @importFrom XML xmlSize
 #' @importFrom XML getChildrenStrings
+#' @importFrom XML removeNodes
 #' @importFrom utils capture.output
 parseDatras <- function(x) {
   # parse the xml text string suppplied by the Datras webservice
@@ -27,9 +28,12 @@ parseDatras <- function(x) {
   x <- xmlRoot(x)
 
   # restructure data into a data frame
-  #x <- do.call(rbind, lapply(1:xmlSize(x), function(i) getChildrenStrings(x[[i]])))
-  # or equivalently:
-  x <- t(sapply(1:xmlSize(x), function(i) getChildrenStrings(x[[i]])))
+  x <- t(sapply(1:xmlSize(x),
+                function(i) {
+                  out <- getChildrenStrings(x[[1]])
+                  removeNodes(x[[1]])
+                  out
+                }))
   x <- as.data.frame(x, stringsAsFactors = FALSE)
   x <- simplify(x)
 
