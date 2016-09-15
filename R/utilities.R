@@ -33,7 +33,7 @@ parseDatras <- function(x) {
 
   # read XML values into matrix, then convert to data frame
   x <- replicate(xmlSize(x), {
-                  # peek and pop XML stack to optimize speed and memory
+  # remove top record after reading to optimize speed and memory
                   out <- getChildrenStrings(x[[1]])  # peek
                   removeNodes(x[[1]])                # pop
                   out
