@@ -55,3 +55,10 @@ The current development version can be installed using:
 ```R
 devtools::install_github('ices-tools-prod/icesDatras')
 ```
+
+This requires the `devtools` package tobe installed which is done as follows:
+
+```R
+install.packages("devtools")
+```
+
