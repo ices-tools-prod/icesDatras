@@ -1,6 +1,6 @@
 #' Get Any DATRAS Data
 #'
-#' Get any DATRAS data. This function combines the functionality of getHHdata, getHLdata, and getCAdata.
+#' This function combines the functionality of getHHdata, getHLdata, and getCAdata.
 #' It supports the processing of many years and quarters in one function call.
 #'
 #' @param record the data type required: "HH" haul data, "HL" length-based data, "CA" age-based data.

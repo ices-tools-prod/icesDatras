@@ -19,7 +19,7 @@ getDATRAS(record = "HH", survey, years, quarters)
 A data frame.
 }
 \description{
-Get any DATRAS data. This function combines the functionality of getHHdata, getHLdata, and getCAdata.
+This function combines the functionality of getHHdata, getHLdata, and getCAdata.
 It supports the processing of many years and quarters in one function call.
 }
 \examples{
