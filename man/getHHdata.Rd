@@ -33,8 +33,7 @@ hhdata <- getHHdata(survey = "NS-IBTS", year = 2016, quarter = 6)
 Colin Millar.
 }
 \seealso{
-\code{\link{getDATRAS}} supports querying many years and quarters in one
-function call.
+\code{\link{getDATRAS}} supports querying many years and quarters in one function call.
 
 \code{\link{getHLdata}} and \code{\link{getCAdata}} get length-based data and
 age-based data.

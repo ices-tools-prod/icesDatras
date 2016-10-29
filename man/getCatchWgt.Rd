@@ -13,7 +13,7 @@ getCatchWgt(survey, years, quarters, aphia_codes)
 
 \item{quarters}{a vector of quarters of the year the survey took place, e.g. c(1, 4) or 1:4.}
 
-\item{aphia_codes}{a vector of numeric 'aphia' codes defined in the WoRMS database, e.g. c(126436, 1264374).
+\item{aphia_codes}{a vector of numeric 'aphia' codes defined in the WoRMS database, e.g. c(126436, 1264374).}
 }
 \value{
 A data frame.
@@ -42,6 +42,6 @@ Colin Millar.
 \code{\link{getSurveyYearList}}, \code{\link{getSurveyYearQuarterList}}, and
 \code{\link{getDatrasDataOverview}} also list available data.
 
-
 \code{\link{icesDatras-package}} gives an overview of the package.
 }
+

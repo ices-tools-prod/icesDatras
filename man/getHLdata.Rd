@@ -29,8 +29,7 @@ str(hldata)
 Colin Millar.
 }
 \seealso{
-\code{\link{getDATRAS}} supports querying many years and quarters in one
-function call.
+\code{\link{getDATRAS}} supports querying many years and quarters in one function call.
 
 \code{\link{getHHdata}} and \code{\link{getCAdata}} get haul data and
 age-based data.
