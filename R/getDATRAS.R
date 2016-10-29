@@ -1,7 +1,7 @@
 #' Get Any DATRAS Data
 #'
 #' This function combines the functionality of getHHdata, getHLdata, and getCAdata.
-#' It supports the processing of many years and quarters in one function call.
+#' It supports querying many years and quarters in one function call.
 #'
 #' @param record the data type required: "HH" haul data, "HL" length-based data, "CA" age-based data.
 #' @param survey the survey acronym e.g. NS-IBTS.

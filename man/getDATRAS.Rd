@@ -20,7 +20,7 @@ A data frame.
 }
 \description{
 This function combines the functionality of getHHdata, getHLdata, and getCAdata.
-It supports the processing of many years and quarters in one function call.
+It supports querying many years and quarters in one function call.
 }
 \examples{
 hhdata <- getDATRAS(record = "HH", survey = "ROCKALL", years = 2002, quarters = 3)

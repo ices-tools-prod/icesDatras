@@ -9,6 +9,8 @@
 #' @return A data frame.
 #'
 #' @seealso
+#' \code{\link{getDATRAS}} supports querying many years and quarters in one function call.
+#'
 #' \code{\link{getHLdata}} and \code{\link{getCAdata}} get length-based data and
 #' age-based data.
 #'
