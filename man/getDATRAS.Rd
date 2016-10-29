@@ -11,7 +11,7 @@ getDATRAS(record = "HH", survey, years, quarters)
 
 \item{survey}{the survey acronym e.g. NS-IBTS.}
 
-\item{years}{a vector of numeric years of the survey, e.g. c(2010, 2012), or 2005:2010.}
+\item{years}{a vector of numeric years of the survey, e.g. c(2010, 2012) or 2005:2010.}
 
 \item{quarters}{a vector of quarters of the year the survey took place, i.e. c(1, 4) or 1:4.}
 }

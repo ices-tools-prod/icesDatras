@@ -5,7 +5,7 @@
 #'
 #' @param record the data type required: "HH" haul data, "HL" length-based data, "CA" age-based data.
 #' @param survey the survey acronym e.g. NS-IBTS.
-#' @param years a vector of numeric years of the survey, e.g. c(2010, 2012), or 2005:2010.
+#' @param years a vector of numeric years of the survey, e.g. c(2010, 2012) or 2005:2010.
 #' @param quarters a vector of quarters of the year the survey took place, i.e. c(1, 4) or 1:4.
 #'
 #' @return A data frame.

@@ -1,20 +1,19 @@
-#' Get Reported Catch Weights
+#' Get Catch Weights
 #'
 #' Get the reported catch weight by species and haul.
 #'
 #' @param survey the survey acronym e.g. NS-IBTS.
-#' @param years a vector of numeric years of the survey, e.g. c(2010, 2012), or 2005:2010.
-#' @param quarters a vector of quarters of the year the survey took place, i.e. c(1, 4) or 1:4.
-#' @param aphia_codes a vector of numeric 'aphia' codes defined in the WoRMS database, i.e. c(1, 4) or 1:4.
+#' @param years a vector of numeric years of the survey, e.g. c(2010, 2012) or 2005:2010.
+#' @param quarters a vector of quarters of the year the survey took place, e.g. c(1, 4) or 1:4.
+#' @param aphia_codes a vector of numeric 'aphia' codes defined in the WoRMS database, e.g. c(126436, 1264374).
 #'
 #' @return A data frame.
 #'
 #' @seealso
-#' \code{\link{aphia}} a data.frame of aphia codes and latin species names
+#' \code{\link{aphia}} a lookup table of Aphia codes and Latin species names.
 #'
 #' \code{\link{getSurveyYearList}}, \code{\link{getSurveyYearQuarterList}}, and
 #' \code{\link{getDatrasDataOverview}} also list available data.
-#'
 #'
 #' \code{\link{icesDatras-package}} gives an overview of the package.
 #'
@@ -27,7 +26,7 @@
 #' data(aphia)
 #' aphia[pmatch("Gadus", aphia$species, duplicates.ok = TRUE),]
 #' aphia[pmatch("Melano", aphia$species, duplicates.ok = TRUE),]
-#'  species <- c("Gadus morhua", "Melanogrammus aeglefinus")
+#' species <- c("Gadus morhua", "Melanogrammus aeglefinus")
 #' codes <- aphia[aphia$species %in% species,]
 #' cwt <- getCatchWgt(survey = "ROCKALL", years = 2002, quarters = 3, aphia_codes = codes$aphia_code)
 #'
@@ -80,4 +79,3 @@ getCatchWgt <- function(survey, years, quarters, aphia_codes) {
   rownames(out) <- NULL
   out
 }
-
