@@ -18,7 +18,7 @@
 aphia
 }
 \description{
-A dataset containing the aphia codes and latin species names
+A dataset containing the Aphia codes and Latin species names
 of species assessed by ICES.
 }
 \keyword{datasets}

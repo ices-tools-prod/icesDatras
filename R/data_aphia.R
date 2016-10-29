@@ -1,6 +1,6 @@
 #' WoRMS AphiaIDs for ICES assessment species.
 #'
-#' A dataset containing the aphia codes and latin species names
+#' A dataset containing the Aphia codes and Latin species names
 #' of species assessed by ICES.
 #'
 #' @format A data frame with 319 rows and 2 variables:
