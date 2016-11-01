@@ -10,7 +10,6 @@ Imports: RCurl,
          utils,
          XML
 Suggests: icesVocab,
-          knitr,
           testthat
 Description: R interface to access the web services of the ICES (International
              Council for the Exploration of the Sea) DATRAS trawl survey
