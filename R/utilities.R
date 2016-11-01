@@ -11,6 +11,7 @@ curlDatras <- function(url) {
   reader$value()
 }
 
+
 #' @importFrom XML xmlParse
 #' @importFrom XML xmlRoot
 #' @importFrom XML xmlSize
@@ -18,8 +19,7 @@ curlDatras <- function(url) {
 #' @importFrom XML removeNodes
 #' @importFrom utils capture.output
 parseDatras <- function(x) {
-  # parse the xml text string suppplied by the Datras webservice
-  # returning a dataframe
+  # parse XML string to data frame
   capture.output(x <- xmlParse(x))
   # capture.output is used to suppress the output message from xmlns:
   #   "xmlns: URI ices.dk.local/DATRAS is not absolute"
@@ -57,10 +57,10 @@ parseDatras <- function(x) {
 
 
 checkDatrasWebserviceOK <- function() {
-  # return TRUE if webservice server is good, FALSE otherwise
+  # return TRUE if web service is active, FALSE otherwise
   out <- curlDatras("https://datras.ices.dk/WebServices/DATRASWebService.asmx")
 
-  # check the server is not down by insepcting the XML response for internal server error message.
+  # check server is not down by inspecting XML response for internal server error message
   if (grepl("Internal Server Error", out)) {
     warning("Web service failure: the server seems to be down, please try again later.")
     FALSE
