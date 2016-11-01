@@ -49,7 +49,7 @@ getCatchWgt <- function(survey, years, quarters, aphia) {
   # drop unused data
   hl <- hl[hl$Valid_Aphia %in% sp_codes,]
 
-  # Create a table to hold total catch weights (could just copy HH in full)
+  # create a table to hold total catch weights (could just copy HH in full)
   catchwgt <- hh # could restrict what we return[key]
   # set to zero, because no data ascribed to a haul means no fish caught
   catchwgt$CatchWgt <- 0

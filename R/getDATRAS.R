@@ -84,14 +84,13 @@ getDATRAS <- function(record = "HH", survey, years, quarters) {
       "https://datras.ices.dk/WebServices/DATRASWebService.asmx/get%sdata?survey=%s&year=%i&quarter=%i",
       record, survey, yvec, qvec)
 
-  # read and parse XML from API
+  # read XML string and parse to data frame
   out <- lapply(url,
                 function(x) {
-                  out <- curlDatras(url = x)
+                  out <- curlDatras(x)
                   parseDatras(out)
                 })
   out <- do.call(rbind, out)
 
-  # return
   out
 }
