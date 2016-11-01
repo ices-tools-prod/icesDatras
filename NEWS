@@ -6,9 +6,6 @@ o Improved XML parsing, exploiting structure of data and that we can
 
 o Added function to extract catch weigthts by species and haul.
 
-o Added a data set: aphia, that is a lookup table between WoRMS aphia ids and
-  latin species names.
-
 
 
 --------------------------------------------------------------------------------
