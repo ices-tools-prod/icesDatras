@@ -29,7 +29,6 @@
 #' @author Colin Millar, Einar Hjorleifsson, Scott Large, and Arni Magnusson.
 #'
 #' @references
-#' ICES DATRAS web services:
-#' \url{http://datras.ices.dk/}.
+#' ICES DATRAS web services: \url{http://datras.ices.dk/}.
 
 NA
