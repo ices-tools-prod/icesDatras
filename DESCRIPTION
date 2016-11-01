@@ -7,8 +7,8 @@ Authors@R: c(person("Colin", "Millar", role=c("aut","cre"), email="colin.millar@
              person("Scott", "Large", role="aut"),
              person("Arni", "Magnusson", role="aut"))
 Imports: RCurl,
-         XML,
-         utils
+         utils,
+         XML
 Suggests: icesVocab,
           knitr,
           testthat
