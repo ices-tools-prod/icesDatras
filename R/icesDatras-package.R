@@ -30,6 +30,6 @@
 #'
 #' @references
 #' ICES DATRAS web services:
-#' \url{https://datras.ices.dk/}.
+#' \url{http://datras.ices.dk/}.
 
 NA

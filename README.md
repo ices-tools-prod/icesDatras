@@ -42,7 +42,7 @@ References
 
 ICES DATRAS database:
 
-[https://datras.ices.dk/](https://datras.ices.dk/).
+[http://datras.ices.dk/](http://datras.ices.dk/).
 
 Development
 -----------

@@ -30,6 +30,6 @@ Colin Millar, Einar Hjorleifsson, Scott Large, and Arni Magnusson.
 }
 \references{
 ICES DATRAS web services:
-\url{https://datras.ices.dk/}.
+\url{http://datras.ices.dk/}.
 }
 
