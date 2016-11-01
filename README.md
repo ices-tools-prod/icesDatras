@@ -44,10 +44,6 @@ ICES DATRAS web services:
 
 [https://datras.ices.dk/WebServices/Webservices.aspx](https://datras.ices.dk/WebServices/Webservices.aspx).
 
-ICES software applications:
-
-[http://ices.dk/marine-data/tools/Pages/Software.aspx](http://ices.dk/marine-data/tools/Pages/Software.aspx).
-
 Development
 -----------
 

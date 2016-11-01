@@ -31,8 +31,5 @@
 #' @references
 #' ICES DATRAS web services:
 #' \url{https://datras.ices.dk/WebServices/Webservices.aspx}.
-#'
-#' ICES software applications:
-#' \url{http://ices.dk/marine-data/tools/Pages/Software.aspx}.
 
 NA
