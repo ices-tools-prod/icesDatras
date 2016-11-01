@@ -13,7 +13,7 @@ Suggests: icesVocab,
           testthat
 Description: R interface to access the web services of the ICES (International
              Council for the Exploration of the Sea) DATRAS trawl survey
-             database <https://datras.ices.dk/WebServices/Webservices.aspx>.
+             database.
 License: GPL (>= 2)
-URL: https://datras.ices.dk/WebServices/Webservices.aspx
+URL: https://datras.ices.dk/
 RoxygenNote: 5.0.1
