@@ -10,5 +10,4 @@
 #' }
 #' @source \url{http://vocab.ices.dk/}
 #' @source \url{http://www.marinespecies.org/aphia.php}
-"aphia"
 aphia <- NULL
