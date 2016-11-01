@@ -29,7 +29,7 @@
 #' cwt <- getCatchWgt(survey = "ROCKALL", years = 2002, quarters = 3, aphia = aphia)
 #'
 #' @export
-getCatchWgt <- function(survey, years, quarters, aphia_codes) {
+getCatchWgt <- function(survey, years, quarters, aphia) {
 
   # get data
   hh <- getDATRAS("HH", survey, years, quarters)
@@ -43,7 +43,7 @@ getCatchWgt <- function(survey, years, quarters, aphia_codes) {
 
   ## loop over available species unless a restricted set is asked for
   sp_codes <- unique(hl$Valid_Aphia)
-  sp_codes <- intersect(sp_codes, aphia_codes)
+  sp_codes <- intersect(sp_codes, aphia)
   message("Extracting total catch weight by species and haul for ", length(sp_codes), " species")
 
   # drop unused data

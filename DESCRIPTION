@@ -12,7 +12,6 @@ Imports: RCurl,
 Suggests: icesVocab,
           knitr,
           testthat
-LazyData: yes
 Description: R interface to access the web services of the ICES (International
              Council for the Exploration of the Sea) DATRAS trawl survey
              database <https://datras.ices.dk/WebServices/Webservices.aspx>.
