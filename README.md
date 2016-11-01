@@ -40,9 +40,9 @@ library(icesDatras)
 References
 ----------
 
-ICES DATRAS web services:
+ICES DATRAS database:
 
-[https://datras.ices.dk/WebServices/Webservices.aspx](https://datras.ices.dk/WebServices/Webservices.aspx).
+[https://datras.ices.dk/](https://datras.ices.dk/).
 
 Development
 -----------
