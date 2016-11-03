@@ -10,9 +10,13 @@
 icesDatras
 ======
 
-icesDatras implements R functions that access the [web services](https://datras.ices.dk/WebServices/Webservices.aspx) of the [ICES (International Council for the Exploration of the Sea)](http://www.ices.dk/Pages/default.aspx) [DATRAS trawl database](http://ices.dk/marine-data/data-portals/Pages/DATRAS.aspx).
+icesDatras provides R functions that access the
+[web services](https://datras.ices.dk/WebServices/Webservices.aspx) of the
+[ICES (International Council for the Exploration of the Sea)](http://www.ices.dk/Pages/default.aspx)
+[DATRAS trawl survey database](http://ices.dk/marine-data/data-portals/Pages/DATRAS.aspx).
 
-icesDatras is implemented as an [R](https://www.r-project.org) package and available on [CRAN](https://cran.r-project.org/package=icesDatras).
+icesDatras is implemented as an [R](https://www.r-project.org) package and
+available on [CRAN](https://cran.r-project.org/package=icesDatras).
 
 Installation
 ------------
@@ -36,19 +40,19 @@ library(icesDatras)
 References
 ----------
 
-ICES DATRAS web services:
+ICES DATRAS database:
 
-[https://datras.ices.dk/WebServices/Webservices.aspx](https://datras.ices.dk/WebServices/Webservices.aspx).
-
-ICES software applications:
-
-[http://ices.dk/marine-data/tools/Pages/Software.aspx](http://ices.dk/marine-data/tools/Pages/Software.aspx).
+[http://datras.ices.dk/](http://datras.ices.dk/)
 
 Development
 -----------
 
-icesDatras is developed openly on [GitHub](https://github.com/ices-tools-prod/icesDatras).
-Feel free to open an [issue](https://github.com/ices-tools-prod/icesDatras/issues) there if you encounter problems or have suggestions for future versions.
+icesDatras is developed openly on
+[GitHub](https://github.com/ices-tools-prod/icesDatras).
+
+Feel free to open an
+[issue](https://github.com/ices-tools-prod/icesDatras/issues) there if you
+encounter problems or have suggestions for future versions.
 
 The current development version can be installed using:
 
@@ -56,9 +60,8 @@ The current development version can be installed using:
 devtools::install_github('ices-tools-prod/icesDatras')
 ```
 
-This requires the `devtools` package to be installed which is done as follows:
+This requires the `devtools` package to be installed, which is done as follows:
 
 ```R
 install.packages("devtools")
 ```
-

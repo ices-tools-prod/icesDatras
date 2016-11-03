@@ -29,10 +29,6 @@ Council for the Exploration of the Sea) DATRAS trawl database.
 Colin Millar, Einar Hjorleifsson, Scott Large, and Arni Magnusson.
 }
 \references{
-ICES DATRAS web services:
-\url{https://datras.ices.dk/WebServices/Webservices.aspx}.
-
-ICES software applications:
-\url{http://ices.dk/marine-data/tools/Pages/Software.aspx}.
+ICES DATRAS web services: \url{http://datras.ices.dk/}.
 }
 

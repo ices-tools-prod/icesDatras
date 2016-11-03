@@ -9,6 +9,8 @@
 #' @return A data frame.
 #'
 #' @seealso
+#' \code{\link{getDATRAS}} supports querying many years and quarters in one function call.
+#'
 #' \code{\link{getHHdata}} and \code{\link{getHLdata}} get haul data and
 #' length-based data.
 #'
@@ -32,14 +34,13 @@ getCAdata <- function(survey, year, quarter) {
   # check quarter
   if (!checkSurveyYearQuarterOK(survey, year, quarter, checksurvey = FALSE, checkyear = FALSE)) return(FALSE)
 
-  # read and parse XML from API
+  # read XML string and parse to data frame
   url <-
     sprintf(
       "https://datras.ices.dk/WebServices/DATRASWebService.asmx/getCAdata?survey=%s&year=%i&quarter=%i",
       survey, year, quarter)
-  out <- curlDatras(url = url)
+  out <- curlDatras(url)
   out <- parseDatras(out)
 
-  # return
   out
 }
