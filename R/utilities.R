@@ -22,7 +22,8 @@ parseDatras <- function(x, use.strsplit = FALSE) {
   if (use.strsplit) {
 
     # simply parse using line and column separators
-    x <- strsplit(x, "<Cls_DatrasExchange_HH>\r\n")[[1]][-1]
+    x <- gsub("<Cls_Datras[a-zA-Z_]*>", "<rowstart>", x)
+    x <- strsplit(x, "<rowstart>\r\n")[[1]][-1]
 
     # exit if no data is being returned
     if (length(x) == 0) return(NULL)
@@ -33,7 +34,7 @@ parseDatras <- function(x, use.strsplit = FALSE) {
     names_x <- gsub("[</>]", "", regmatches(x[[1]], gregexpr("</.*?>", x[[1]])))
 
     x <- sapply(x, function(j) gsub("[<>]", "", regmatches(j, gregexpr(">.*?<", j))))
-    x <- x[1:(nrow(x)-2),]
+    x <- x[1:(nrow(x)-2),,drop=FALSE]
     row.names(x) <- names_x[1:nrow(x)]
   } else {
     # parse XML string to data frame
