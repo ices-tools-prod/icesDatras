@@ -59,9 +59,13 @@ parseDatras <- function(x, use.strsplit = FALSE) {
     if (nc == 1) x <- matrix(x, 1, length(x), dimnames = list(names(x[1])))
   }
   x <- as.data.frame(t(x), stringsAsFactors = FALSE)
-  # fudge
-  x <- rbind(x, x[1,])
-  x$StatRec[nrow(x)] <- "10A1"
+
+  if ("StatRec" %in% names(x)) {
+    # fudge
+    x <- rbind(x, x[1,])
+    x$StatRec[nrow(x)] <- "10A1"
+    fudged <- TRUE
+  }
   x <- simplify(x)
 
   # return data frame now if empty
@@ -77,7 +81,10 @@ parseDatras <- function(x, use.strsplit = FALSE) {
   x <- simplify(x)  # simplify again, as ""->NA may enable us to coerce char->num/int
 
   # unfudge
-  x[-nrow(x),]
+  if (fudged) x <- x[-nrow(x),]
+
+  # return
+  x
 }
 
 
