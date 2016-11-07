@@ -25,6 +25,7 @@ parseDatras <- function(x, use.strsplit = FALSE) {
     x <- strsplit(x, "<Cls_DatrasExchange_HH>\r\n")[[1]][-1]
 
     # exit if no data is being returned
+    if (length(x) == 0) return(NULL)
 
     # split rows into columns
     x <- strsplit(x, "\r\n")
