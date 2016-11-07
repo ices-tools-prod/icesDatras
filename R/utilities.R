@@ -60,6 +60,7 @@ parseDatras <- function(x, use.strsplit = FALSE) {
   }
   x <- as.data.frame(t(x), stringsAsFactors = FALSE)
 
+  fudged <- FALSE    
   if ("StatRec" %in% names(x)) {
     # fudge
     x <- rbind(x, x[1,])
