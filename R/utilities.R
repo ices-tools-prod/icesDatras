@@ -91,13 +91,8 @@ simplify <- function(x) {
   on.exit(options(owarn))
   # list or data.frame
   if (is.list(x)) {
-    if (is.data.frame(x)) {
-      old.row.names <- attr(x, "row.names")
-      x <- lapply(x, simplify)
-      attributes(x) <- list(names = names(x), row.names = old.row.names, class = "data.frame")
-    }
-    else
-      x <- lapply(x, simplify)
+    for (i in seq_len(length(x)))
+      x[[i]] <- simplify(x[[i]])
   }
   # matrix
   else if (is.matrix(x))
