@@ -18,44 +18,27 @@ curlDatras <- function(url) {
 #' @importFrom XML getChildrenStrings
 #' @importFrom XML removeNodes
 #' @importFrom utils capture.output
-parseDatras <- function(x, use.strsplit = FALSE) {
-  if (use.strsplit) {
+parseDatras <- function(x) {
+  # parse XML string to data frame
+  capture.output(x <- xmlParse(x))
+  # capture.output is used to suppress the output message from xmlns:
+  #   "xmlns: URI ices.dk.local/DATRAS is not absolute"
 
-    # simply parse using line and column separators
-    x <- strsplit(x, "<Cls_DatrasExchange_HH>\r\n")[[1]][-1]
+  # work with root node
+  x <- xmlRoot(x)
 
-    # exit if no data is being returned
+  # exit if no data is being returned
+  if (xmlSize(x) == 0) return(NULL)
+  nc <- length(getChildrenStrings(x[[1]]))
 
-    # split rows into columns
-    x <- strsplit(x, "\r\n")
-
-    names_x <- gsub("[</>]", "", regmatches(x[[1]], gregexpr("</.*?>", x[[1]])))
-
-    x <- sapply(x, function(j) gsub("[<>]", "", regmatches(j, gregexpr(">.*?<", j))))
-    x <- x[1:(nrow(x)-2),]
-    row.names(x) <- names_x[1:nrow(x)]
-  } else {
-    # parse XML string to data frame
-    capture.output(x <- xmlParse(x))
-    # capture.output is used to suppress the output message from xmlns:
-    #   "xmlns: URI ices.dk.local/DATRAS is not absolute"
-
-    # work with root node
-    x <- xmlRoot(x)
-
-    # exit if no data is being returned
-    if (xmlSize(x) == 0) return(NULL)
-    nc <- length(getChildrenStrings(x[[1]]))
-
-    # read XML values into matrix, then convert to data frame
-    x <- replicate(xmlSize(x), {
-    # remove top record after reading to optimize speed and memory
-                    out <- getChildrenStrings(x[[1]])  # peek
-                    removeNodes(x[[1]])                # pop
-                    out
-                  })
-    if (nc == 1) x <- matrix(x, 1, length(x), dimnames = list(names(x[1])))
-  }
+  # read XML values into matrix, then convert to data frame
+  x <- replicate(xmlSize(x), {
+  # remove top record after reading to optimize speed and memory
+                  out <- getChildrenStrings(x[[1]])  # peek
+                  removeNodes(x[[1]])                # pop
+                  out
+                })
+  if (nc == 1) x <- matrix(x, 1, length(x), dimnames = list(names(x[1])))
   x <- as.data.frame(t(x), stringsAsFactors = FALSE)
   # fudge
   x <- rbind(x, x[1,])
@@ -77,9 +60,6 @@ parseDatras <- function(x, use.strsplit = FALSE) {
   # unfudge
   x[-nrow(x),]
 }
-
-
-
 
 
 checkDatrasWebserviceOK <- function() {
