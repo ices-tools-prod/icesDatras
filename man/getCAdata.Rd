@@ -7,7 +7,7 @@
 getCAdata(survey, year, quarter)
 }
 \arguments{
-\item{survey}{the survey acronym e.g. NS-IBTS.}
+\item{survey}{the survey acronym, e.g. NS-IBTS.}
 
 \item{year}{the numeric year of the survey, e.g. 2010.}
 

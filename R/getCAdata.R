@@ -2,7 +2,7 @@
 #'
 #' Get age-based data such as sex, maturity, and age counts per length of sampled species.
 #'
-#' @param survey the survey acronym e.g. NS-IBTS.
+#' @param survey the survey acronym, e.g. NS-IBTS.
 #' @param year the numeric year of the survey, e.g. 2010.
 #' @param quarter the quarter of the year the survey took place, i.e. 1, 2, 3 or 4.
 #'
