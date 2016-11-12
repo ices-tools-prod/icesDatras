@@ -30,11 +30,11 @@ parseDatras <- function(x, use.strsplit = FALSE) {
     # split rows into columns
     x <- strsplit(x, "\r\n")
 
-    # get column names from XML format
-    names_x <- gsub(" *<(.*?)>.*", "\\1", x[[1]])  # match content of first <tag>
+    # match content of first <tag>
+    names_x <- gsub(" *<(.*?)>.*", "\\1", x[[1]])
 
-    # get data from XML format
-    x <- sapply(x, function(j) gsub(" *<.*?>", "", j))  # delete all <tags>
+    # delete all <tags>
+    x <- sapply(x, function(j) gsub(" *<.*?>", "", j))
     # chop off junk at end of rows
     x <- x[1:(nrow(x)-2),,drop=FALSE]
     row.names(x) <- names_x[1:nrow(x)]
