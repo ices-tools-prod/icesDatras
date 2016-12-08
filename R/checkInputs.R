@@ -33,6 +33,7 @@ checkSurveyOK <- function(survey) {
   }
 }
 
+
 #' Check that a survey and year combination is in the database
 #'
 #' Checks a year and/or survey name against a list of all survey year combinations in the DATRAS database.
@@ -56,6 +57,7 @@ checkSurveyOK <- function(survey) {
 #' checkSurveyYearOK(survey = "NOTALL", 2000)
 #'
 #' @export
+
 checkSurveyYearOK <- function(survey, year, checksurvey = TRUE) {
   # check year against available years for a given survey
   if (checksurvey) {
@@ -72,6 +74,7 @@ checkSurveyYearOK <- function(survey, year, checksurvey = TRUE) {
     TRUE
   }
 }
+
 
 #' Check that a survey, year and quarter combination is in the database
 #'
@@ -103,6 +106,7 @@ checkSurveyYearOK <- function(survey, year, checksurvey = TRUE) {
 #' checkSurveyYearQuarterOK(survey = "NOTALL", 2000, 1, checksurvey=FALSE)
 #'
 #' @export
+
 checkSurveyYearQuarterOK <- function(survey, year, quarter, checksurvey = TRUE, checkyear = TRUE) {
   # check year against available years for a given survey
   if (checksurvey) {

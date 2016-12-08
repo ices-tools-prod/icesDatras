@@ -29,6 +29,7 @@
 #' cwt <- getCatchWgt(survey = "ROCKALL", years = 2002, quarters = 3, aphia = aphia)
 #'
 #' @export
+
 getCatchWgt <- function(survey, years, quarters, aphia) {
 
   # get data

@@ -62,14 +62,9 @@ parseDatras <- function(x, use.strsplit = FALSE) {
   }
   x <- as.data.frame(t(x), stringsAsFactors = FALSE)
 
-  fudged <- FALSE
-  if ("StatRec" %in% names(x)) {
-    # fudge
-    x <- rbind(x, x[1,])
-    x$StatRec[nrow(x)] <- "10A1"
-    fudged <- TRUE
-  }
-  x <- simplify(x)
+  # simplifying at this point greatly speeds up trimws, worth simplifying twice
+  # simplify all columns except StatRec (so "45e6" does not become 45000000)
+  x[names(x) != "StatRec"] <- simplify(x[names(x) != "StatRec"])
 
   # return data frame now if empty
   if (nrow(x) == 0) return(x)
@@ -81,10 +76,8 @@ parseDatras <- function(x, use.strsplit = FALSE) {
   # DATRAS uses -9 and "" to indicate NA
   x[x == -9] <- NA
   x[x == ""] <- NA
-  x <- simplify(x)  # simplify again, as ""->NA may enable us to coerce char->num/int
-
-  # unfudge
-  if (fudged) x <- x[-nrow(x),]
+  # simplify again, as ""->NA may enable us to coerce char->num/int
+  x[names(x) != "StatRec"] <- simplify(x[names(x) != "StatRec"])
 
   # return
   x
@@ -112,13 +105,8 @@ simplify <- function(x) {
   on.exit(options(owarn))
   # list or data.frame
   if (is.list(x)) {
-    if (is.data.frame(x)) {
-      old.row.names <- attr(x, "row.names")
-      x <- lapply(x, simplify)
-      attributes(x) <- list(names = names(x), row.names = old.row.names, class = "data.frame")
-    }
-    else
-      x <- lapply(x, simplify)
+    for (i in seq_len(length(x)))
+      x[[i]] <- simplify(x[[i]])
   }
   # matrix
   else if (is.matrix(x))
