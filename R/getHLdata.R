@@ -40,7 +40,7 @@ getHLdata <- function(survey, year, quarter) {
     sprintf(
       "https://datras.ices.dk/WebServices/DATRASWebService.asmx/getHLdata?survey=%s&year=%i&quarter=%i",
       survey, year, quarter)
-  out <- curlDatras(url)
+  out <- readDatras(url)
   out <- parseDatras(out)
 
   # return

@@ -17,7 +17,10 @@ repos:
   CRAN: https://cloud.r-project.org
 
 r_packages:
+  - icesVocab
+  - testthat
   - rmarkdown
+  - covr
 
 cache: packages
 
@@ -25,10 +28,6 @@ notifications:
   email:
     on_success: change
     on_failure: change
-
-r_github_packages:
-  - jimhester/covr
-  - ices-tools-prod/icesVocab
 
 after_success:
   - Rscript -e 'library(covr);codecov()'

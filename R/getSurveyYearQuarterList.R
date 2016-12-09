@@ -29,7 +29,7 @@ getSurveyYearQuarterList <- function(survey, year) {
     sprintf(
       "https://datras.ices.dk/WebServices/DATRASWebService.asmx/getSurveyYearQuarterList?survey=%s&year=%i",
       survey, year)
-  out <- curlDatras(url)
+  out <- readDatras(url)
   out <- parseDatras(out)
 
   out$Quarter

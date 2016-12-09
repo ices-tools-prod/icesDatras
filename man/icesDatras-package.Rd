@@ -26,7 +26,7 @@ Council for the Exploration of the Sea) DATRAS trawl database.
 }
 }
 \author{
-Colin Millar, Einar Hjorleifsson, Scott Large, and Arni Magnusson.
+Colin Millar, Scott Large, and Arni Magnusson.
 }
 \references{
 ICES DATRAS web services: \url{http://datras.ices.dk/}.

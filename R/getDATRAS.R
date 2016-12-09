@@ -7,7 +7,6 @@
 #' @param survey the survey acronym e.g. NS-IBTS.
 #' @param years a vector of years of the survey, e.g. c(2010, 2012) or 2005:2010.
 #' @param quarters a vector of quarters of the year the survey took place, i.e. c(1, 4) or 1:4.
-#' @param use.strsplit a logical flag speciying the use of an experimental parser
 #'
 #' @return A data frame.
 #'
@@ -24,16 +23,9 @@
 #' hldata <- getDATRAS(record = "HL", survey = "ROCKALL", years = 2002, quarters = 3)
 #' cadata <- getDATRAS(record = "CA", survey = "ROCKALL", years = 2002, quarters = 3)
 #'
-#' hhdata <- getDATRAS(record = "HH", survey = "ROCKALL", years = 2002, quarters = 3,
-#'                     use.strsplit = TRUE)
-#' hldata <- getDATRAS(record = "HL", survey = "ROCKALL", years = 2002, quarters = 3,
-#'                     use.strsplit = TRUE)
-#' cadata <- getDATRAS(record = "CA", survey = "ROCKALL", years = 2002, quarters = 3,
-#'                     use.strsplit = TRUE)
-#'
 #' @export
 
-getDATRAS <- function(record = "HH", survey, years, quarters, use.strsplit = FALSE) {
+getDATRAS <- function(record = "HH", survey, years, quarters) {
   # check record type
   if (!record %in% c("HH", "HL", "CA")) {
     message("Please specify record type:",
@@ -95,8 +87,8 @@ getDATRAS <- function(record = "HH", survey, years, quarters, use.strsplit = FAL
   # read XML string and parse to data frame
   out <- lapply(url,
                 function(x) {
-                  out <- curlDatras(x)
-                  parseDatras(out, use.strsplit = use.strsplit)
+                  x <- readDatras(x)
+                  parseDatras(x)
                 })
   out <- do.call(rbind, out)
 

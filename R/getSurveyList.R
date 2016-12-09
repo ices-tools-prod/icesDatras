@@ -23,7 +23,7 @@ getSurveyList <- function() {
 
   # read XML string and parse to data frame
   url <- "https://datras.ices.dk/WebServices/DATRASWebService.asmx/getSurveyList"
-  out <- curlDatras(url)
+  out <- readDatras(url)
   out <- parseDatras(out)
 
   out$Survey

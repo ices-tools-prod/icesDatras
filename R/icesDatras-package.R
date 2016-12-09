@@ -26,7 +26,7 @@
 #'   \code{\link{getDatrasDataOverview}}    \tab surveys, years, and quarters
 #' }
 #'
-#' @author Colin Millar, Einar Hjorleifsson, Scott Large, and Arni Magnusson.
+#' @author Colin Millar, Scott Large, and Arni Magnusson.
 #'
 #' @references
 #' ICES DATRAS web services: \url{http://datras.ices.dk/}.

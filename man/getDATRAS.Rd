@@ -4,7 +4,7 @@
 \alias{getDATRAS}
 \title{Get Any DATRAS Data}
 \usage{
-getDATRAS(record = "HH", survey, years, quarters, use.strsplit = FALSE)
+getDATRAS(record = "HH", survey, years, quarters)
 }
 \arguments{
 \item{record}{the data type required: "HH" haul data, "HL" length-based data, "CA" age-based data.}
@@ -14,8 +14,6 @@ getDATRAS(record = "HH", survey, years, quarters, use.strsplit = FALSE)
 \item{years}{a vector of years of the survey, e.g. c(2010, 2012) or 2005:2010.}
 
 \item{quarters}{a vector of quarters of the year the survey took place, i.e. c(1, 4) or 1:4.}
-
-\item{use.strsplit}{a logical flag speciying the use of an experimental parser}
 }
 \value{
 A data frame.
@@ -28,13 +26,6 @@ It supports querying many years and quarters in one function call.
 hhdata <- getDATRAS(record = "HH", survey = "ROCKALL", years = 2002, quarters = 3)
 hldata <- getDATRAS(record = "HL", survey = "ROCKALL", years = 2002, quarters = 3)
 cadata <- getDATRAS(record = "CA", survey = "ROCKALL", years = 2002, quarters = 3)
-
-hhdata <- getDATRAS(record = "HH", survey = "ROCKALL", years = 2002, quarters = 3,
-                    use.strsplit = TRUE)
-hldata <- getDATRAS(record = "HL", survey = "ROCKALL", years = 2002, quarters = 3,
-                    use.strsplit = TRUE)
-cadata <- getDATRAS(record = "CA", survey = "ROCKALL", years = 2002, quarters = 3,
-                    use.strsplit = TRUE)
 
 }
 \author{

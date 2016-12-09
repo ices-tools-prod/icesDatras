@@ -39,7 +39,7 @@ getCAdata <- function(survey, year, quarter) {
     sprintf(
       "https://datras.ices.dk/WebServices/DATRASWebService.asmx/getCAdata?survey=%s&year=%i&quarter=%i",
       survey, year, quarter)
-  out <- curlDatras(url)
+  out <- readDatras(url)
   out <- parseDatras(out)
 
   out
