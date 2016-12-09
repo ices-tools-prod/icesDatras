@@ -24,7 +24,7 @@ Installation
 icesDatras can be installed from CRAN using the `install.packages` command:
 
 ```R
-install.packages('icesDatras')
+install.packages("icesDatras")
 ```
 
 Usage
@@ -61,11 +61,6 @@ encounter problems or have suggestions for future versions.
 The current development version can be installed using:
 
 ```R
-devtools::install_github('ices-tools-prod/icesDatras')
-```
-
-This requires the `devtools` package to be installed, which is done as follows:
-
-```R
-install.packages("devtools")
+library(devtools)
+install_github("ices-tools-prod/icesDatras")
 ```
