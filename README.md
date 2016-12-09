@@ -12,10 +12,8 @@ icesDatras
 
 icesDatras provides R functions that access the
 [web services](https://datras.ices.dk/WebServices/Webservices.aspx) of the
-[ICES](http://www.ices.dk/Pages/default.aspx) (International Council for the
-Exploration of the Sea)
-[DATRAS](http://ices.dk/marine-data/data-portals/Pages/DATRAS.aspx) trawl survey
-database.
+[ICES](http://www.ices.dk/Pages/default.aspx) [DATRAS](http://datras.ices.dk)
+trawl survey database.
 
 icesDatras is implemented as an [R](https://www.r-project.org) package and
 available on [CRAN](https://cran.r-project.org/package=icesDatras).
@@ -44,7 +42,7 @@ References
 
 ICES DATRAS database:
 
-[http://datras.ices.dk/](http://datras.ices.dk/)
+[http://datras.ices.dk](http://datras.ices.dk)
 
 ICES DATRAS database web services:
 
