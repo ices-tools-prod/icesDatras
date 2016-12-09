@@ -21,7 +21,7 @@ getSurveyList <- function() {
   # check web services are running
   if (!checkDatrasWebserviceOK()) return (FALSE)
 
-  # read XML string and parse to data frame
+  # read url and parse to data frame
   url <- "https://datras.ices.dk/WebServices/DATRASWebService.asmx/getSurveyList"
   out <- readDatras(url)
   out <- parseDatras(out)

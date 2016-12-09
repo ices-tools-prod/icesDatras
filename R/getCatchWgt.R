@@ -24,8 +24,7 @@
 #' getCatchWgt(survey = "ROCKALL", years = 2002, quarters = 3, aphia = 126437)
 #'
 #' # look up specific species
-#' # aphia <- icesVocab::findAphia(c("cod", "haddock"))
-#' aphia <- c(126436, 126437)
+#' aphia <- icesVocab::findAphia(c("cod", "haddock"))
 #' cwt <- getCatchWgt(survey = "ROCKALL", years = 2002, quarters = 3, aphia = aphia)
 #'
 #' @export

@@ -141,8 +141,6 @@ simplify <- function(x) {
 }
 
 
-
-
 # returns TRUE if correct operating system is passed as an argument
 os.type <- function (type = c("unix", "windows", "other"))
 {
