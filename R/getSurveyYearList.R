@@ -23,12 +23,12 @@ getSurveyYearList <- function(survey) {
   # check web services are running
   if (!checkDatrasWebserviceOK()) return (FALSE)
 
-  # read XML string and parse to data frame
+  # read url and parse to data frame
   url <-
     sprintf(
       "https://datras.ices.dk/WebServices/DATRASWebService.asmx/getSurveyYearList?survey=%s",
       survey)
-  out <- curlDatras(url)
+  out <- readDatras(url)
   out <- parseDatras(out)
 
   out$Year
