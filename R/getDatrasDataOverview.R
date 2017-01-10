@@ -32,8 +32,8 @@ getDatrasDataOverview <- function(surveys = NULL) {
              out <- sapply(as.character(getSurveyYearList(s)),
                            function(y) getSurveyYearQuarterList(s, as.integer(y)),
                            simplify = FALSE)
-             out <- sapply(out, function(x) as.integer(1:4 %in% x)) # hard wire 4 quarters
-             row.names(out) <- 1:4
+             out <- t(sapply(out, function(x) as.integer(1:4 %in% x))) # hard wire 4 quarters
+             colnames(out) <- paste0("Q", 1:4)
              class(out) <- "datrasoverview"
              out
            },
