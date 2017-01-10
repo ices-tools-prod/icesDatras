@@ -24,7 +24,8 @@ readDatras <- function(url) {
     scan(tmp, what = "", sep = "\n", quiet = TRUE)
   } else {
     message("Unable to download file so using slower method url().\n",
-            "Try setting an appropriate value via \n\toptions(download.file.method = ...)\n",
+            "Try setting an appropriate value via\n\t",
+            "options(download.file.method = ...)\n",
             "see ?download.file for more information.")
     # connect to url
     con <- url(url)
@@ -38,15 +39,15 @@ readDatras <- function(url) {
 
 
 parseDatras <- function(x) {
-  # simply parse using line and column separators
-  type <- gsub("*<ArrayOf(.*?) .*", "\\1", x[2])
+  # parse using line and column separators
+  type <- gsub(" *<ArrayOf(.*?) .*", "\\1", x[2])
   starts <- grep(paste0("<", type, ">"), x)
   ends <- grep(paste0("</", type, ">"), x)
   ncol <- unique(ends[1] - starts[1]) - 1
   # drop everything we don't need
-  x <- x[-c(1,2, starts, ends, length(x))]
+  x <- x[-c(1, 2, starts, ends, length(x))]
 
-  # exit if no data is being returned ?
+  # exit if no data is being returned
   if (length(x) == 0) return(NULL)
 
   # match content of first <tag>
@@ -57,14 +58,10 @@ parseDatras <- function(x) {
   # trim white space
   x <- trimws(x)
 
-  # make into a data.frame
+  # convert to data frame
   dim(x) <- c(ncol, length(x)/ncol)
   row.names(x) <- names_x
   x <- as.data.frame(t(x), stringsAsFactors = FALSE)
-
-  # simplifying at this point greatly speeds up trimws, worth simplifying twice
-  # simplify all columns except StatRec (so "45e6" does not become 45000000)
-  x[names(x) != "StatRec"] <- simplify(x[names(x) != "StatRec"])
 
   # return data frame now if empty
   if (nrow(x) == 0) return(x)
@@ -73,7 +70,7 @@ parseDatras <- function(x) {
   x[x == -9] <- NA
   x[x == ""] <- NA
 
-  # simplify again, as ""->NA may enable us to coerce char->num/int
+  # simplify all columns except StatRec (so "45e6" does not become 45000000)
   x[names(x) != "StatRec"] <- simplify(x[names(x) != "StatRec"])
 
   # return
