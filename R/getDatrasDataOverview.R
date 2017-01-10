@@ -1,43 +1,39 @@
-#' Summarise data availability
+#' Summarize Data Availability
 #'
-#' Returns a table for each survey with '1' where there is data and '0' (printed as '.') otherwise.
+#' Evaluate a presence-absence table for each survey with '1' where there is data and '0' (printed as '.') otherwise.
 #'
+#' @param surveys a vector of survey names, or \code{NULL} to process all surveys.
 #'
 #' @return A list of tables.
 #'
 #' @seealso
-#' \code{\link{getSurveyList}} returns the acronyms for available surveys.
-#'
-#' \code{\link{getSurveyYearList}} returns the years available for a given survey.
-#'
-#' \code{\link{getSurveyYearQuarterList}} returns the quarters available for a given survey and year.
+#' \code{\link{getSurveyList}}, \code{\link{getSurveyYearList}}, and
+#' \code{\link{getSurveyYearQuarterList}} also list available data.
 #'
 #' \code{\link{icesDatras-package}} gives an overview of the package.
 #'
 #' @author Colin Millar.
 #'
 #' @examples
-#' \dontrun{
-#' getDatrasDataOverview()
-#' }
+#' getDatrasDataOverview(surveys = "ROCKALL")
 #'
 #' @export
 
-# table data available
-getDatrasDataOverview <- function() {
-  # get a list of available quarters
-
-  # check websevices are running
+getDatrasDataOverview <- function(surveys = NULL) {
+  # check web services are running
   if (!checkDatrasWebserviceOK()) return (FALSE)
 
+  # include all surveys if user did not specify any
+  if (is.null(surveys)) surveys <- getSurveyList()
+
   available_data <-
-    sapply(getSurveyList(),
+    sapply(surveys,
            function(s) {
              out <- sapply(as.character(getSurveyYearList(s)),
-                           function(y) getSurveyYearQuarterList(s, as.numeric(y)),
+                           function(y) getSurveyYearQuarterList(s, as.integer(y)),
                            simplify = FALSE)
-             out <- sapply(out, function(x) as.numeric(1:4 %in% x)) # hard wire 4 quarters
-             row.names(out) <- 1:4
+             out <- t(sapply(out, function(x) as.integer(1:4 %in% x))) # hard wire 4 quarters
+             colnames(out) <- paste0("Q", 1:4)
              class(out) <- "datrasoverview"
              out
            },
@@ -46,9 +42,11 @@ getDatrasDataOverview <- function() {
   available_data
 }
 
-# print method for datrasoverview class produces in 'getDatrasDataOverview()'
-print.datrasoverview <- function(x) {
+
+# print method for datrasoverview class produced in 'getDatrasDataOverview()'
+#' @export
+
+print.datrasoverview <- function(x, ...) {
   x <- as.table(x)
   print.table(x, zero.print = ".")
 }
-

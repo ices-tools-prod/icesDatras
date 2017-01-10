@@ -1,39 +1,31 @@
-#' length based data
+#' Get Length-Based Data
 #'
-#' Returns length-based information such as measured length, individual counts,
+#' Get length-based information such as measured length, individual counts,
 #'   and subfactors of sampled species.
 #'
-#' @param survey the survey accronym e.g. NS-IBTS, BITS.
-#' @param year the numeric year of the survey, e.g. 2010.
+#' @param survey the survey acronym, e.g. NS-IBTS.
+#' @param year the year of the survey, e.g. 2010.
 #' @param quarter the quarter of the year the survey took place, i.e. 1, 2, 3 or 4.
 #'
-#'
-#' @return A data.frame.
+#' @return A data frame.
 #'
 #' @seealso
-#' \code{\link{getSurveyList}} returns the acronyms for available surveys.
+#' \code{\link{getDATRAS}} supports querying many years and quarters in one function call.
 #'
-#' \code{\link{getSurveyYearList}} returns the years available for a given survey.
-#'
-#' \code{\link{getSurveyYearQuarterList}} returns the quarters available for a given survey and year.
+#' \code{\link{getHHdata}} and \code{\link{getCAdata}} get haul data and
+#' age-based data.
 #'
 #' \code{\link{icesDatras-package}} gives an overview of the package.
 #'
 #' @author Colin Millar.
 #'
 #' @examples
-#' # read length data
-#' hldata <- getHLdata(survey = "NS-IBTS", year = 2016, quarter = 1)
+#' hldata <- getHLdata(survey = "ROCKALL", year = 2002, quarter = 3)
 #' str(hldata)
-#'
-#' @keywords distribution
 #'
 #' @export
 
 getHLdata <- function(survey, year, quarter) {
-  # Returns length-based information such as measured length, individual counts,
-  # and subfactors of sampled species.
-
   # check survey name
   if (!checkSurveyOK(survey)) return(FALSE)
 
@@ -43,15 +35,14 @@ getHLdata <- function(survey, year, quarter) {
   # check quarter
   if (!checkSurveyYearQuarterOK(survey, year, quarter, checksurvey = FALSE, checkyear = FALSE)) return(FALSE)
 
-  # read and parse XML from api
+  # read url and parse to data frame
   url <-
     sprintf(
       "https://datras.ices.dk/WebServices/DATRASWebService.asmx/getHLdata?survey=%s&year=%i&quarter=%i",
       survey, year, quarter)
-  out <- curlDatras(url = url)
+  out <- readDatras(url)
   out <- parseDatras(out)
 
   # return
   out
 }
-

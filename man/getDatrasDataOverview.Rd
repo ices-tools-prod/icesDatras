@@ -2,31 +2,29 @@
 % Please edit documentation in R/getDatrasDataOverview.R
 \name{getDatrasDataOverview}
 \alias{getDatrasDataOverview}
-\title{Summarise data availability}
+\title{Summarize Data Availability}
 \usage{
-getDatrasDataOverview()
+getDatrasDataOverview(surveys = NULL)
+}
+\arguments{
+\item{surveys}{a vector of survey names, or \code{NULL} to process all surveys.}
 }
 \value{
 A list of tables.
 }
 \description{
-Returns a table for each survey with '1' where there is data and '0' (printed as '.') otherwise.
+Evaluate a presence-absence table for each survey with '1' where there is data and '0' (printed as '.') otherwise.
 }
 \examples{
-\dontrun{
-getDatrasDataOverview()
-}
+getDatrasDataOverview(surveys = "ROCKALL")
 
 }
 \author{
 Colin Millar.
 }
 \seealso{
-\code{\link{getSurveyList}} returns the acronyms for available surveys.
-
-\code{\link{getSurveyYearList}} returns the years available for a given survey.
-
-\code{\link{getSurveyYearQuarterList}} returns the quarters available for a given survey and year.
+\code{\link{getSurveyList}}, \code{\link{getSurveyYearList}}, and
+\code{\link{getSurveyYearQuarterList}} also list available data.
 
 \code{\link{icesDatras-package}} gives an overview of the package.
 }

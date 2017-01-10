@@ -1,27 +1,42 @@
 # .travis.yml for ices-tools packages
 
+# Header
+language: r
+sudo: false
+cache: packages
 warnings_are_errors: false
 
-os:
-  - linux
+# matrix: 3x Linux, 1x OS X
+matrix:
+  include:
+  - r: release
+  - r: oldrel
+  - r: devel
+  - os: osx
+    osx_image: beta-xcode6.1
+    disable_homebrew: true
+    r: release
+    latex: false
 
-language: r
-r:
-  - oldrel
-  - release
-  - devel
-
-sudo: false
-
-repos:
-  CRAN: https://cloud.r-project.org
-
-r_packages:
-  - rmarkdown
-
-cache: packages
-
+# notifications
 notifications:
   email:
     on_success: change
     on_failure: change
+
+repos:
+  CRAN: https://cloud.r-project.org
+
+# r_packages
+r_packages:
+  - icesVocab
+  - testthat
+  - rmarkdown
+
+# r_github_packages
+r_github_packages:
+  - jimhester/covr
+
+# after_success
+after_success:
+  - Rscript -e 'covr::codecov()'

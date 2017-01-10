@@ -1,50 +1,35 @@
-#' Haul meta data
+#' Get Haul Data
 #'
-#' Returns detailed haul-based meta-data of the survey such as haul position, sampling method etc.
+#' Get haul data such as position, depth, sampling method, etc.
 #'
-#' @param survey the survey accronym e.g. NS-IBTS, BITS.
-#' @param year the numeric year of the survey, e.g. 2010.
+#' @param survey the survey acronym, e.g. NS-IBTS.
+#' @param year the year of the survey, e.g. 2010.
 #' @param quarter the quarter of the year the survey took place, i.e. 1, 2, 3 or 4.
 #'
-#'
-#' @return A data.frame.
+#' @return A data frame.
 #'
 #' @seealso
-#' \code{\link{getSurveyList}} returns the acronyms for available surveys.
+#' \code{\link{getDATRAS}} supports querying many years and quarters in one function call.
 #'
-#' \code{\link{getSurveyYearList}} returns the years available for a given survey.
-#'
-#' \code{\link{getSurveyYearQuarterList}} returns the quarters available for a given survey and year.
+#' \code{\link{getHLdata}} and \code{\link{getCAdata}} get length-based data and
+#' age-based data.
 #'
 #' \code{\link{icesDatras-package}} gives an overview of the package.
 #'
 #' @author Colin Millar.
 #'
 #' @examples
-#' # read meta data
-#' hhdata <- getHHdata(survey = "NS-IBTS", year = 2016, quarter = 1)
+#' hhdata <- getHHdata(survey = "ROCKALL", year = 2002, quarter = 3)
 #' str(hhdata)
 #'
 #' # error checking examples:
 #' hhdata <- getHHdata(survey = "NS_IBTS", year = 2016, quarter = 1)
-#' hhdata <- getHHdata(survey = "NS-IBTS", year = 2018, quarter = 1)
+#' hhdata <- getHHdata(survey = "NS-IBTS", year = 2030, quarter = 1)
 #' hhdata <- getHHdata(survey = "NS-IBTS", year = 2016, quarter = 6)
-#'
-#' # multiple year example
-#' hhdata <- do.call(rbind,
-#'                   lapply(2015:2016,
-#'                          function(year)
-#'                            getHHdata(survey = "NS-IBTS", year = year, quarter = 1)
-#'                          )
-#'                  )
-#' str(hhdata)
-#'
 #'
 #' @export
 
 getHHdata <- function(survey, year, quarter) {
-  # 	Returns detailed haul-based meta-data of the survey such as haul position, sampling method etc.
-
   # check survey name
   if (!checkSurveyOK(survey)) return(FALSE)
 
@@ -54,15 +39,13 @@ getHHdata <- function(survey, year, quarter) {
   # check quarter
   if (!checkSurveyYearQuarterOK(survey, year, quarter, checksurvey = FALSE, checkyear = FALSE)) return(FALSE)
 
-  # read and parse XML from api
+  # read url and parse to data frame
   url <-
     sprintf(
       "https://datras.ices.dk/WebServices/DATRASWebService.asmx/getHHdata?survey=%s&year=%i&quarter=%i",
       survey, year, quarter)
-  out <- curlDatras(url = url)
+  out <- readDatras(url)
   out <- parseDatras(out)
 
-  # return
   out
 }
-

@@ -2,31 +2,29 @@
 % Please edit documentation in R/getSurveyYearList.R
 \name{getSurveyYearList}
 \alias{getSurveyYearList}
-\title{Query data availability}
+\title{Get a List of Survey Years}
 \usage{
 getSurveyYearList(survey)
 }
 \arguments{
-\item{survey}{the survey accronym e.g. NS-IBTS, BITS.}
+\item{survey}{the survey acronym, e.g. NS-IBTS.}
 }
 \value{
 A numeric vector.
 }
 \description{
-Returns list of years based on survey.
+Get a list of all data years for a given survey.
 }
 \examples{
-getSurveyYearList(survey = "NS-IBTS")
-
+getSurveyYearList(survey = "ROCKALL")
 
 }
 \author{
 Colin Millar.
 }
 \seealso{
-\code{\link{getSurveyList}} returns the acronyms for available surveys.
-
-\code{\link{getSurveyYearQuarterList}} returns the quarters available for a given survey and year.
+\code{\link{getSurveyList}}, \code{\link{getSurveyYearQuarterList}}, and
+\code{\link{getDatrasDataOverview}} also list available data.
 
 \code{\link{icesDatras-package}} gives an overview of the package.
 }

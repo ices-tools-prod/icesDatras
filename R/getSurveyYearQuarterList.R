@@ -1,44 +1,36 @@
-#' Query data availability
+#' Get a List of Quarters
 #'
-#' 	Returns list of quarter based on survey and year.
+#' Get a list of quarters available for a given survey and year.
 #'
-#' @param survey the survey accronym e.g. NS-IBTS, BITS.
-#' @param year the numeric year of the survey, e.g. 2010.
-#'
+#' @param survey the survey acronym, e.g. NS-IBTS.
+#' @param year the year of the survey, e.g. 2010.
 #'
 #' @return A numeric vector.
 #'
 #' @seealso
-#' \code{\link{getSurveyList}} returns the acronyms for available surveys.
-#'
-#' \code{\link{getSurveyYearList}} returns the years available for a given survey.
+#' \code{\link{getSurveyYearList}}, \code{\link{getSurveyYearQuarterList}}, and
+#' \code{\link{getDatrasDataOverview}} also list available data.
 #'
 #' \code{\link{icesDatras-package}} gives an overview of the package.
 #'
 #' @author Colin Millar.
 #'
 #' @examples
-#' getSurveyYearQuarterList(survey = "NS-IBTS", year = 2010)
-#'
+#' getSurveyYearQuarterList(survey = "ROCKALL", year = 2002)
 #'
 #' @export
 
 getSurveyYearQuarterList <- function(survey, year) {
-  # get a list of available quarters
-
-  # check websevices are running
+  # check web services are running
   if (!checkDatrasWebserviceOK()) return (FALSE)
 
-  # read and parse XML from api
+  # read url and parse to data frame
   url <-
     sprintf(
       "https://datras.ices.dk/WebServices/DATRASWebService.asmx/getSurveyYearQuarterList?survey=%s&year=%i",
       survey, year)
-  out <- curlDatras(url = url)
+  out <- readDatras(url)
   out <- parseDatras(out)
 
-  # return
-  as.integer(out $ Quarter)
+  out$Quarter
 }
-
-

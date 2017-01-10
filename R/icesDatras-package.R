@@ -4,24 +4,31 @@
 #'
 #' @aliases icesDatras
 #'
-#' @title DATRAS trawl database webservices
+#' @title DATRAS Trawl Database Web Services
 #'
 #' @description
-#' Functions that access the webservices of the ICES (International
+#' R interface to access the web services of the ICES (International
 #' Council for the Exploration of the Sea) DATRAS trawl database.
 #'
+#' @details
+#' \emph{Get dataset:}
+#' \tabular{ll}{
+#'   \code{\link{getHHdata}} \tab haul data\cr
+#'   \code{\link{getHLdata}} \tab length-based data\cr
+#'   \code{\link{getCAdata}} \tab age-based data\cr
+#'   \code{\link{getDATRAS}} \tab any data
+#' }
+#' \emph{Overview of available data:}
+#' \tabular{ll}{
+#'   \code{\link{getSurveyList}}            \tab surveys\cr
+#'   \code{\link{getSurveyYearList}}        \tab years\cr
+#'   \code{\link{getSurveyYearQuarterList}} \tab quarters\cr
+#'   \code{\link{getDatrasDataOverview}}    \tab surveys, years, and quarters
+#' }
 #'
-#' @author Colin Millar.
+#' @author Colin Millar, Scott Large, and Arni Magnusson.
 #'
 #' @references
-#' Overview of the ICES advisory process:
-#' \url{http://ices.dk/community/advisory-process/Pages/default.aspx}.
-#'
-#' ICES list of software applications:
-#' \url{http://ices.dk/marine-data/tools/Pages/Software.aspx}.
-#'
-#' ICES Datras Webservices:
-#' \url{https://datras.ices.dk/WebServices/Webservices.aspx}.
-#'
+#' ICES DATRAS web services: \url{http://datras.ices.dk/}.
 
 NA

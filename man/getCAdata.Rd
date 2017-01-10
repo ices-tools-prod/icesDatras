@@ -2,39 +2,36 @@
 % Please edit documentation in R/getCAdata.R
 \name{getCAdata}
 \alias{getCAdata}
-\title{Age based data}
+\title{Get Age-Based Data}
 \usage{
 getCAdata(survey, year, quarter)
 }
 \arguments{
-\item{survey}{the survey accronym e.g. NS-IBTS, BITS.}
+\item{survey}{the survey acronym, e.g. NS-IBTS.}
 
-\item{year}{the numeric year of the survey, e.g. 2010.}
+\item{year}{the year of the survey, e.g. 2010.}
 
 \item{quarter}{the quarter of the year the survey took place, i.e. 1, 2, 3 or 4.}
 }
 \value{
-A data.frame.
+A data frame.
 }
 \description{
-Returns age-based information such as sex, maturity, and age counts per length of sampled species.
+Get age-based data such as sex, maturity, and age counts per length of sampled species.
 }
 \examples{
-# read age data
-cadata <- getCAdata(survey = "BTS", year = 2015, quarter = 3)
+cadata <- getCAdata(survey = "ROCKALL", year = 2002, quarter = 3)
 str(cadata)
-
 
 }
 \author{
 Colin Millar.
 }
 \seealso{
-\code{\link{getSurveyList}} returns the acronyms for available surveys.
+\code{\link{getDATRAS}} supports querying many years and quarters in one function call.
 
-\code{\link{getSurveyYearList}} returns the years available for a given survey.
-
-\code{\link{getSurveyYearQuarterList}} returns the quarters available for a given survey and year.
+\code{\link{getHHdata}} and \code{\link{getHLdata}} get haul data and
+length-based data.
 
 \code{\link{icesDatras-package}} gives an overview of the package.
 }
