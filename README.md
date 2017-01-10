@@ -12,8 +12,8 @@ icesDatras
 
 icesDatras provides R functions that access the
 [web services](https://datras.ices.dk/WebServices/Webservices.aspx) of the
-[ICES (International Council for the Exploration of the Sea)](http://www.ices.dk/Pages/default.aspx)
-[DATRAS trawl survey database](http://ices.dk/marine-data/data-portals/Pages/DATRAS.aspx).
+[ICES](http://www.ices.dk/Pages/default.aspx) [DATRAS](http://datras.ices.dk)
+trawl survey database.
 
 icesDatras is implemented as an [R](https://www.r-project.org) package and
 available on [CRAN](https://cran.r-project.org/package=icesDatras).
@@ -24,7 +24,7 @@ Installation
 icesDatras can be installed from CRAN using the `install.packages` command:
 
 ```R
-install.packages('icesDatras')
+install.packages("icesDatras")
 ```
 
 Usage
@@ -42,11 +42,11 @@ References
 
 ICES DATRAS database:
 
-[http://datras.ices.dk/](http://datras.ices.dk/)
+[http://datras.ices.dk](http://datras.ices.dk)
 
 ICES DATRAS database web services:
 
-[https://datras.ices.dk/WebServices/Webservices.aspx]
+[https://datras.ices.dk/WebServices/Webservices.aspx](https://datras.ices.dk/WebServices/Webservices.aspx)
 
 Development
 -----------
@@ -61,11 +61,6 @@ encounter problems or have suggestions for future versions.
 The current development version can be installed using:
 
 ```R
-devtools::install_github('ices-tools-prod/icesDatras')
-```
-
-This requires the `devtools` package to be installed, which is done as follows:
-
-```R
-install.packages("devtools")
+library(devtools)
+install_github("ices-tools-prod/icesDatras")
 ```
