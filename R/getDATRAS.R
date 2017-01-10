@@ -87,8 +87,8 @@ getDATRAS <- function(record = "HH", survey, years, quarters) {
   # read XML string and parse to data frame
   out <- lapply(url,
                 function(x) {
-                  out <- curlDatras(x)
-                  parseDatras(out)
+                  x <- readDatras(x)
+                  parseDatras(x)
                 })
   out <- do.call(rbind, out)
 

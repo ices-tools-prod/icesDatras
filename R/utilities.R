@@ -1,61 +1,76 @@
-#' @importFrom RCurl basicTextGatherer
-#' @importFrom RCurl curlPerform
-curlDatras <- function(url) {
-  # read only XML table and return as string
-  reader <- basicTextGatherer()
-  curlPerform(url = url,
-              httpheader = c('Content-Type' = "text/xml; charset=utf-8", SOAPAction = ""),
-              writefunction = reader$update,
-              verbose = FALSE)
-  # return
-  reader$value()
+
+#' @importFrom utils download.file
+readDatras <- function(url) {
+  # try downloading first:
+  # create file name
+  tmp <- tempfile()
+  on.exit(unlink(tmp))
+
+  # download file
+  ret <-
+    if (os.type("windows")) {
+      download.file(url, destfile = tmp, quiet = TRUE)
+    } else if (os.type("unix") & Sys.which("wget") != "") {
+      download.file(url, destfile = tmp, quiet = TRUE, method = "wget")
+    } else if (os.type("unix") & Sys.which("curl") != "") {
+      download.file(url, destfile = tmp, quiet = TRUE, method = "curl")
+    } else {
+      127
+    }
+
+  # check return value
+  if (ret == 0) {
+    # scan lines
+    scan(tmp, what = "", sep = "\n", quiet = TRUE)
+  } else {
+    message("Unable to download file so using slower method url().\n",
+            "Try setting an appropriate value via\n\t",
+            "options(download.file.method = ...)\n",
+            "see ?download.file for more information.")
+    # connect to url
+    con <- url(url)
+    on.exit(close(con))
+
+    # scan lines
+    scan(con, what = "", sep = "\n", quiet = TRUE)
+  }
 }
 
 
-#' @importFrom XML xmlParse
-#' @importFrom XML xmlRoot
-#' @importFrom XML xmlSize
-#' @importFrom XML getChildrenStrings
-#' @importFrom XML removeNodes
-#' @importFrom utils capture.output
-parseDatras <- function(x) {
-  # parse XML string to data frame
-  capture.output(x <- xmlParse(x))
-  # capture.output is used to suppress the output message from xmlns:
-  #   "xmlns: URI ices.dk.local/DATRAS is not absolute"
 
-  # work with root node
-  x <- xmlRoot(x)
+parseDatras <- function(x) {
+  # parse using line and column separators
+  type <- gsub(" *<ArrayOf(.*?) .*", "\\1", x[2])
+  starts <- grep(paste0("<", type, ">"), x)
+  ends <- grep(paste0("</", type, ">"), x)
+  ncol <- unique(ends[1] - starts[1]) - 1
+  # drop everything we don't need
+  x <- x[-c(1, 2, starts, ends, length(x))]
 
   # exit if no data is being returned
-  if (xmlSize(x) == 0) return(NULL)
-  nc <- length(getChildrenStrings(x[[1]]))
+  if (length(x) == 0) return(NULL)
 
-  # read XML values into matrix, then convert to data frame
-  x <- replicate(xmlSize(x), {
-  # remove top record after reading to optimize speed and memory
-                  out <- getChildrenStrings(x[[1]])  # peek
-                  removeNodes(x[[1]])                # pop
-                  out
-                })
-  if (nc == 1) x <- matrix(x, 1, length(x), dimnames = list(names(x[1])))
+  # match content of first <tag>
+  names_x <- gsub(" *<(.*?)>.*", "\\1", x[1:ncol])
+
+  # delete all <tags>
+  x <- gsub(" *<.*?>", "", x)
+  # trim white space
+  x <- trimws(x)
+
+  # convert to data frame
+  dim(x) <- c(ncol, length(x)/ncol)
+  row.names(x) <- names_x
   x <- as.data.frame(t(x), stringsAsFactors = FALSE)
-
-  # simplifying at this point greatly speeds up trimws, worth simplifying twice
-  # simplify all columns except StatRec (so "45e6" does not become 45000000)
-  x[names(x) != "StatRec"] <- simplify(x[names(x) != "StatRec"])
 
   # return data frame now if empty
   if (nrow(x) == 0) return(x)
 
-  # clean trailing white space from text columns
-  charcol <- which(sapply(x, is.character))
-  x[charcol] <- lapply(x[charcol], trimws)
-
   # DATRAS uses -9 and "" to indicate NA
   x[x == -9] <- NA
   x[x == ""] <- NA
-  # simplify again, as ""->NA may enable us to coerce char->num/int
+
+  # simplify all columns except StatRec (so "45e6" does not become 45000000)
   x[names(x) != "StatRec"] <- simplify(x[names(x) != "StatRec"])
 
   # return
@@ -63,12 +78,14 @@ parseDatras <- function(x) {
 }
 
 
+
+# TODO - combine the check into readDatras - and do it at the download.file stage...
 checkDatrasWebserviceOK <- function() {
   # return TRUE if web service is active, FALSE otherwise
-  out <- curlDatras("https://datras.ices.dk/WebServices/DATRASWebService.asmx")
+  out <- readDatras("https://datras.ices.dk/WebServices/DATRASWebService.asmx/getSurveyList")
 
   # check server is not down by inspecting XML response for internal server error message
-  if (grepl("Internal Server Error", out)) {
+  if (grepl("Internal Server Error", out[1])) {
     warning("Web service failure: the server seems to be down, please try again later.")
     FALSE
   } else {
@@ -118,4 +135,16 @@ simplify <- function(x) {
     }
   }
   x
+}
+
+
+# returns TRUE if correct operating system is passed as an argument
+os.type <- function (type = c("unix", "windows", "other"))
+{
+  type <- match.arg(type)
+  if (type %in% c("windows", "unix")) {
+    .Platform$OS.type == type
+  } else {
+    TRUE
+  }
 }

@@ -35,12 +35,12 @@ getHLdata <- function(survey, year, quarter) {
   # check quarter
   if (!checkSurveyYearQuarterOK(survey, year, quarter, checksurvey = FALSE, checkyear = FALSE)) return(FALSE)
 
-  # read XML string and parse to data frame
+  # read url and parse to data frame
   url <-
     sprintf(
       "https://datras.ices.dk/WebServices/DATRASWebService.asmx/getHLdata?survey=%s&year=%i&quarter=%i",
       survey, year, quarter)
-  out <- curlDatras(url)
+  out <- readDatras(url)
   out <- parseDatras(out)
 
   # return
