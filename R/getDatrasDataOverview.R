@@ -3,6 +3,7 @@
 #' Evaluate a presence-absence table for each survey with '1' where there is data and '0' (printed as '.') otherwise.
 #'
 #' @param surveys a vector of survey names, or \code{NULL} to process all surveys.
+#' @param long Should tables have year as column (long = FALSE), or quarter as the column (long = TRUE), default TRUE.
 #'
 #' @return A list of tables.
 #'
@@ -15,11 +16,11 @@
 #' @author Colin Millar.
 #'
 #' @examples
-#' getDatrasDataOverview(surveys = "ROCKALL")
+#' getDatrasDataOverview(surveys = "ROCKALL", long = FALSE)
 #'
 #' @export
 
-getDatrasDataOverview <- function(surveys = NULL) {
+getDatrasDataOverview <- function(surveys = NULL, long = TRUE) {
   # check web services are running
   if (!checkDatrasWebserviceOK()) return (FALSE)
 
@@ -33,9 +34,12 @@ getDatrasDataOverview <- function(surveys = NULL) {
                            function(y) getSurveyYearQuarterList(s, as.integer(y)),
                            simplify = FALSE)
              out <- sapply(out, function(x) as.integer(1:4 %in% x)) # hard wire 4 quarters
-             row.names(out) <- 1:4
-             class(out) <- "datrasoverview"
-             out
+             rownames(out) <- paste0("Q", 1:4)
+             class(out) <- c("datrasoverview", class(out))
+             if (long)
+               t(out)
+             else
+               out
            },
            simplify = FALSE)
 
