@@ -43,6 +43,5 @@ getHLdata <- function(survey, year, quarter) {
   out <- readDatras(url)
   out <- parseDatras(out)
 
-  # return
   out
 }
