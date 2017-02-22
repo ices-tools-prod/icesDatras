@@ -8,9 +8,8 @@ Authors@R: c(person("Colin", "Millar", role=c("aut","cre"), email="colin.millar@
 Imports: utils
 Suggests: icesVocab,
           testthat
-Description: R interface to access the web services of the ICES (International
-             Council for the Exploration of the Sea) DATRAS trawl survey
-             database.
+Description: R interface to access the web services of the ICES DATRAS trawl
+             survey database.
 License: GPL (>= 2)
-URL: https://datras.ices.dk/WebServices/Webservices.aspx
+URL: https://datras.ices.dk
 RoxygenNote: 6.0.1
