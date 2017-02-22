@@ -43,7 +43,7 @@ References
 ICES DATRAS database:
 [http://datras.ices.dk](http://datras.ices.dk)
 
-ICES DATRAS database web services:
+ICES DATRAS web services:
 [https://datras.ices.dk/WebServices/Webservices.aspx](https://datras.ices.dk/WebServices/Webservices.aspx)
 
 Development
