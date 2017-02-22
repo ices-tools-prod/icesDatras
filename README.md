@@ -5,7 +5,7 @@
 [![CRAN Downloads](http://cranlogs.r-pkg.org/badges/grand-total/icesDatras)](https://cran.r-project.org/package=icesDatras)
 [![License](https://img.shields.io/badge/license-GPL%20(%3E%3D%202)-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
 
-[<img align="right" alt="ICES Logo" width="17%" height="17%" src="http://ices.dk/_layouts/15/1033/images/icesimg/iceslogo.png">](http://ices.dk/Pages/default.aspx)
+[<img align="right" alt="ICES Logo" width="17%" height="17%" src="http://ices.dk/_layouts/15/1033/images/icesimg/iceslogo.png">](http://ices.dk)
 
 icesDatras
 ======
