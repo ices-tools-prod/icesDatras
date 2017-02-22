@@ -8,7 +8,7 @@
 [<img align="right" alt="ICES Logo" width="17%" height="17%" src="http://ices.dk/_layouts/15/1033/images/icesimg/iceslogo.png">](http://ices.dk)
 
 icesDatras
-======
+==========
 
 icesDatras provides R functions that access the
 [web services](https://datras.ices.dk/WebServices/Webservices.aspx) of the
