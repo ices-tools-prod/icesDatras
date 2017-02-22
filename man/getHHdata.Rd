@@ -29,9 +29,6 @@ hhdata <- getHHdata(survey = "NS-IBTS", year = 2030, quarter = 1)
 hhdata <- getHHdata(survey = "NS-IBTS", year = 2016, quarter = 6)
 
 }
-\author{
-Colin Millar.
-}
 \seealso{
 \code{\link{getDATRAS}} supports querying many years and quarters in one function call.
 
@@ -40,4 +37,6 @@ age-based data.
 
 \code{\link{icesDatras-package}} gives an overview of the package.
 }
-
+\author{
+Colin Millar.
+}

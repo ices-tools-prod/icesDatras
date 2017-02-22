@@ -32,13 +32,12 @@ aphia <- icesVocab::findAphia(c("cod", "haddock"))
 cwt <- getCatchWgt(survey = "ROCKALL", years = 2002, quarters = 3, aphia = aphia)
 
 }
-\author{
-Colin Millar.
-}
 \seealso{
 \code{\link{getSurveyYearList}}, \code{\link{getSurveyYearQuarterList}}, and
 \code{\link{getDatrasDataOverview}} also list available data.
 
 \code{\link{icesDatras-package}} gives an overview of the package.
 }
-
+\author{
+Colin Millar.
+}

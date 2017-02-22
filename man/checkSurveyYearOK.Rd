@@ -32,4 +32,3 @@ checkSurveyYearOK(survey = "NOTALL", 2000)
 
 \code{\link{icesDatras-package}} gives an overview of the package.
 }
-
