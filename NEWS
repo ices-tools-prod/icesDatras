@@ -1,8 +1,11 @@
 --------------------------------------------------------------------------------
 icesDatras 1.2-0 (2017-01-10)
 --------------------------------------------------------------------------------
-o removed dependency on XML and RCurl by using text regex and download.file -> scan.
-  If download.file fails then url() is used to make the connection.
+o Removed RCurl dependency by using download.file() and scan().
+
+o Removed XML dependency by using grep() and gsub().
+
+
 
 
 --------------------------------------------------------------------------------
