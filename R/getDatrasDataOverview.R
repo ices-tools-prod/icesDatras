@@ -3,7 +3,7 @@
 #' Evaluate a presence-absence table for each survey with '1' where there is data and '0' (printed as '.') otherwise.
 #'
 #' @param surveys a vector of survey names, or \code{NULL} to process all surveys.
-#' @param long Should tables have year as column (long = FALSE), or quarter as the column (long = TRUE), default TRUE.
+#' @param long whether tables should have year as row names (default) or column names.
 #'
 #' @return A list of tables.
 #'

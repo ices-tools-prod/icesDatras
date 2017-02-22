@@ -9,7 +9,7 @@ getDatrasDataOverview(surveys = NULL, long = TRUE)
 \arguments{
 \item{surveys}{a vector of survey names, or \code{NULL} to process all surveys.}
 
-\item{long}{Should tables have year as column (long = FALSE), or quarter as the column (long = TRUE), default TRUE.}
+\item{long}{whether tables should have year as row names (default) or column names.}
 }
 \value{
 A list of tables.
