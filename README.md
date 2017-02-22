@@ -12,7 +12,7 @@ icesDatras
 
 icesDatras provides R functions that access the
 [web services](https://datras.ices.dk/WebServices/Webservices.aspx) of the
-[ICES](http://www.ices.dk/Pages/default.aspx) [DATRAS](http://datras.ices.dk)
+[ICES](http://www.ices.dk) [DATRAS](http://datras.ices.dk)
 trawl survey database.
 
 icesDatras is implemented as an [R](https://www.r-project.org) package and
@@ -41,10 +41,10 @@ References
 ----------
 
 ICES DATRAS database:
-[http://datras.ices.dk](http://datras.ices.dk)
+http://datras.ices.dk
 
 ICES DATRAS web services:
-[https://datras.ices.dk/WebServices/Webservices.aspx](https://datras.ices.dk/WebServices/Webservices.aspx)
+https://datras.ices.dk/WebServices/Webservices.aspx
 
 Development
 -----------
