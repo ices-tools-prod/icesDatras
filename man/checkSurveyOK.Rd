@@ -27,4 +27,3 @@ checkSurveyOK(survey = "NOTALL")
 
 \code{\link{icesDatras-package}} gives an overview of the package.
 }
-

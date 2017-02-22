@@ -42,4 +42,3 @@ checkSurveyYearQuarterOK(survey = "NOTALL", 2000, 1, checksurvey=FALSE)
 
 \code{\link{icesDatras-package}} gives an overview of the package.
 }
-

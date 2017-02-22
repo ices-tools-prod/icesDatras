@@ -28,13 +28,12 @@ hldata <- getDATRAS(record = "HL", survey = "ROCKALL", years = 2002, quarters = 
 cadata <- getDATRAS(record = "CA", survey = "ROCKALL", years = 2002, quarters = 3)
 
 }
-\author{
-Scott Large and Colin Millar.
-}
 \seealso{
 \code{\link{getHHdata}}, \code{\link{getHLdata}}, and \code{\link{getCAdata}}
 get haul data, length-based data, and age-based data.
 
 \code{\link{icesDatras-package}} gives an overview of the package.
 }
-
+\author{
+Scott Large and Colin Millar.
+}

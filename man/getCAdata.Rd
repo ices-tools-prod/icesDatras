@@ -24,9 +24,6 @@ cadata <- getCAdata(survey = "ROCKALL", year = 2002, quarter = 3)
 str(cadata)
 
 }
-\author{
-Colin Millar.
-}
 \seealso{
 \code{\link{getDATRAS}} supports querying many years and quarters in one function call.
 
@@ -35,4 +32,6 @@ length-based data.
 
 \code{\link{icesDatras-package}} gives an overview of the package.
 }
-
+\author{
+Colin Millar.
+}

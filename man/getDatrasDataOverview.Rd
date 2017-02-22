@@ -19,13 +19,12 @@ Evaluate a presence-absence table for each survey with '1' where there is data a
 getDatrasDataOverview(surveys = "ROCKALL")
 
 }
-\author{
-Colin Millar.
-}
 \seealso{
 \code{\link{getSurveyList}}, \code{\link{getSurveyYearList}}, and
 \code{\link{getSurveyYearQuarterList}} also list available data.
 
 \code{\link{icesDatras-package}} gives an overview of the package.
 }
-
+\author{
+Colin Millar.
+}

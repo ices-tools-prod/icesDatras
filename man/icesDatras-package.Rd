@@ -2,8 +2,8 @@
 % Please edit documentation in R/icesDatras-package.R
 \docType{package}
 \name{icesDatras-package}
-\alias{icesDatras}
 \alias{icesDatras-package}
+\alias{icesDatras}
 \title{DATRAS Trawl Database Web Services}
 \description{
 R interface to access the web services of the ICES (International
@@ -25,10 +25,9 @@ Council for the Exploration of the Sea) DATRAS trawl database.
   \code{\link{getDatrasDataOverview}}    \tab surveys, years, and quarters
 }
 }
-\author{
-Colin Millar, Scott Large, and Arni Magnusson.
-}
 \references{
 ICES DATRAS web services: \url{http://datras.ices.dk/}.
 }
-
+\author{
+Colin Millar, Scott Large, and Arni Magnusson.
+}
