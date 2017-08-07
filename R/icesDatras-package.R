@@ -25,6 +25,13 @@
 #'   \code{\link{getSurveyYearQuarterList}} \tab quarters\cr
 #'   \code{\link{getDatrasDataOverview}}    \tab surveys, years, and quarters
 #' }
+#' \emph{Calculate:}
+#' \tabular{ll}{
+#'   \code{\link{getSurveyList}}            \tab surveys\cr
+#'   \code{\link{getSurveyYearList}}        \tab years\cr
+#'   \code{\link{getSurveyYearQuarterList}} \tab quarters\cr
+#'   \code{\link{getDatrasDataOverview}}    \tab surveys, years, and quarters
+#' }
 #'
 #' @author Colin Millar, Scott Large, and Arni Magnusson.
 #'
