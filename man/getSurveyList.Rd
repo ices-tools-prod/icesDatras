@@ -16,13 +16,12 @@ Get a list of all survey acronyms.
 getSurveyList()
 
 }
-\author{
-Colin Millar.
-}
 \seealso{
 \code{\link{getSurveyYearList}}, \code{\link{getSurveyYearQuarterList}}, and
 \code{\link{getDatrasDataOverview}} also list available data.
 
 \code{\link{icesDatras-package}} gives an overview of the package.
 }
-
+\author{
+Colin Millar.
+}

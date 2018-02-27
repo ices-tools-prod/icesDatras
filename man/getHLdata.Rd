@@ -25,9 +25,6 @@ hldata <- getHLdata(survey = "ROCKALL", year = 2002, quarter = 3)
 str(hldata)
 
 }
-\author{
-Colin Millar.
-}
 \seealso{
 \code{\link{getDATRAS}} supports querying many years and quarters in one function call.
 
@@ -36,4 +33,6 @@ age-based data.
 
 \code{\link{icesDatras-package}} gives an overview of the package.
 }
-
+\author{
+Colin Millar.
+}

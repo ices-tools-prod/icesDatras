@@ -19,13 +19,12 @@ Get a list of all data years for a given survey.
 getSurveyYearList(survey = "ROCKALL")
 
 }
-\author{
-Colin Millar.
-}
 \seealso{
 \code{\link{getSurveyList}}, \code{\link{getSurveyYearQuarterList}}, and
 \code{\link{getDatrasDataOverview}} also list available data.
 
 \code{\link{icesDatras-package}} gives an overview of the package.
 }
-
+\author{
+Colin Millar.
+}
