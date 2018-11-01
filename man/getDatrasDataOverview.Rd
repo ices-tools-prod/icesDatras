@@ -27,6 +27,3 @@ getDatrasDataOverview(surveys = "ROCKALL", long = FALSE)
 
 \code{\link{icesDatras-package}} gives an overview of the package.
 }
-\author{
-Colin Millar.
-}
