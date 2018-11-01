@@ -4,10 +4,12 @@
 \alias{getDatrasDataOverview}
 \title{Summarize Data Availability}
 \usage{
-getDatrasDataOverview(surveys = NULL)
+getDatrasDataOverview(surveys = NULL, long = TRUE)
 }
 \arguments{
 \item{surveys}{a vector of survey names, or \code{NULL} to process all surveys.}
+
+\item{long}{whether tables should have year as row names (default) or column names.}
 }
 \value{
 A list of tables.
@@ -16,7 +18,7 @@ A list of tables.
 Evaluate a presence-absence table for each survey with '1' where there is data and '0' (printed as '.') otherwise.
 }
 \examples{
-getDatrasDataOverview(surveys = "ROCKALL")
+getDatrasDataOverview(surveys = "ROCKALL", long = FALSE)
 
 }
 \seealso{
@@ -24,7 +26,4 @@ getDatrasDataOverview(surveys = "ROCKALL")
 \code{\link{getSurveyYearQuarterList}} also list available data.
 
 \code{\link{icesDatras-package}} gives an overview of the package.
-}
-\author{
-Colin Millar.
 }

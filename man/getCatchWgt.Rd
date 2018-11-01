@@ -22,7 +22,7 @@ A data frame.
 Get the reported catch weight by species and haul.
 }
 \note{
-The \pkg{icesAdvice} package provides \code{findAphia}, a function to look up Aphia species codes.
+The \pkg{icesVocab} package provides \code{findAphia}, a function to look up Aphia species codes.
 }
 \examples{
 getCatchWgt(survey = "ROCKALL", years = 2002, quarters = 3, aphia = 126437)
