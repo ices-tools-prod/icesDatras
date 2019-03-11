@@ -1,16 +1,20 @@
 --------------------------------------------------------------------------------
-icesDatras 1.2-0 (2016-12-xx)
+icesDatras 1.2-0 (2017-01-10)
 --------------------------------------------------------------------------------
-o
+o Removed RCurl dependency by using download.file() and scan().
+
+o Removed XML dependency by using grep() and gsub().
+
+
 
 
 --------------------------------------------------------------------------------
 icesDatras 1.1-1 (2016-09-14)
 --------------------------------------------------------------------------------
-o Improved XML parsing, exploiting structure of data and that we can
-  delete XML nodes once read.
+o Improved XML parsing, gaining speed by deleting XML nodes once read.
 
-o Added function to extract catch weigthts by species and haul.
+o New function getCatchWgt() to extract catch weigthts by species and haul.
+
 
 
 

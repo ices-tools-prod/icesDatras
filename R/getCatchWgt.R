@@ -10,7 +10,7 @@
 #' @return A data frame.
 #'
 #' @note
-#' The \pkg{icesAdvice} package provides \code{findAphia}, a function to look up Aphia species codes.
+#' The \pkg{icesVocab} package provides \code{findAphia}, a function to look up Aphia species codes.
 #'
 #' @seealso
 #' \code{\link{getSurveyYearList}}, \code{\link{getSurveyYearQuarterList}}, and

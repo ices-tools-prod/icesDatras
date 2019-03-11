@@ -13,8 +13,6 @@ matrix:
   - r: oldrel
   - r: devel
   - os: osx
-    osx_image: beta-xcode6.1
-    disable_homebrew: true
     r: release
     latex: false
 
