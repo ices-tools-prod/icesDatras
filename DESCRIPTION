@@ -12,5 +12,5 @@ Description: R interface to access the web services of the ICES DATRAS trawl
              survey database.
 License: GPL (>= 2)
 URL: https://datras.ices.dk
-RoxygenNote: 6.1.0.9000
+RoxygenNote: 6.1.1
 Encoding: UTF-8
