@@ -18,7 +18,7 @@ A data frame.
 }
 \description{
 Get length-based information such as measured length, individual counts,
-  and subfactors of sampled species.
+  and sub-factors of sampled species.
 }
 \examples{
 \dontrun{

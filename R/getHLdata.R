@@ -1,7 +1,7 @@
 #' Get Length-Based Data
 #'
 #' Get length-based information such as measured length, individual counts,
-#'   and subfactors of sampled species.
+#'   and sub-factors of sampled species.
 #'
 #' @param survey the survey acronym, e.g. NS-IBTS.
 #' @param year the year of the survey, e.g. 2010.
