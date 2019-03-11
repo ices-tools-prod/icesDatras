@@ -1,6 +1,6 @@
 Package: icesDatras
 Version: 1.2-2
-Date: 2018-11-01
+Date: 2019-03-06
 Title: DATRAS Trawl Survey Database Web Services
 Authors@R: c(person("Colin", "Millar", role=c("aut","cre"), email="colin.millar@ices.dk"),
              person("Scott", "Large", role="aut"),
