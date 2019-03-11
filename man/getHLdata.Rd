@@ -18,12 +18,13 @@ A data frame.
 }
 \description{
 Get length-based information such as measured length, individual counts,
-  and subfactors of sampled species.
+  and sub-factors of sampled species.
 }
 \examples{
+\dontrun{
 hldata <- getHLdata(survey = "ROCKALL", year = 2002, quarter = 3)
 str(hldata)
-
+}
 }
 \seealso{
 \code{\link{getDATRAS}} supports querying many years and quarters in one function call.

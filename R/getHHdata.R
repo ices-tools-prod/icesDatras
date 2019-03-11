@@ -19,6 +19,7 @@
 #' @author Colin Millar.
 #'
 #' @examples
+#' \dontrun{
 #' hhdata <- getHHdata(survey = "ROCKALL", year = 2002, quarter = 3)
 #' str(hhdata)
 #'
@@ -26,7 +27,7 @@
 #' hhdata <- getHHdata(survey = "NS_IBTS", year = 2016, quarter = 1)
 #' hhdata <- getHHdata(survey = "NS-IBTS", year = 2030, quarter = 1)
 #' hhdata <- getHHdata(survey = "NS-IBTS", year = 2016, quarter = 6)
-#'
+#' }
 #' @export
 
 getHHdata <- function(survey, year, quarter) {
