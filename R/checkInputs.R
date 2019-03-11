@@ -14,9 +14,10 @@
 #' \code{\link{icesDatras-package}} gives an overview of the package.
 #'
 #' @examples
+#' \dontrun{
 #' checkSurveyOK(survey = "ROCKALL")
 #' checkSurveyOK(survey = "NOTALL")
-#'
+#' }
 #' @export
 
 #' @importFrom utils capture.output

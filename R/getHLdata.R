@@ -19,9 +19,10 @@
 #'
 #'
 #' @examples
+#' \dontrun{
 #' hldata <- getHLdata(survey = "ROCKALL", year = 2002, quarter = 3)
 #' str(hldata)
-#'
+#' }
 #' @export
 
 getHLdata <- function(survey, year, quarter) {

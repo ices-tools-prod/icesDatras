@@ -25,10 +25,11 @@ Get age based indices of abundance by species, survey and year.
 The \pkg{icesAdvice} package provides \code{findAphia}, a function to look up Aphia species codes.
 }
 \examples{
+\dontrun{
 haddock_aphia <- icesVocab::findAphia("haddock")
 index <- getIndices(survey = "NS-IBTS", year = 2002, quarter = 3, species = haddock_aphia)
 str(index)
-
+}
 }
 \seealso{
 \code{\link{getDATRAS}} supports querying many years and quarters in one function call.

@@ -25,19 +25,17 @@ Get the reported catch weight by species and haul.
 The \pkg{icesVocab} package provides \code{findAphia}, a function to look up Aphia species codes.
 }
 \examples{
+\dontrun{
 getCatchWgt(survey = "ROCKALL", years = 2002, quarters = 3, aphia = 126437)
 
 # look up specific species
 aphia <- icesVocab::findAphia(c("cod", "haddock"))
 cwt <- getCatchWgt(survey = "ROCKALL", years = 2002, quarters = 3, aphia = aphia)
-
+}
 }
 \seealso{
 \code{\link{getSurveyYearList}}, \code{\link{getSurveyYearQuarterList}}, and
 \code{\link{getDatrasDataOverview}} also list available data.
 
 \code{\link{icesDatras-package}} gives an overview of the package.
-}
-\author{
-Colin Millar.
 }
