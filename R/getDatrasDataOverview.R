@@ -15,8 +15,9 @@
 #'
 #'
 #' @examples
+#' \dontrun{
 #' getDatrasDataOverview(surveys = "ROCKALL", long = FALSE)
-#'
+#' }
 #' @export
 
 getDatrasDataOverview <- function(surveys = NULL, long = TRUE) {

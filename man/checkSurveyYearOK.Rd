@@ -21,10 +21,11 @@ Checks a year and/or survey name against a list of all survey year combinations 
 If the combination is not matched it puts up a message showing the available options.
 }
 \examples{
+\dontrun{
 checkSurveyYearOK(survey = "ROCKALL", 2015)
 checkSurveyYearOK(survey = "ROCKALL", 2000)
 checkSurveyYearOK(survey = "NOTALL", 2000)
-
+}
 }
 \seealso{
 \code{\link{checkSurveyOK}} and \code{\link{checkSurveyYearQuarterOK}}
