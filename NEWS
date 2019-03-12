@@ -4,6 +4,9 @@ icesDatras 1.3-0 (2019-03-12)
 o Added function getCatchWeight() to get reported catch weight by species by
   haul.
 
+o Added function getIndices() to get age based indices of abundance by species,
+  survey and year.
+
 o Made all examples 'dontrun' as taking a while due to slow response time of
   web server
 
