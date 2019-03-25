@@ -4,7 +4,8 @@ Date: 2019-03-12
 Title: DATRAS Trawl Survey Database Web Services
 Authors@R: c(person("Colin", "Millar", role=c("aut","cre"), email="colin.millar@ices.dk"),
              person("Scott", "Large", role="aut"),
-             person("Arni", "Magnusson", role="aut"))
+             person("Arni", "Magnusson", role="aut"),
+             person("Vaishav", "Soni", role="ctb"))
 Imports: utils
 Suggests: icesVocab
 Description: R interface to access the web services of the ICES (International
