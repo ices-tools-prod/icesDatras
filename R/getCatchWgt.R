@@ -1,6 +1,6 @@
 #' Get Catch Weights
 #'
-#' Get the reported catch weight by species and haul.
+#' Calculate the total reported catch weight by species and haul.
 #'
 #' @param survey the survey acronym e.g. NS-IBTS.
 #' @param years a vector of years of the survey, e.g. c(2010, 2012) or 2005:2010.

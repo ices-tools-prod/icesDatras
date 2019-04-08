@@ -1,14 +1,14 @@
 --------------------------------------------------------------------------------
 icesDatras 1.3-0 (2019-03-12)
 --------------------------------------------------------------------------------
-o Added function getCatchWeight() to get reported catch weight by species by
-  haul.
-
 o Added function getIndices() to get age based indices of abundance by species,
   survey and year.
 
 o Made all examples 'dontrun' as taking a while due to slow response time of
-  web server
+  web server.
+
+
+
 
 --------------------------------------------------------------------------------
 icesDatras 1.2-0 (2017-01-10)
@@ -25,7 +25,8 @@ icesDatras 1.1-1 (2016-09-14)
 --------------------------------------------------------------------------------
 o Improved XML parsing, gaining speed by deleting XML nodes once read.
 
-o New function getCatchWgt() to extract catch weigthts by species and haul.
+o New function getCatchWgt() to calculate total reported catch weight by species
+  and haul.
 
 
 
@@ -62,4 +63,6 @@ o Added function getDATRAS() from retired package rICES to extract multiple
 --------------------------------------------------------------------------------
 icesDatras 1.0-0 (2016-08-04)
 --------------------------------------------------------------------------------
-o Initial release.
+o Initial release, with functions getCAdata(), getDatrasDataOverview(),
+  getHHdata(), getHLdata(), getSurveyInsertDate(), getSurveyList(),
+  getSurveyYearList(), and getSurveyYearQuarterList().

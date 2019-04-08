@@ -19,7 +19,7 @@ getCatchWgt(survey, years, quarters, aphia)
 A data frame.
 }
 \description{
-Get the reported catch weight by species and haul.
+Calculate the total reported catch weight by species and haul.
 }
 \note{
 The \pkg{icesVocab} package provides \code{findAphia}, a function to look up Aphia species codes.
