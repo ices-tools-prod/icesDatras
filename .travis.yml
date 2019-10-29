@@ -10,9 +10,7 @@ warnings_are_errors: false
 matrix:
   include:
   - r: release
-  - r: oldrel
   - r: devel
-  - os: osx
     r: release
     latex: false
 
