@@ -16,7 +16,11 @@ o Made all examples 'dontrun' as taking a while due to slow response time of
   web server.
 
 
+o Added function getIndices() to get age based indices of abundance by species,
+  survey and year.
 
+o Made all examples 'dontrun' as taking a while due to slow response time of
+  web server
 
 --------------------------------------------------------------------------------
 icesDatras 1.2-0 (2017-01-10)

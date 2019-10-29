@@ -19,9 +19,10 @@
 #' @author Colin Millar.
 #'
 #' @examples
+#' \dontrun{
 #' cadata <- getCAdata(survey = "ROCKALL", year = 2002, quarter = 3)
 #' str(cadata)
-#'
+#' }
 #' @export
 
 getCAdata <- function(survey, year, quarter) {
