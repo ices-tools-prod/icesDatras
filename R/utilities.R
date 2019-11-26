@@ -73,8 +73,8 @@ parseDatras <- function(x) {
   x[x == -9] <- NA
   x[x == ""] <- NA
 
-  # simplify all columns except StatRec (so "45e6" does not become 45000000)
-  x[names(x) != "StatRec"] <- simplify(x[names(x) != "StatRec"])
+  # simplify all columns except StatRec and AreaCode (so "45e6" does not become 45000000)
+  x[!names(x) %in% c("StatRec", "AreaCode")] <- simplify(x[!names(x) %in% c("StatRec", "AreaCode")])
 
   x
 }
