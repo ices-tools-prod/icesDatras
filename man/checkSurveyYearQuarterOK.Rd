@@ -4,8 +4,13 @@
 \alias{checkSurveyYearQuarterOK}
 \title{Check that a survey, year and quarter combination is in the database}
 \usage{
-checkSurveyYearQuarterOK(survey, year, quarter, checksurvey = TRUE,
-  checkyear = TRUE)
+checkSurveyYearQuarterOK(
+  survey,
+  year,
+  quarter,
+  checksurvey = TRUE,
+  checkyear = TRUE
+)
 }
 \arguments{
 \item{survey}{the survey acronym, e.g. NS-IBTS.}
@@ -27,6 +32,7 @@ combinations in the DATRAS database.
 If the combination is not matched it puts up a message showing the available options.
 }
 \examples{
+\dontrun{
 checkSurveyYearQuarterOK(survey = "ROCKALL", 2015, 3)
 checkSurveyYearQuarterOK(survey = "ROCKALL", 2015, 1)
 checkSurveyYearQuarterOK(survey = "ROCKALL", 2000, 1)
@@ -34,7 +40,7 @@ checkSurveyYearQuarterOK(survey = "NOTALL", 2000, 1)
 
 # be careful of unexpected results with checksurvey and checkyear!
 checkSurveyYearQuarterOK(survey = "NOTALL", 2000, 1, checksurvey=FALSE)
-
+}
 }
 \seealso{
 \code{\link{checkSurveyOK}} and \code{\link{checkSurveyYearOK}}

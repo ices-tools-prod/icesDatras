@@ -20,10 +20,11 @@
 #' \code{\link{icesDatras-package}} gives an overview of the package.
 #'
 #' @examples
+#' \dontrun{
 #' haddock_aphia <- icesVocab::findAphia("haddock")
 #' index <- getIndices(survey = "NS-IBTS", year = 2002, quarter = 3, species = haddock_aphia)
 #' str(index)
-#'
+#' }
 #' @export
 
 getIndices <- function(survey, year, quarter, species) {

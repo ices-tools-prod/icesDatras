@@ -17,9 +17,10 @@ Checks a survey name against a list of all survey names in the DATRAS database.
 If the name is not matched it puts up a message showing the available survey names.
 }
 \examples{
+\dontrun{
 checkSurveyOK(survey = "ROCKALL")
 checkSurveyOK(survey = "NOTALL")
-
+}
 }
 \seealso{
 \code{\link{checkSurveyYearOK}} and \code{\link{getSurveyYearQuarterList}}

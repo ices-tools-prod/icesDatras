@@ -20,9 +20,10 @@ A data frame.
 Get age-based data such as sex, maturity, and age counts per length of sampled species.
 }
 \examples{
+\dontrun{
 cadata <- getCAdata(survey = "ROCKALL", year = 2002, quarter = 3)
 str(cadata)
-
+}
 }
 \seealso{
 \code{\link{getDATRAS}} supports querying many years and quarters in one function call.

@@ -18,8 +18,9 @@ A list of tables.
 Evaluate a presence-absence table for each survey with '1' where there is data and '0' (printed as '.') otherwise.
 }
 \examples{
+\dontrun{
 getDatrasDataOverview(surveys = "ROCKALL", long = FALSE)
-
+}
 }
 \seealso{
 \code{\link{getSurveyList}}, \code{\link{getSurveyYearList}}, and

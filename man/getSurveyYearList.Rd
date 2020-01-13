@@ -16,8 +16,9 @@ A numeric vector.
 Get a list of all data years for a given survey.
 }
 \examples{
+\dontrun{
 getSurveyYearList(survey = "ROCKALL")
-
+}
 }
 \seealso{
 \code{\link{getSurveyList}}, \code{\link{getSurveyYearQuarterList}}, and

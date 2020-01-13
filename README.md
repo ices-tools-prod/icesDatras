@@ -18,6 +18,11 @@ icesDatras provides R functions that access the
 icesDatras is implemented as an [R](https://www.r-project.org) package and
 available on [CRAN](https://cran.r-project.org/package=icesDatras).
 
+DATRAS database support
+-----------------------
+
+If you have questions relating to the ICES DATRAS database or web services please email: DatrasAdministration@ices.dk
+
 Installation
 ------------
 

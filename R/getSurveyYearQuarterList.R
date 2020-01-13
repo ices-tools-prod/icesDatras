@@ -16,8 +16,9 @@
 #' @author Colin Millar.
 #'
 #' @examples
+#' \dontrun{
 #' getSurveyYearQuarterList(survey = "ROCKALL", year = 2002)
-#'
+#' }
 #' @export
 
 getSurveyYearQuarterList <- function(survey, year) {

@@ -1,6 +1,6 @@
 #' Get Catch Weights
 #'
-#' Get the reported catch weight by species and haul.
+#' Calculate the total reported catch weight by species and haul.
 #'
 #' @param survey the survey acronym e.g. NS-IBTS.
 #' @param years a vector of years of the survey, e.g. c(2010, 2012) or 2005:2010.
@@ -18,15 +18,14 @@
 #'
 #' \code{\link{icesDatras-package}} gives an overview of the package.
 #'
-#' @author Colin Millar.
-#'
 #' @examples
+#' \dontrun{
 #' getCatchWgt(survey = "ROCKALL", years = 2002, quarters = 3, aphia = 126437)
 #'
 #' # look up specific species
 #' aphia <- icesVocab::findAphia(c("cod", "haddock"))
 #' cwt <- getCatchWgt(survey = "ROCKALL", years = 2002, quarters = 3, aphia = aphia)
-#'
+#' }
 #' @export
 
 getCatchWgt <- function(survey, years, quarters, aphia) {

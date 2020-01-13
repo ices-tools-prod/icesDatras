@@ -14,9 +14,10 @@
 #' \code{\link{icesDatras-package}} gives an overview of the package.
 #'
 #' @examples
+#' \dontrun{
 #' checkSurveyOK(survey = "ROCKALL")
 #' checkSurveyOK(survey = "NOTALL")
-#'
+#' }
 #' @export
 
 #' @importFrom utils capture.output
@@ -52,10 +53,11 @@ checkSurveyOK <- function(survey) {
 #' \code{\link{icesDatras-package}} gives an overview of the package.
 #'
 #' @examples
+#' \dontrun{
 #' checkSurveyYearOK(survey = "ROCKALL", 2015)
 #' checkSurveyYearOK(survey = "ROCKALL", 2000)
 #' checkSurveyYearOK(survey = "NOTALL", 2000)
-#'
+#' }
 #' @export
 
 checkSurveyYearOK <- function(survey, year, checksurvey = TRUE) {
@@ -97,6 +99,7 @@ checkSurveyYearOK <- function(survey, year, checksurvey = TRUE) {
 #' \code{\link{icesDatras-package}} gives an overview of the package.
 #'
 #' @examples
+#' \dontrun{
 #' checkSurveyYearQuarterOK(survey = "ROCKALL", 2015, 3)
 #' checkSurveyYearQuarterOK(survey = "ROCKALL", 2015, 1)
 #' checkSurveyYearQuarterOK(survey = "ROCKALL", 2000, 1)
@@ -104,7 +107,7 @@ checkSurveyYearOK <- function(survey, year, checksurvey = TRUE) {
 #'
 #' # be careful of unexpected results with checksurvey and checkyear!
 #' checkSurveyYearQuarterOK(survey = "NOTALL", 2000, 1, checksurvey=FALSE)
-#'
+#' }
 #' @export
 
 checkSurveyYearQuarterOK <- function(survey, year, quarter, checksurvey = TRUE, checkyear = TRUE) {

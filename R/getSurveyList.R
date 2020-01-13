@@ -13,8 +13,9 @@
 #' @author Colin Millar.
 #'
 #' @examples
+#' \dontrun{
 #' getSurveyList()
-#'
+#' }
 #' @export
 
 getSurveyList <- function() {

@@ -13,8 +13,9 @@ A character vector.
 Get a list of all survey acronyms.
 }
 \examples{
+\dontrun{
 getSurveyList()
-
+}
 }
 \seealso{
 \code{\link{getSurveyYearList}}, \code{\link{getSurveyYearQuarterList}}, and

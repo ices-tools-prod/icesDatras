@@ -19,10 +19,11 @@
 #' @author Scott Large and Colin Millar.
 #'
 #' @examples
+#' \dontrun{
 #' hhdata <- getDATRAS(record = "HH", survey = "ROCKALL", years = 2002, quarters = 3)
 #' hldata <- getDATRAS(record = "HL", survey = "ROCKALL", years = 2002, quarters = 3)
 #' cadata <- getDATRAS(record = "CA", survey = "ROCKALL", years = 2002, quarters = 3)
-#'
+#' }
 #' @export
 
 getDATRAS <- function(record = "HH", survey, years, quarters) {

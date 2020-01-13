@@ -41,6 +41,9 @@ readDatras <- function(url) {
 parseDatras <- function(x) {
   # parse using line and column separators
   type <- gsub(" *<ArrayOf(.*?) .*", "\\1", x[2])
+
+  # convert any lazy teminated feilds to full feilds
+  x <- gsub("^ *<(.*?) />$", "<\\1> NA </\\1>", x)
   starts <- grep(paste0("<", type, ">"), x)
   ends <- grep(paste0("</", type, ">"), x)
   ncol <- unique(ends[1] - starts[1]) - 1
@@ -70,8 +73,8 @@ parseDatras <- function(x) {
   x[x == -9] <- NA
   x[x == ""] <- NA
 
-  # simplify all columns except StatRec (so "45e6" does not become 45000000)
-  x[names(x) != "StatRec"] <- simplify(x[names(x) != "StatRec"])
+  # simplify all columns except StatRec and AreaCode (so "45e6" does not become 45000000)
+  x[!names(x) %in% c("StatRec", "AreaCode")] <- simplify(x[!names(x) %in% c("StatRec", "AreaCode")])
 
   x
 }
