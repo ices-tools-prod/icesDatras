@@ -25,5 +25,5 @@ getCPUEperAge(survey = "NS-IBTS", year = 2018, quarter = 1)
 }
 }
 \author{
-Colin Millar.
+Adriana Villamor.
 }

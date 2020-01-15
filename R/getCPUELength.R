@@ -15,7 +15,7 @@
 #'
 #' \code{\link{icesDatras-package}} gives an overview of the package.
 #'
-#' @author Colin Millar.
+#' @author Adriana Villamor.
 #'
 #' @examples
 #' \dontrun{

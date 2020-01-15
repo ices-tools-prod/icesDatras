@@ -33,5 +33,5 @@ age-based data., and
 \code{\link{icesDatras-package}} gives an overview of the package.
 }
 \author{
-Colin Millar.
+Adriana Villamor.
 }
