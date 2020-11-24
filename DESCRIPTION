@@ -4,6 +4,7 @@ Date: 2019-10-29
 Title: DATRAS Trawl Survey Database Web Services
 Authors@R: c(person("Colin", "Millar", role=c("aut","cre"), email="colin.millar@ices.dk"),
              person("Scott", "Large", role="aut"),
+             person("Adriana", "Villamor", role="aut"),
              person("Arni", "Magnusson", role="aut"),
              person("Vaishav", "Soni", role="ctb"))
 Imports: utils
@@ -13,5 +14,5 @@ Description: R interface to access the web services of the ICES (International
              database <https://datras.ices.dk/WebServices/Webservices.aspx>.
 License: GPL (>= 2)
 URL: https://datras.ices.dk/WebServices/Webservices.aspx
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.1
 Encoding: UTF-8
