@@ -24,6 +24,14 @@ Get CPUE per Age per Haul per Hour for a given Survey, year and Quarter
 getCPUEperAge(survey = "NS-IBTS", year = 2018, quarter = 1)
 }
 }
+\seealso{
+\code{\link{getHHdata}} and \code{\link{getCAdata}} get haul data and
+age-based data, and
+\code{\link{getIndices}}, and
+\code{\link{getCPUELength}}.
+
+\code{\link{icesDatras-package}} gives an overview of the package.
+}
 \author{
 Adriana Villamor.
 }

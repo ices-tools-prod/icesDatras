@@ -1,7 +1,21 @@
 --------------------------------------------------------------------------------
+icesDatras 1.4.0 (2020-11-25)
+--------------------------------------------------------------------------------
+o Added function getCPUEAge() to get CPUE per age per haul per hour, and
+  getCPUELength() to get CPUE per length per haul per hour.
+
+o Added function getFlexFile() to get HH information plus door spread, wing
+  spread, and swept area per square km.
+
+o Added function getLTassessment() litter assessment output.
+
+
+
+
+--------------------------------------------------------------------------------
 icesDatras 1.3-1 (2019-10-29)
 --------------------------------------------------------------------------------
-o Bug fix - deal with NULL XML feilds
+o Bug fix - deal with NULL XML fields.
 
 
 
@@ -21,6 +35,9 @@ o Added function getIndices() to get age based indices of abundance by species,
 
 o Made all examples 'dontrun' as taking a while due to slow response time of
   web server
+
+
+
 
 --------------------------------------------------------------------------------
 icesDatras 1.2-0 (2017-01-10)
