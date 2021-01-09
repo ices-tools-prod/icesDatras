@@ -1,6 +1,6 @@
 #' Get Flex File
 #'
-#' Get all information in HH plus estimates of Door Spread, Wing Spread and 
+#' Get all information in HH plus estimates of Door Spread, Wing Spread and
 #' Swept Area per square km. Only available for NS-IBTS survey.
 #'
 #' @param survey the survey acronym, e.g. NS-IBTS.
@@ -30,9 +30,8 @@
 #' }
 #' @export
 
-getFlexFile <- function(year, quarter) {
-        survey= "NS-IBTS"
-        
+getFlexFile <- function(survey, year, quarter) {
+
   # check survey name
   if (!checkSurveyOK(survey)) return(FALSE)
 

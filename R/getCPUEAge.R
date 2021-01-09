@@ -8,10 +8,11 @@
 #' @return A data frame.
 #'
 #' @seealso
+#'
 #' \code{\link{getHHdata}} and \code{\link{getCAdata}} get haul data and
 #' age-based data., and
-#' \code{\link{getIndices}, and
-#' \code{\link{getCPUELenth}}.
+#' \code{\link{getIndices}}, and
+#' \code{\link{getCPUELength}}.
 #'
 #' \code{\link{icesDatras-package}} gives an overview of the package.
 #'

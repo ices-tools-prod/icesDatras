@@ -36,14 +36,41 @@ getCatchWgt <- function(survey, years, quarters, aphia) {
 
   # process HL record
   ## add HaulID for later merging
-  hh$HaulID <- with(hh, paste(Year, Quarter, Ship, StNo, HaulNo, sep="."))
-  hl$HaulID <- with(hl, paste(Year, Quarter, Ship, StNo, HaulNo, sep="."))
-  key <- c("Year", "Quarter", "Ship", "StNo", "HaulNo", "HaulID")
+  hh$HaulID <-
+    with(
+      hh,
+      factor(
+        paste(
+          Year, Quarter, Country, Ship, Gear, StNo, HaulNo,
+          sep = ":"
+        )
+      )
+    )
+
+  hl$HaulID <-
+    with(
+      hl,
+      factor(
+        paste(
+          Year, Quarter, Country, Ship, Gear, StNo, HaulNo,
+          sep = ":"
+        )
+      )
+    )
+  key <-
+    c(
+      "Year", "Quarter", "Country", "Ship", "Gear", "StNo",
+      "HaulNo", "HaulID"
+    )
+
 
   ## loop over available species unless a restricted set is asked for
   sp_codes <- unique(hl$Valid_Aphia)
   sp_codes <- intersect(sp_codes, aphia)
-  message("Extracting total catch weight by species and haul for ", length(sp_codes), " species")
+  message(
+    "Extracting total catch weight by species and haul for ",
+    length(sp_codes), " species"
+  )
 
   # drop unused data
   hl <- hl[hl$Valid_Aphia %in% sp_codes,]
@@ -57,20 +84,31 @@ getCatchWgt <- function(survey, years, quarters, aphia) {
 
   # run the loop
   out <-
-    do.call(rbind,
-            lapply(sp_codes,
-                   function(x) {
-                     # get unique catch weights for single species
-                     wk <- unique(hl[hl$Valid_Aphia == x, c(key, "CatIdentifier", "CatCatchWgt")])
-                     # these will include multiples if there was subsampling applied to different parts of the catch
-                     # sum these up over HaulID
-                     tbl <- tapply(wk$CatCatchWgt, wk$HaulID, sum)
-                     # add into catchwgt data using row names to insert into correct location
-                     out <- catchwgt
-                     out[names(tbl),"CatchWgt"] <- c(tbl)
-                     out$Valid_Aphia <- x
-                     out
-                   })
+    do.call(
+      rbind,
+      lapply(
+        sp_codes,
+        function(x) {
+          # get unique catch weights for single species
+          wk <-
+            unique(
+              hl[
+                hl$Valid_Aphia == x,
+                c(key, "CatIdentifier", "CatCatchWgt")
+              ]
+            )
+          # these will include multiples if there was subsampling
+          # applied to different parts of the catch sum these up over
+          # HaulID
+          tbl <- tapply(wk$CatCatchWgt, wk$HaulID, sum)
+          # add into catchwgt data using row names to insert into
+          # correct location
+          out <- catchwgt
+          out[names(tbl), "CatchWgt"] <- c(tbl)
+          out$Valid_Aphia <- x
+          out
+        }
+      )
     )
 
   rownames(out) <- NULL
