@@ -48,7 +48,11 @@ getSurveyList()
 
 ```
 
-Extracting survey haul (HH), lenght (HL) and agebased (CA) data from North Sea IBTS, Quarter 1, 2019:
+Working Examples 
+-----
+
+Extracting survey haul (HH), lenght (HL) and agebased (CA) data from a given survey, quarter and year, 
+i.e. North Sea IBTS, Quarter 1, 2019:
 
 ```R
 survey <- "NS-IBTS"
@@ -72,6 +76,21 @@ years <- 2019
 quarters <- 1
 codwgt <- getCatchWgt(survey, years, quarters, aphia)
 
+```
+
+Get catch weight for Baltic cod from all quarters  in a small timeseries (e.g. 1991 to 2011) and plot the weight in a sipmle graph
+
+```R
+library(icesVocab)
+library(ggplot2)
+
+aphia <- icesVocab::findAphia("cod") 
+
+survey <- "BITS"
+years <- 1991:2011
+quarters <- 1:4
+codwgt <- getCatchWgt(survey, years, quarters, aphia)
+codwgt %>% ggplot(aes(x = Year, y = CatchWgt, colour= Quarter)) + geom_point()
 ```
 
 References
