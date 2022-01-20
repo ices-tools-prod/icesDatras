@@ -78,7 +78,7 @@ codwgt <- getCatchWgt(survey, years, quarters, aphia)
 
 ```
 
-Get catch weight for Baltic cod from all quarters  in a small timeseries (e.g. 1991 to 2011) and plot the weight in a sipmle graph
+Get catch weight for Baltic cod from all quarters  in a small timeseries (e.g. 1991 to 2011) and plot the weight in a sipmle graph per quarter.
 
 ```R
 library(icesVocab)
