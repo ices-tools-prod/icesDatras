@@ -5,6 +5,16 @@
 * added functions getCPUEAge, getCPUELength, getFlexFile, getLTassessment
 * fixed bug in catch weights and updated documentation
 
+# icesDatras 1.3-0 (2019-03-12)
+
+* Added function getIndices() to get age based indices of abundance by species,
+  survey and year.
+* Made all examples 'dontrun' as taking a while due to slow response time of
+  web server.
+* Added function getIndices() to get age based indices of abundance by species,
+  survey and year.
+* Made all examples 'dontrun' as taking a while due to slow response time of
+  web server
 
 # icesDatras 1.2-0 (2017-01-10)
 
