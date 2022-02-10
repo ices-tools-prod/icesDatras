@@ -1,12 +1,12 @@
-#' Get Survey Indices
+#' Get Litter assessment output
 #'
-#' Get age based indices of abundance by species, survey and year.
+#' Get Litter assessment output by survey, year and quarter. The raw data are also
+#' included in this file.
 #'
 #' @param survey the survey acronym, e.g. NS-IBTS.
 #' @param year the year of the survey, e.g. 2010.
 #' @param quarter the quarter of the year the survey took place, i.e. 1, 2, 3 or 4.
-#' @param species the aphia species code for the species of interest.
-#'
+#' 
 #' @return A data frame.
 #' @note
 #' The \pkg{icesAdvice} package provides \code{findAphia}, a function to look up Aphia species codes.
@@ -21,13 +21,12 @@
 #'
 #' @examples
 #' \dontrun{
-#' haddock_aphia <- icesVocab::findAphia("haddock")
-#' index <- getIndices(survey = "NS-IBTS", year = 2002, quarter = 3, species = haddock_aphia)
+#' index <- getLTassessment(survey = "NS-IBTS", year = 2002, quarter = 3)
 #' str(index)
 #' }
 #' @export
 
-getIndices <- function(survey, year, quarter, species) {
+getLTassessment <- function(survey, year, quarter) {
   # check survey name
   if (!checkSurveyOK(survey)) return(FALSE)
 
@@ -42,8 +41,8 @@ getIndices <- function(survey, year, quarter, species) {
   # read url and parse to data frame
   url <-
     sprintf(
-      "https://datras.ices.dk/WebServices/DATRASWebService.asmx/getIndices?survey=%s&year=%i&quarter=%i&species=%s",
-      survey, year, quarter, species)
+      "https://datras.ices.dk/WebServices/DATRASWebService.asmx/getLitterAssessmentOutput?survey=%s&year=%i&quarter=%i",
+      survey, year, quarter)
   out <- readDatras(url)
   out <- parseDatras(out)
 
