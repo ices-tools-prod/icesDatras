@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# icesDatras 1.4.0.9000 (2022-02-18)
+
+- Same as previous version.
+
+
 # icesDatras 1.4.0 (2022-02-10)
 
 * added functions getCPUEAge, getCPUELength, getFlexFile, getLTassessment
