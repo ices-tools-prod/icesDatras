@@ -4,7 +4,7 @@ Date: 2022-02-18
 Title: DATRAS Trawl Survey Database Web Services
 Authors@R: c(person("Colin", "Millar", role = "aut"),
              person("Cecilia", "Kvaavik", role = c("aut", "cre"), email="cecilia.kvaavik@ices.dk"),
-             person("Adriana", "Villamor", role="aut")
+             person("Adriana", "Villamor", role="aut"),
              person("Scott", "Large", role="aut"),
              person("Arni", "Magnusson", role="aut"),
              person("Vaishav", "Soni", role="ctb"))
