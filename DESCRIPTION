@@ -16,5 +16,5 @@ Description: R interface to access the web services of the ICES (International
 License: GPL (>= 2)
 URL: https://datras.ices.dk/WebServices/Webservices.aspx, https://github.com/ices-tools-prod/icesDatras
 BugReports: https://github.com/ices-tools-prod/icesDatras/issues
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.0
 Encoding: UTF-8
