@@ -4,8 +4,13 @@
 \alias{checkSurveyYearQuarterOK}
 \title{Check that a survey, year and quarter combination is in the database}
 \usage{
-checkSurveyYearQuarterOK(survey, year, quarter, checksurvey = TRUE,
-  checkyear = TRUE)
+checkSurveyYearQuarterOK(
+  survey,
+  year,
+  quarter,
+  checksurvey = TRUE,
+  checkyear = TRUE
+)
 }
 \arguments{
 \item{survey}{the survey acronym, e.g. NS-IBTS.}

@@ -4,20 +4,20 @@
 \alias{getFlexFile}
 \title{Get Flex File}
 \usage{
-getFlexFile(year, quarter)
+getFlexFile(survey, year, quarter)
 }
 \arguments{
+\item{survey}{the survey acronym, e.g. NS-IBTS.}
+
 \item{year}{the year of the survey, e.g. 2010.}
 
 \item{quarter}{the quarter of the year the survey took place, i.e. 1, 2, 3 or 4.}
-
-\item{survey}{the survey acronym, e.g. NS-IBTS.}
 }
 \value{
 A data frame.
 }
 \description{
-Get all information in HH plus estimates of Door Spread, Wing Spread and 
+Get all information in HH plus estimates of Door Spread, Wing Spread and
 Swept Area per square km. Only available for NS-IBTS survey.
 }
 \examples{

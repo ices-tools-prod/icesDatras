@@ -41,6 +41,57 @@ For a summary of the package:
 library(icesDatras)
 ?icesDatras
 ```
+Information on available surveys in DATRAS: 
+
+```R
+getSurveyList()
+
+```
+
+Working Examples 
+-----
+
+Extracting survey haul (HH), lenght (HL) and agebased (CA) data from a given survey, quarter and year, 
+i.e. North Sea IBTS, Quarter 1, 2019:
+
+```R
+survey <- "NS-IBTS"
+year <- 2019
+quarter <- 1
+
+HH <- getHHdata(survey, year, quarter) 
+HL <- getHLdata(survey, year, quarter) 
+CA <- getCAdata(survey, year, quarter) 
+```
+
+Extracting catch weight of cod from the Baltic Sea survey, year 2019, quarter 1.  
+Note: The icesVocab package provides `findAphia`, a function to look up Aphia species codes.    
+
+```R
+library(icesVocab)
+aphia <- icesVocab::findAphia("cod") 
+
+survey <- "BITS"
+years <- 2019
+quarters <- 1
+codwgt <- getCatchWgt(survey, years, quarters, aphia)
+
+```
+
+Get catch weight for Baltic cod from all quarters  in a small timeseries (e.g. 1991 to 2011) and plot the weight in a sipmle graph per quarter.
+
+```R
+library(icesVocab)
+library(ggplot2)
+
+aphia <- icesVocab::findAphia("cod") 
+
+survey <- "BITS"
+years <- 1991:2011
+quarters <- 1:4
+codwgt <- getCatchWgt(survey, years, quarters, aphia)
+codwgt %>% ggplot(aes(x = Year, y = CatchWgt, colour= Quarter)) + geom_point()
+```
 
 References
 ----------
@@ -50,6 +101,10 @@ http://datras.ices.dk
 
 ICES DATRAS web services:
 https://datras.ices.dk/WebServices/Webservices.aspx
+
+AphiaID of marine organisms: 
+http://www.marinespecies.org/index.php
+
 
 Development
 -----------
