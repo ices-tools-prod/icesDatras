@@ -45,7 +45,7 @@ getFlexFile <- function(year, quarter) {
   # read url and parse to data frame
   url <-
     sprintf(
-      "https://datras.ices.dk/WebServices/DATRASWebService.asmx/getHHdata?survey=%s&year=%i&quarter=%i",
+      "https://datras.ices.dk/WebServices/DATRASWebService.asmx/getFlexFile?survey=%s&year=%i&quarter=%i",
       survey, year, quarter)
   out <- readDatras(url)
   out <- parseDatras(out)
