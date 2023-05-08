@@ -1,6 +1,6 @@
 #' Get Flex File
 #'
-#' Get all information in HH plus estimates of Door Spread, Wing Spread and
+#' Get all information in HH plus estimates of Door Spread, Wing Spread and 
 #' Swept Area per square km. Only available for NS-IBTS survey.
 #'
 #' @param survey the survey acronym, e.g. NS-IBTS.
@@ -30,8 +30,9 @@
 #' }
 #' @export
 
-getFlexFile <- function(survey, year, quarter) {
-
+getFlexFile <- function(year, quarter) {
+        survey= "NS-IBTS"
+        
   # check survey name
   if (!checkSurveyOK(survey)) return(FALSE)
 
@@ -44,7 +45,7 @@ getFlexFile <- function(survey, year, quarter) {
   # read url and parse to data frame
   url <-
     sprintf(
-      "https://datras.ices.dk/WebServices/DATRASWebService.asmx/getHHdata?survey=%s&year=%i&quarter=%i",
+      "https://datras.ices.dk/WebServices/DATRASWebService.asmx/getFlexFile?survey=%s&year=%i&quarter=%i",
       survey, year, quarter)
   out <- readDatras(url)
   out <- parseDatras(out)
