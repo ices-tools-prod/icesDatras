@@ -22,7 +22,7 @@ Swept Area per square km. Only available for NS-IBTS survey.
 }
 \examples{
 \dontrun{
-flex <- getFlexFile(survey = "ROCKALL", year = 2002, quarter = 3)
+flex <- getFlexFile(survey = "NS-IBTS", year = 2020, quarter = 1)
 str(flex)
 
 # error checking examples:
