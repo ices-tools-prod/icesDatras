@@ -20,3 +20,13 @@ export(getSurveyYearList)
 export(getSurveyYearQuarterList)
 importFrom(utils,capture.output)
 importFrom(utils,download.file)
+export(".onLoad")
+.onLoad <- function(libname, pkgname) {
+  cat("Welcome to icesDatras\n")
+  cat("Please read the full disclaimer here:\n")
+  cat("https://github.com/ices-tools-prod/disclaimers/blob/master/Disclaimer_DATRAS_ExchangeData.txt\n")
+  cat("Please be aware that there are known issues with the way CatCatchWgt has been reported until 2023.\n")
+  cat("You can check known data issues here:\n")
+  cat("https://www.ices.dk/data/data-portals/Pages/Datras_news_and_updates.aspx\n")
+  invisible()
+}
