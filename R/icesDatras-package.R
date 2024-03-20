@@ -1,8 +1,6 @@
-#' @docType package
+#' @name icesDatras
 #'
-#' @name icesDatras-package
-#'
-#' @aliases icesDatras
+#' @aliases icesDatras-package
 #'
 #' @title DATRAS Trawl Survey Database Web Services
 #'
@@ -55,4 +53,4 @@
 #' ICES DATRAS web services:
 #' \url{https://datras.ices.dk/WebServices/Webservices.aspx}.
 
-NA
+NULL
