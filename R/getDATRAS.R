@@ -7,6 +7,7 @@
 #' @param survey the survey acronym e.g. NS-IBTS.
 #' @param years a vector of years of the survey, e.g. c(2010, 2012) or 2005:2010.
 #' @param quarters a vector of quarters of the year the survey took place, i.e. c(1, 4) or 1:4.
+#' @param species a vector of valid aphia code of the species to download, if NULL all species are included.
 #'
 #' @return A data frame.
 #'
@@ -16,17 +17,17 @@
 #'
 #' \code{\link{icesDatras-package}} gives an overview of the package.
 #'
-#' @author Scott Large and Colin Millar.
+#' @author Colin Millar and Scott Large.
 #'
 #' @examples
 #' \dontrun{
 #' hhdata <- getDATRAS(record = "HH", survey = "ROCKALL", years = 2002, quarters = 3)
-#' hldata <- getDATRAS(record = "HL", survey = "ROCKALL", years = 2002, quarters = 3)
+#' hldata <- getDATRAS(record = "HL", survey = "ROCKALL", years = 2002, quarters = 3, species = 105883)
 #' cadata <- getDATRAS(record = "CA", survey = "ROCKALL", years = 2002, quarters = 3)
 #' }
 #' @export
 
-getDATRAS <- function(record = "HH", survey, years, quarters) {
+getDATRAS <- function(record = "HH", survey, years, quarters, species = NULL) {
   # check record type
   if (!record %in% c("HH", "HL", "CA")) {
     message("Please specify record type:",
@@ -80,10 +81,19 @@ getDATRAS <- function(record = "HH", survey, years, quarters) {
           paste(capture.output(print(cbind.data.frame(survey = survey, year = yvec, quarter = qvec))), collapse = "\n"))
 
   # create list of web service URLs
-  url <-
-    sprintf(
-      "https://datras.ices.dk/WebServices/DATRASWebService.asmx/get%sdata?survey=%s&year=%i&quarter=%i",
-      record, survey, yvec, qvec)
+  if (is.null(species) || record == "HH") {
+    url <-
+      sprintf(
+        "https://datras.ices.dk/WebServices/DATRASWebService.asmx/get%sdata?survey=%s&year=%i&quarter=%i",
+        record, survey, yvec, qvec
+      )
+  } else {
+    url <-
+      sprintf(
+        "https://datras.ices.dk/WebServices/DATRASWebService.asmx/get%sdataSp?survey=%s&year=%i&quarter=%i&species=%i",
+        record, survey, yvec, qvec, species
+      )
+  }
 
   # read XML string and parse to data frame
   out <- lapply(url,

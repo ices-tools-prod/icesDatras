@@ -4,7 +4,7 @@
 \alias{getCAdata}
 \title{Get Age-Based Data}
 \usage{
-getCAdata(survey, year, quarter)
+getCAdata(survey, year, quarter, species = NULL)
 }
 \arguments{
 \item{survey}{the survey acronym, e.g. NS-IBTS.}
@@ -12,6 +12,9 @@ getCAdata(survey, year, quarter)
 \item{year}{the year of the survey, e.g. 2010.}
 
 \item{quarter}{the quarter of the year the survey took place, i.e. 1, 2, 3 or 4.}
+
+\item{species}{the valid aphia code of the species to download, if
+NULL all species are included}
 }
 \value{
 A data frame.
@@ -22,6 +25,9 @@ Get age-based data such as sex, maturity, and age counts per length of sampled s
 \examples{
 \dontrun{
 cadata <- getCAdata(survey = "ROCKALL", year = 2002, quarter = 3)
+str(cadata)
+
+cadata <- getCAdata(survey = "ROCKALL", year = 2002, quarter = 3, species = 126437)
 str(cadata)
 }
 }

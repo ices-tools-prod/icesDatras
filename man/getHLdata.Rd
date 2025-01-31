@@ -4,7 +4,7 @@
 \alias{getHLdata}
 \title{Get Length-Based Data}
 \usage{
-getHLdata(survey, year, quarter, species)
+getHLdata(survey, year, quarter, species = NULL)
 }
 \arguments{
 \item{survey}{the survey acronym, e.g. NS-IBTS.}
@@ -13,7 +13,8 @@ getHLdata(survey, year, quarter, species)
 
 \item{quarter}{the quarter of the year the survey took place, i.e. 1, 2, 3 or 4.}
 
-\item{species}{the valid aphia code of the species to download, if NULL all species are included}
+\item{species}{the valid aphia code of the species to download, if
+NULL all species are included}
 }
 \value{
 A data frame.
@@ -24,7 +25,7 @@ Get length-based information such as measured length, individual counts,
 }
 \examples{
 \dontrun{
-hldata <- getHLdata(survey = "BTS", year = 1993, quarter = 3, species = 105883)
+hldata <- getHLdata(survey = "ROCKALL", year = 2002, quarter = 3, species = 11760)
 str(hldata)
 }
 }

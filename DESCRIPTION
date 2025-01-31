@@ -1,5 +1,5 @@
 Package: icesDatras
-Version: 1.4.2
+Version: 1.5.0
 Title: DATRAS Trawl Survey Database Web Services
 Authors@R: c(person("Colin", "Millar", role = c("aut", "cre"), email = "colin.millar@ices.dk"),
              person("Cecilia", "Kvaavik", role = "aut"),
@@ -15,5 +15,5 @@ Description: R interface to access the web services of the ICES (International
 License: GPL (>= 2)
 URL: https://datras.ices.dk/WebServices/Webservices.aspx, https://github.com/ices-tools-prod/icesDatras
 BugReports: https://github.com/ices-tools-prod/icesDatras/issues
-RoxygenNote: 7.3.1
+RoxygenNote: 7.3.2
 Encoding: UTF-8

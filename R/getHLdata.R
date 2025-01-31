@@ -6,7 +6,8 @@
 #' @param survey the survey acronym, e.g. NS-IBTS.
 #' @param year the year of the survey, e.g. 2010.
 #' @param quarter the quarter of the year the survey took place, i.e. 1, 2, 3 or 4.
-#' @param species the valid aphia code of the species to download, if NULL all species are included
+#' @param species the valid aphia code of the species to download, if
+#'                NULL all species are included
 #'
 #' @return A data frame.
 #'
@@ -21,12 +22,12 @@
 #'
 #' @examples
 #' \dontrun{
-#' hldata <- getHLdata(survey = "BTS", year = 1993, quarter = 3, species = 105883)
+#' hldata <- getHLdata(survey = "ROCKALL", year = 2002, quarter = 3, species = 11760)
 #' str(hldata)
 #' }
 #' @export
 
-getHLdata <- function(survey, year, quarter, species) {
+getHLdata <- function(survey, year, quarter, species = NULL) {
   # check survey name
   if (!checkSurveyOK(survey)) {
     return(FALSE)

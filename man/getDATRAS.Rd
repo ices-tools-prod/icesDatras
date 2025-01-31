@@ -4,7 +4,7 @@
 \alias{getDATRAS}
 \title{Get Any DATRAS Data}
 \usage{
-getDATRAS(record = "HH", survey, years, quarters)
+getDATRAS(record = "HH", survey, years, quarters, species = NULL)
 }
 \arguments{
 \item{record}{the data type required: "HH" haul data, "HL" length-based data, "CA" age-based data.}
@@ -14,6 +14,8 @@ getDATRAS(record = "HH", survey, years, quarters)
 \item{years}{a vector of years of the survey, e.g. c(2010, 2012) or 2005:2010.}
 
 \item{quarters}{a vector of quarters of the year the survey took place, i.e. c(1, 4) or 1:4.}
+
+\item{species}{a vector of valid aphia code of the species to download, if NULL all species are included.}
 }
 \value{
 A data frame.
@@ -25,7 +27,7 @@ It supports querying many years and quarters in one function call.
 \examples{
 \dontrun{
 hhdata <- getDATRAS(record = "HH", survey = "ROCKALL", years = 2002, quarters = 3)
-hldata <- getDATRAS(record = "HL", survey = "ROCKALL", years = 2002, quarters = 3)
+hldata <- getDATRAS(record = "HL", survey = "ROCKALL", years = 2002, quarters = 3, species = 105883)
 cadata <- getDATRAS(record = "CA", survey = "ROCKALL", years = 2002, quarters = 3)
 }
 }
@@ -36,5 +38,5 @@ get haul data, length-based data, and age-based data.
 \code{\link{icesDatras-package}} gives an overview of the package.
 }
 \author{
-Scott Large and Colin Millar.
+Colin Millar and Scott Large.
 }
