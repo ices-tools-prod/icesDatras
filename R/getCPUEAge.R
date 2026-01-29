@@ -20,7 +20,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' getCPUEperAge(survey = "NS-IBTS", year = 2018, quarter = 1)
+#' getCPUEAge(survey = "NS-IBTS", year = 2018, quarter = 1)
 #' }
 #' @export
 
@@ -38,3 +38,4 @@ getCPUEAge <- function(survey, year, quarter) {
 
   out
 }
+
