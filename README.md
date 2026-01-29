@@ -6,7 +6,7 @@
 [![CRAN Total](http://cranlogs.r-pkg.org/badges/grand-total/icesDatras)](https://cran.r-project.org/package=icesDatras)
 [![License](https://img.shields.io/badge/license-GPL%20(%3E%3D%202)-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
 
-[<img align="right" alt="ICES Logo" width="17%" height="17%" src="http://ices.dk/_layouts/15/1033/images/icesimg/iceslogo.png">](http://ices.dk)
+[<img align="right" alt="ICES Logo" width="17%" height="17%" src="https://ices.dk/_layouts/15/1033/images/icesimg/iceslogo.png">](http://ices.dk)
 
 icesDatras
 ==========
@@ -122,3 +122,4 @@ The current development version can be installed using:
 library(devtools)
 install_github("ices-tools-prod/icesDatras")
 ```
+
