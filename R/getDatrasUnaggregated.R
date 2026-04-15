@@ -3,8 +3,7 @@
 #' Downloads unaggregated haul- and biological-level data from the
 #' ICES DATRAS Download API.
 
-#'#' @author Vaishav Soni, International Council for the Exploration of the Sea (ICES)
-
+#' @author Vaishav Soni, International Council for the Exploration of the Sea (ICES)
 #' @param recordtype Character. One of `"HH"`, `"HL"`, or `"CA"`.
 #' @param survey Character. Survey acronym (e.g. `"NS-IBTS"`).
 #' @param year Character. Year or range (e.g. `"2020"` or `"1965:2025"`).
@@ -69,18 +68,49 @@ getDatrasUnaggregated <- function(recordtype, survey, year, quarter) {
   
   message("Reading data...")
   data.table::setDTthreads(0)
-  
+
   df <- data.table::fread(
     csv_file,
     colClasses = col_classes,
     fill = TRUE,
-    showProgress = FALSE
+    showProgress = FALSE,
+    blank.lines.skip = TRUE
   )
   
   unlink(c(tmp_zip, tmp_dir), recursive = TRUE)
   df
 }
 
+#' Download unaggregated DATRAS survey data (Deprecated)
+#'
+#' Downloads unaggregated haul- and biological-level data from the
+#' ICES DATRAS Download API.
+#' Now deprecated, use getDatrasUnaggregated
+#' @author Vaishav Soni, International Council for the Exploration of the Sea (ICES)
+#' @param recordtype Character. One of `"HH"`, `"HL"`, or `"CA"`.
+#' @param survey Character. Survey acronym (e.g. `"NS-IBTS"`).
+#' @param year Character. Year or range (e.g. `"2020"` or `"1965:2025"`).
+#' @param quarter Character. Quarter or range (e.g. `"1"` or `"1:4"`).
+#'
+#' @return A `data.table` containing the requested DATRAS data.
+#'
+#' @details
+#' The function downloads a zipped CSV file from the official ICES DATRAS API,
+#' extracts it locally, and reads it using fixed column classes to avoid
+#' costly type guessing.
+#' @seealso [getDatrasUnaggregated()]
+#'
+#' @examples
+#' \dontrun{
+#' df <- get_datras_unaggregated_data(
+#'   recordtype = "HH",
+#'   survey = "NS-IBTS",
+#'   year = "1965:2025",
+#'   quarter = "1:4"
+#' )
+#' }
+#'
+#' @export
 get_datras_unaggregated_data <- function(recordtype, survey, year, quarter) {
   .Deprecated(new = "getDatrasUnaggregated")
   getDatrasUnaggregated(recordtype, survey, year, quarter)
