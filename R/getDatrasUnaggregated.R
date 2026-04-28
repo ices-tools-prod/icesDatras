@@ -3,8 +3,7 @@
 #' Downloads unaggregated haul- and biological-level data from the
 #' ICES DATRAS Download API.
 
-#'#' @author Vaishav Soni, International Council for the Exploration of the Sea (ICES)
-
+#' @author Vaishav Soni, International Council for the Exploration of the Sea (ICES)
 #' @param recordtype Character. One of `"HH"`, `"HL"`, or `"CA"`.
 #' @param survey Character. Survey acronym (e.g. `"NS-IBTS"`).
 #' @param year Character. Year or range (e.g. `"2020"` or `"1965:2025"`).
@@ -29,14 +28,14 @@
 #'
 #' @export
 #' @importFrom data.table setDTthreads fread
-get_datras_unaggregated_data <- function(recordtype, survey, year, quarter) {
-
+getDatrasUnaggregated <- function(recordtype, survey, year, quarter) {
+  
   if (!recordtype %in% c("HH", "HL", "CA")) {
     stop("recordtype must be one of 'HH', 'HL', or 'CA'")
   }
-
+  
   base_url <- "https://datras.ices.dk/Data_products/Download/DATRASDownloadAPI.aspx"
-
+  
   full_url <- paste0(
     base_url,
     "?recordtype=", recordtype,
@@ -44,29 +43,29 @@ get_datras_unaggregated_data <- function(recordtype, survey, year, quarter) {
     "&year=", year,
     "&quarter=", quarter
   )
-
+  
   col_classes <- .datras_column_classes(recordtype)
-
+  
   tmp_zip <- tempfile(fileext = ".zip")
   tmp_dir <- tempfile()
   dir.create(tmp_dir)
-
+  
   message("Downloading DATRAS data...")
   utils::download.file(full_url, tmp_zip, mode = "wb", quiet = TRUE)
-
+  
   message("Extracting files...")
   utils::unzip(tmp_zip, exdir = tmp_dir)
-
+  
   csv_file <- list.files(
     tmp_dir,
     pattern = "DATRASDataTable\\.csv$",
     full.names = TRUE
   )
-
+  
   if (length(csv_file) == 0) {
     stop("No CSV file found in downloaded archive")
   }
-
+  
   message("Reading data...")
   data.table::setDTthreads(0)
 
@@ -74,11 +73,47 @@ get_datras_unaggregated_data <- function(recordtype, survey, year, quarter) {
     csv_file,
     colClasses = col_classes,
     fill = TRUE,
-    showProgress = FALSE
+    showProgress = FALSE,
+    blank.lines.skip = TRUE
   )
-
+  
   unlink(c(tmp_zip, tmp_dir), recursive = TRUE)
   df
+}
+
+#' Download unaggregated DATRAS survey data (Deprecated)
+#'
+#' Downloads unaggregated haul- and biological-level data from the
+#' ICES DATRAS Download API.
+#' Now deprecated, use getDatrasUnaggregated
+#' @author Vaishav Soni, International Council for the Exploration of the Sea (ICES)
+#' @param recordtype Character. One of `"HH"`, `"HL"`, or `"CA"`.
+#' @param survey Character. Survey acronym (e.g. `"NS-IBTS"`).
+#' @param year Character. Year or range (e.g. `"2020"` or `"1965:2025"`).
+#' @param quarter Character. Quarter or range (e.g. `"1"` or `"1:4"`).
+#'
+#' @return A `data.table` containing the requested DATRAS data.
+#'
+#' @details
+#' The function downloads a zipped CSV file from the official ICES DATRAS API,
+#' extracts it locally, and reads it using fixed column classes to avoid
+#' costly type guessing.
+#' @seealso [getDatrasUnaggregated()]
+#'
+#' @examples
+#' \dontrun{
+#' df <- get_datras_unaggregated_data(
+#'   recordtype = "HH",
+#'   survey = "NS-IBTS",
+#'   year = "1965:2025",
+#'   quarter = "1:4"
+#' )
+#' }
+#'
+#' @export
+get_datras_unaggregated_data <- function(recordtype, survey, year, quarter) {
+  .Deprecated(new = "getDatrasUnaggregated")
+  getDatrasUnaggregated(recordtype, survey, year, quarter)
 }
 
 
@@ -87,9 +122,9 @@ get_datras_unaggregated_data <- function(recordtype, survey, year, quarter) {
 # -------------------------------------------------------------------------
 
 .datras_column_classes <- function(recordtype) {
-
+  
   classes <- list(
-
+    
     HH = list(
       character = c(
         "RecordHeader","Country","Platform","Gear","GearExceptions",
@@ -118,7 +153,7 @@ get_datras_unaggregated_data <- function(recordtype, survey, year, quarter) {
         "SecchiDepth","Turbidity","TideSpeed","SurveyIndexArea"
       )
     ),
-
+    
     HL = list(
       character = c(
         "RecordHeader","Country","Platform","Gear","GearExceptions",
@@ -136,7 +171,7 @@ get_datras_unaggregated_data <- function(recordtype, survey, year, quarter) {
         "TotalNumber","SubsamplingFactor","NumberAtLength"
       )
     ),
-
+    
     CA = list(
       character = c(
         "RecordHeader","Country","Platform","Gear","GearExceptions",
@@ -158,6 +193,6 @@ get_datras_unaggregated_data <- function(recordtype, survey, year, quarter) {
       )
     )
   )
-
+  
   classes[[recordtype]]
 }
