@@ -35,6 +35,14 @@ getDATRASCatched(
 \item{quarters}{a vector of quarters of the year the survey took place, i.e. c(1, 4) or 1:4.}
 
 \item{species}{a vector of valid aphia code of the species to download, if NULL all species are included.}
+
+\item{fix_types}{logical, apply the DATRAS type to columns. Takes package default 
+unless specified. Use \code{SetDatrasDefaults()} to change 
+default across all functions.}
+
+\item{new_names}{logical, apply the new DATRAS naming convention to output. 
+Takes package default unless specified. Use 
+\code{SetDatrasDefaults()} to change default across all functions.}
 }
 \value{
 A data frame.

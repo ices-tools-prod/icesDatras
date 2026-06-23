@@ -3,8 +3,6 @@
 #' @return A dataframe
 #' @export
 #' @importFrom XML xmlToDataFrame
-#'
-#' @examples
 getDatrasFieldList <- function() {
 
   url <- "https://datras.ices.dk/WebServices/DATRASWebService.asmx/getDatrasFieldList"

@@ -1,6 +1,6 @@
 Package: icesDatras
 Title: DATRAS Trawl Survey Database Web Services
-Version: 1.5.1
+Version: 1.5.2
 Authors@R: c(
     person("Colin", "Millar", , "colin.millar@ices.dk", role = c("aut", "cre")),
     person("Cecilia", "Kvaavik", role = "aut"),
@@ -22,7 +22,8 @@ Imports:
     data.table,
     memoise,
     rlang,
-    utils
+    utils,
+    XML
 Suggests: 
     icesVocab
 Encoding: UTF-8

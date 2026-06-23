@@ -7,11 +7,11 @@
 #' @param year the year of the survey, e.g. 2010.
 #' @param quarter the quarter of the year the survey took place, i.e. 1, 2, 3 or 4.
 #' @param fix_types logical, apply the DATRAS type to columns. Takes package default 
-#'                  unless specified. Use \code{SetDatrasDefaults() to change 
+#'                  unless specified. Use \code{SetDatrasDefaults()} to change 
 #'                  default across all functions. 
 #' @param new_names logical, apply the new DATRAS naming convention to output. 
 #'                  Takes package default unless specified. Use 
-#'                  \code{SetDatrasDefaults() to change default across all functions.
+#'                  \code{SetDatrasDefaults()} to change default across all functions.
 #' 
 #' @return A data frame.
 #' @note

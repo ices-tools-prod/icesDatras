@@ -22,6 +22,14 @@ getCAdata(
 
 \item{species}{the valid aphia code of the species to download, if
 NULL all species are included}
+
+\item{fix_types}{logical, apply the DATRAS type to columns. Takes package default 
+unless specified. Use \code{SetDatrasDefaults()} to change 
+default across all functions}
+
+\item{new_names}{logical, apply the new DATRAS naming convention to output. 
+Takes package default unless specified. Use 
+\code{SetDatrasDefaults()} to change default across all functions}
 }
 \value{
 A data frame.

@@ -49,7 +49,7 @@ getcache <- cachem::cache_mem(max_age = 60*24 * 60)
 SetDatrasDefaults <- function(fix_types = getOption("icesDatras.fix_types"), 
                               new_names = getOption("icesDatras.new_names")){
   stopifnot(new_names %in% c(TRUE, FALSE))
-  stopifnot(fix_type %in% c(TRUE, FALSE))
+  stopifnot(fix_types %in% c(TRUE, FALSE))
   options(icesDatras.fix_types = fix_types)
   message(paste0("icesDatras.fix_types set to ", fix_types))
   options(icesDatras.new_names = new_names)

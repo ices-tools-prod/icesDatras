@@ -7,11 +7,11 @@
 #' @param quarters a vector of quarters of the year the survey took place, e.g. c(1, 4) or 1:4.
 #' @param aphia a vector of Aphia species codes defined in the WoRMS database, e.g. c(126436, 1264374).
 #' @param fix_types logical, apply the DATRAS type to columns. Takes package default 
-#'                  unless specified. Use \code{SetDatrasDefaults() to change 
+#'                  unless specified. Use \code{SetDatrasDefaults()} to change 
 #'                  default across all functions. 
 #' @param new_names logical, apply the new DATRAS naming convention to output. 
 #'                  Takes package default unless specified. Use 
-#'                  \code{SetDatrasDefaults() to change default across all functions.
+#'                  \code{SetDatrasDefaults()} to change default across all functions.
 #'
 #' @return A data frame.
 #'
