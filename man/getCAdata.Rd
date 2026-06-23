@@ -4,7 +4,14 @@
 \alias{getCAdata}
 \title{Get Age-Based Data}
 \usage{
-getCAdata(survey, year, quarter, species = NULL)
+getCAdata(
+  survey,
+  year,
+  quarter,
+  species = NULL,
+  fix_types = getOption("icesDatras.fix_types"),
+  new_names = getOption("icesDatras.new_names")
+)
 }
 \arguments{
 \item{survey}{the survey acronym, e.g. NS-IBTS.}

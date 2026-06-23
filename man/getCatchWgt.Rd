@@ -4,7 +4,14 @@
 \alias{getCatchWgt}
 \title{Get Catch Weights}
 \usage{
-getCatchWgt(survey, years, quarters, aphia)
+getCatchWgt(
+  survey,
+  years,
+  quarters,
+  aphia,
+  fix_types = getOption("icesDatras.fix_types"),
+  new_names = getOption("icesDatras.new_names")
+)
 }
 \arguments{
 \item{survey}{the survey acronym e.g. NS-IBTS.}

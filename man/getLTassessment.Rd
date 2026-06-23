@@ -4,7 +4,13 @@
 \alias{getLTassessment}
 \title{Get Litter assessment output}
 \usage{
-getLTassessment(survey, year, quarter)
+getLTassessment(
+  survey,
+  year,
+  quarter,
+  fix_types = getOption("icesDatras.fix_types"),
+  new_names = getOption("icesDatras.new_names")
+)
 }
 \arguments{
 \item{survey}{the survey acronym, e.g. NS-IBTS.}

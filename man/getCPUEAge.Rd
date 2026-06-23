@@ -4,7 +4,13 @@
 \alias{getCPUEAge}
 \title{Get CPUE per Age per Haul per Hour for a given Survey, year and Quarter}
 \usage{
-getCPUEAge(survey, year, quarter)
+getCPUEAge(
+  survey,
+  year,
+  quarter,
+  fix_types = getOption("icesDatras.fix_types"),
+  new_names = getOption("icesDatras.new_names")
+)
 }
 \arguments{
 \item{survey}{the survey acronym, e.g. NS-IBTS.}
@@ -21,7 +27,7 @@ Get CPUE per Age per Haul per Hour for a given Survey, year and Quarter
 }
 \examples{
 \dontrun{
-getCPUEperAge(survey = "NS-IBTS", year = 2018, quarter = 1)
+getCPUEAge(survey = "NS-IBTS", year = 2018, quarter = 1)
 }
 }
 \seealso{

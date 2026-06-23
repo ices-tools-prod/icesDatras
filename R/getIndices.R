@@ -6,10 +6,16 @@
 #' @param year the year of the survey, e.g. 2010.
 #' @param quarter the quarter of the year the survey took place, i.e. 1, 2, 3 or 4.
 #' @param species the aphia species code for the species of interest.
+#' @param fix_types logical, apply the DATRAS type to columns. Takes package default 
+#'                  unless specified. Use \code{SetDatrasDefaults() to change 
+#'                  default across all functions. 
+#' @param new_names logical, apply the new DATRAS naming convention to output. 
+#'                  Takes package default unless specified. Use 
+#'                  \code{SetDatrasDefaults() to change default across all functions.
 #'
 #' @return A data frame.
 #' @note
-#' The \pkg{icesAdvice} package provides \code{findAphia}, a function to look up Aphia species codes.
+#' The \pkg{icesVocab} package provides \code{findAphia}, a function to look up Aphia species codes.
 #'
 #' @seealso
 #' \code{\link{getDATRAS}} supports querying many years and quarters in one function call.
@@ -27,7 +33,7 @@
 #' }
 #' @export
 
-getIndices <- function(survey, year, quarter, species) {
+getIndices <- function(survey, year, quarter, species, fix_types = getOption("icesDatras.fix_types"), new_names = getOption("icesDatras.new_names")) {
   # check survey name
   if (!checkSurveyOK(survey)) return(FALSE)
 
@@ -46,6 +52,9 @@ getIndices <- function(survey, year, quarter, species) {
       survey, year, quarter, species)
   out <- readDatras(url)
   out <- parseDatras(out)
+  out <- formatDatras(out, 
+                      fix_types = fix_types,
+                      new_names = new_names)
 
   # return
   out

@@ -4,7 +4,14 @@
 \alias{getIndices}
 \title{Get Survey Indices}
 \usage{
-getIndices(survey, year, quarter, species)
+getIndices(
+  survey,
+  year,
+  quarter,
+  species,
+  fix_types = getOption("icesDatras.fix_types"),
+  new_names = getOption("icesDatras.new_names")
+)
 }
 \arguments{
 \item{survey}{the survey acronym, e.g. NS-IBTS.}
@@ -22,7 +29,7 @@ A data frame.
 Get age based indices of abundance by species, survey and year.
 }
 \note{
-The \pkg{icesAdvice} package provides \code{findAphia}, a function to look up Aphia species codes.
+The \pkg{icesVocab} package provides \code{findAphia}, a function to look up Aphia species codes.
 }
 \examples{
 \dontrun{

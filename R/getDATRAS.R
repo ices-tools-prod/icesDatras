@@ -8,6 +8,12 @@
 #' @param years a vector of years of the survey, e.g. c(2010, 2012) or 2005:2010.
 #' @param quarters a vector of quarters of the year the survey took place, i.e. c(1, 4) or 1:4.
 #' @param species a vector of valid aphia code of the species to download, if NULL all species are included.
+#' @param fix_types logical, apply the DATRAS type to columns. Takes package default 
+#'                  unless specified. Use \code{SetDatrasDefaults() to change 
+#'                  default across all functions. 
+#' @param new_names logical, apply the new DATRAS naming convention to output. 
+#'                  Takes package default unless specified. Use 
+#'                  \code{SetDatrasDefaults() to change default across all functions.
 #'
 #' @return A data frame.
 #'
@@ -27,7 +33,7 @@
 #' }
 #' @export
 
-getDATRAS <- function(record = "HH", survey, years, quarters, species = NULL) {
+getDATRAS <- function(record = "HH", survey, years, quarters, species = NULL, fix_types = getOption("icesDatras.fix_types"), new_names = getOption("icesDatras.new_names")) {
   # check record type
   if (!record %in% c("HH", "HL", "CA")) {
     message("Please specify record type:",
@@ -99,9 +105,15 @@ getDATRAS <- function(record = "HH", survey, years, quarters, species = NULL) {
   out <- lapply(url,
                 function(x) {
                   x <- readDatras(x)
-                  parseDatras(x)
+                  x <- parseDatras(x)
                 })
   out <- do.call(rbind, out)
+  out <- formatDatras(out, record = record,
+                      new_names = new_names,
+                      fix_types = fix_types)
 
   out
 }
+
+#' @describeIn getDATRAS cached version of getDATRAS
+getDATRASCatched <- getDATRAS

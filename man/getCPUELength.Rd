@@ -4,7 +4,13 @@
 \alias{getCPUELength}
 \title{Get CPUE per Length per Haul per Hour for a given Survey, year and Quarter}
 \usage{
-getCPUELength(survey, year, quarter)
+getCPUELength(
+  survey,
+  year,
+  quarter,
+  fix_types = getOption("icesDatras.fix_types"),
+  new_names = getOption("icesDatras.new_names")
+)
 }
 \arguments{
 \item{survey}{the survey acronym, e.g. NS-IBTS.}

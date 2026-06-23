@@ -4,7 +4,13 @@
 \alias{getFlexFile}
 \title{Get Flex File}
 \usage{
-getFlexFile(survey, year, quarter)
+getFlexFile(
+  survey,
+  year,
+  quarter,
+  fix_types = getOption("icesDatras.fix_types"),
+  new_names = getOption("icesDatras.new_names")
+)
 }
 \arguments{
 \item{survey}{the survey acronym, e.g. NS-IBTS.}
@@ -26,7 +32,7 @@ flex <- getFlexFile(survey = "NS-IBTS", year = 2020, quarter = 1)
 str(flex)
 
 # error checking examples:
-flex <- getFlexFile(survey = "NS_IBTS", year = 2016, quarter = 1)
+flex <- getFlexFile(survey = "NS-IBTS", year = 2016, quarter = 1)
 flex <- getFlexFile(survey = "NS-IBTS", year = 2030, quarter = 1)
 flex <- getFlexFile(survey = "NS-IBTS", year = 2016, quarter = 6)
 }
