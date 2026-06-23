@@ -4,7 +4,14 @@
 \alias{getHLdata}
 \title{Get Length-Based Data}
 \usage{
-getHLdata(survey, year, quarter, species = NULL)
+getHLdata(
+  survey,
+  year,
+  quarter,
+  species = NULL,
+  fix_types = getOption("icesDatras.fix_types"),
+  new_names = getOption("icesDatras.new_names")
+)
 }
 \arguments{
 \item{survey}{the survey acronym, e.g. NS-IBTS.}

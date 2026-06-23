@@ -8,6 +8,12 @@
 #' @param quarter the quarter of the year the survey took place, i.e. 1, 2, 3 or 4.
 #' @param species the valid aphia code of the species to download, if
 #'                NULL all species are included
+#' @param fix_types logical, apply the DATRAS type to columns. Takes package default 
+#'                  unless specified. Use \code{SetDatrasDefaults() to change 
+#'                  default across all functions. 
+#' @param new_names logical, apply the new DATRAS naming convention to output. 
+#'                  Takes package default unless specified. Use 
+#'                  \code{SetDatrasDefaults() to change default across all functions.
 #'
 #' @return A data frame.
 #'
@@ -27,7 +33,7 @@
 #' }
 #' @export
 
-getHLdata <- function(survey, year, quarter, species = NULL) {
+getHLdata <- function(survey, year, quarter, species = NULL, fix_types = getOption("icesDatras.fix_types"), new_names = getOption("icesDatras.new_names")) {
   # check survey name
   if (!checkSurveyOK(survey)) {
     return(FALSE)
@@ -60,6 +66,10 @@ getHLdata <- function(survey, year, quarter, species = NULL) {
 
   out <- readDatras(url)
   out <- parseDatras(out)
+  out <- formatDatras(out, 
+                      record = "HL",
+                      fix_types = fix_types,
+                      new_names = new_names)
 
   out
 }

@@ -4,7 +4,13 @@
 \alias{getHHdata}
 \title{Get Haul Data}
 \usage{
-getHHdata(survey, year, quarter)
+getHHdata(
+  survey,
+  year,
+  quarter,
+  fix_types = getOption("icesDatras.fix_types"),
+  new_names = getOption("icesDatras.new_names")
+)
 }
 \arguments{
 \item{survey}{the survey acronym, e.g. NS-IBTS.}
@@ -25,7 +31,7 @@ hhdata <- getHHdata(survey = "ROCKALL", year = 2002, quarter = 3)
 str(hhdata)
 
 # error checking examples:
-hhdata <- getHHdata(survey = "NS_IBTS", year = 2016, quarter = 1)
+hhdata <- getHHdata(survey = "NS-IBTS", year = 2016, quarter = 1)
 hhdata <- getHHdata(survey = "NS-IBTS", year = 2030, quarter = 1)
 hhdata <- getHHdata(survey = "NS-IBTS", year = 2016, quarter = 6)
 }
