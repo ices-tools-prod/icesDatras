@@ -38,11 +38,7 @@ getcache <- cachem::cache_mem(max_age = 60*24 * 60)
     "  https://github.com/ices-tools-prod/disclaimers/blob/master/Disclaimer_DATRAS_ExchangeData.txt\n",
     "Please be aware that there are known issues with the way CatCatchWgt has been reported until 2023.\n",
     "You can check known data issues here:\n",
-    "  https://www.ices.dk/data/data-portals/Pages/Datras_news_and_updates.aspx\n\n",
-    "icesDatras now enables users to set defaults options for column names and types.\n",
-    " Please use`icesDatras::SetDatrasDefaults()` to change the defaults.\n",
-    "Set new_names=TRUE to adopt the new DATRAS naming convention.\n",
-    "Set fix_types=FALSE to revert to the prior icesDATRAS behaviour (It is recommended to update your workflow rather than choosing this option)."
+    "  https://www.ices.dk/data/data-portals/Pages/Datras_news_and_updates.aspx\n
   )
 }
 
