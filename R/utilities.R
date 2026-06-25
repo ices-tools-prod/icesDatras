@@ -145,11 +145,11 @@ formatDatras <- function(df, record = NULL, new_names = getOption("icesDatras.ne
   stopifnot(new_names %in% c(TRUE, FALSE))
   stopifnot(fix_types %in% c(TRUE, FALSE))
   
-  if(fix_types){
+  if (fix_types) {
     df <- applyDatrasTypeSchema(df, record = record)
   }
   
-  if(new_names){
+  if (new_names) {
     df <- applyDatrasNameSchema(df, record = record)
   }
   df
