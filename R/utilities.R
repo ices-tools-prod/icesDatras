@@ -160,7 +160,7 @@ applyDatrasTypeSchema <- function(df, record = NULL) {
   
   datras_field_list <- getDatrasFieldList()
   
-  if(!is.null(record)){
+  if (!is.null(record)) {
     datras_field_list <- datras_field_list[datras_field_list["RecordHeader"] == record,]
   }
   
@@ -189,7 +189,7 @@ applyDatrasNameSchema <- function(df, record = NULL) {
   
   datras_field_list <- getDatrasFieldList()
   
-  if(!is.null(record)){
+  if (!is.null(record)) {
     datras_field_list <- datras_field_list[datras_field_list[["RecordHeader"]] == record,]
   }
   
