@@ -4,7 +4,14 @@
 \alias{getHLdata}
 \title{Get Length-Based Data}
 \usage{
-getHLdata(survey, year, quarter, species = NULL)
+getHLdata(
+  survey,
+  year,
+  quarter,
+  species = NULL,
+  fix_types = getOption("icesDatras.fix_types"),
+  new_names = getOption("icesDatras.new_names")
+)
 }
 \arguments{
 \item{survey}{the survey acronym, e.g. NS-IBTS.}
@@ -15,6 +22,14 @@ getHLdata(survey, year, quarter, species = NULL)
 
 \item{species}{the valid aphia code of the species to download, if
 NULL all species are included}
+
+\item{fix_types}{logical, apply the DATRAS type to columns. Takes package default 
+unless specified. Use \code{SetDatrasDefaults()} to change 
+default across all functions.}
+
+\item{new_names}{logical, apply the new DATRAS naming convention to output. 
+Takes package default unless specified. Use 
+\code{SetDatrasDefaults()} to change default across all functions.}
 }
 \value{
 A data frame.

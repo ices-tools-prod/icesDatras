@@ -4,7 +4,13 @@
 \alias{getCPUELength}
 \title{Get CPUE per Length per Haul per Hour for a given Survey, year and Quarter}
 \usage{
-getCPUELength(survey, year, quarter)
+getCPUELength(
+  survey,
+  year,
+  quarter,
+  fix_types = getOption("icesDatras.fix_types"),
+  new_names = getOption("icesDatras.new_names")
+)
 }
 \arguments{
 \item{survey}{the survey acronym, e.g. NS-IBTS.}
@@ -12,6 +18,14 @@ getCPUELength(survey, year, quarter)
 \item{year}{the year of the survey, e.g. 2010.}
 
 \item{quarter}{the quarter of interest, e.g. 1}
+
+\item{fix_types}{logical, apply the DATRAS type to columns. Takes package default 
+unless specified. Use \code{SetDatrasDefaults()} to change 
+default across all functions.}
+
+\item{new_names}{logical, apply the new DATRAS naming convention to output. 
+Takes package default unless specified. Use 
+\code{SetDatrasDefaults()} to change default across all functions.}
 }
 \value{
 A data frame.

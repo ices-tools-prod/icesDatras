@@ -4,7 +4,13 @@
 \alias{getFlexFile}
 \title{Get Flex File}
 \usage{
-getFlexFile(survey, year, quarter)
+getFlexFile(
+  survey,
+  year,
+  quarter,
+  fix_types = getOption("icesDatras.fix_types"),
+  new_names = getOption("icesDatras.new_names")
+)
 }
 \arguments{
 \item{survey}{the survey acronym, e.g. NS-IBTS.}
@@ -12,6 +18,14 @@ getFlexFile(survey, year, quarter)
 \item{year}{the year of the survey, e.g. 2010.}
 
 \item{quarter}{the quarter of the year the survey took place, i.e. 1, 2, 3 or 4.}
+
+\item{fix_types}{logical, apply the DATRAS type to columns. Takes package default 
+unless specified. Use \code{SetDatrasDefaults()} to change 
+default across all functions.}
+
+\item{new_names}{logical, apply the new DATRAS naming convention to output. 
+Takes package default unless specified. Use 
+\code{SetDatrasDefaults()} to change default across all functions.}
 }
 \value{
 A data frame.
@@ -26,7 +40,7 @@ flex <- getFlexFile(survey = "NS-IBTS", year = 2020, quarter = 1)
 str(flex)
 
 # error checking examples:
-flex <- getFlexFile(survey = "NS_IBTS", year = 2016, quarter = 1)
+flex <- getFlexFile(survey = "NS-IBTS", year = 2016, quarter = 1)
 flex <- getFlexFile(survey = "NS-IBTS", year = 2030, quarter = 1)
 flex <- getFlexFile(survey = "NS-IBTS", year = 2016, quarter = 6)
 }

@@ -4,7 +4,14 @@
 \alias{getCatchWgt}
 \title{Get Catch Weights}
 \usage{
-getCatchWgt(survey, years, quarters, aphia)
+getCatchWgt(
+  survey,
+  years,
+  quarters,
+  aphia,
+  fix_types = getOption("icesDatras.fix_types"),
+  new_names = getOption("icesDatras.new_names")
+)
 }
 \arguments{
 \item{survey}{the survey acronym e.g. NS-IBTS.}
@@ -14,6 +21,14 @@ getCatchWgt(survey, years, quarters, aphia)
 \item{quarters}{a vector of quarters of the year the survey took place, e.g. c(1, 4) or 1:4.}
 
 \item{aphia}{a vector of Aphia species codes defined in the WoRMS database, e.g. c(126436, 1264374).}
+
+\item{fix_types}{logical, apply the DATRAS type to columns. Takes package default 
+unless specified. Use \code{SetDatrasDefaults()} to change 
+default across all functions.}
+
+\item{new_names}{logical, apply the new DATRAS naming convention to output. 
+Takes package default unless specified. Use 
+\code{SetDatrasDefaults()} to change default across all functions.}
 }
 \value{
 A data frame.

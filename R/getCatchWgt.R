@@ -6,6 +6,12 @@
 #' @param years a vector of years of the survey, e.g. c(2010, 2012) or 2005:2010.
 #' @param quarters a vector of quarters of the year the survey took place, e.g. c(1, 4) or 1:4.
 #' @param aphia a vector of Aphia species codes defined in the WoRMS database, e.g. c(126436, 1264374).
+#' @param fix_types logical, apply the DATRAS type to columns. Takes package default 
+#'                  unless specified. Use \code{SetDatrasDefaults()} to change 
+#'                  default across all functions. 
+#' @param new_names logical, apply the new DATRAS naming convention to output. 
+#'                  Takes package default unless specified. Use 
+#'                  \code{SetDatrasDefaults()} to change default across all functions.
 #'
 #' @return A data frame.
 #'
@@ -28,11 +34,11 @@
 #' }
 #' @export
 
-getCatchWgt <- function(survey, years, quarters, aphia) {
+getCatchWgt <- function(survey, years, quarters, aphia, fix_types = getOption("icesDatras.fix_types"), new_names = getOption("icesDatras.new_names")) {
 
   # get data
-  hh <- getDATRAS("HH", survey, years, quarters)
-  hl <- getDATRAS("HL", survey, years, quarters)
+  hh <- getDATRAS("HH", survey, years, quarters, new_names = FALSE, fix_types = FALSE)
+  hl <- getDATRAS("HL", survey, years, quarters, new_names = FALSE, fix_types = FALSE)
 
   # process HL record
   ## add HaulID for later merging
@@ -112,5 +118,8 @@ getCatchWgt <- function(survey, years, quarters, aphia) {
     )
 
   rownames(out) <- NULL
+  out <- formatDatras(out,
+                      fix_types = fix_types,
+                      new_names = new_names)
   out
 }

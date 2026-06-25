@@ -2,9 +2,28 @@
 % Please edit documentation in R/getDATRAS.R
 \name{getDATRAS}
 \alias{getDATRAS}
+\alias{getDATRASCatched}
 \title{Get Any DATRAS Data}
 \usage{
-getDATRAS(record = "HH", survey, years, quarters, species = NULL)
+getDATRAS(
+  record = "HH",
+  survey,
+  years,
+  quarters,
+  species = NULL,
+  fix_types = getOption("icesDatras.fix_types"),
+  new_names = getOption("icesDatras.new_names")
+)
+
+getDATRASCatched(
+  record = "HH",
+  survey,
+  years,
+  quarters,
+  species = NULL,
+  fix_types = getOption("icesDatras.fix_types"),
+  new_names = getOption("icesDatras.new_names")
+)
 }
 \arguments{
 \item{record}{the data type required: "HH" haul data, "HL" length-based data, "CA" age-based data.}
@@ -16,6 +35,14 @@ getDATRAS(record = "HH", survey, years, quarters, species = NULL)
 \item{quarters}{a vector of quarters of the year the survey took place, i.e. c(1, 4) or 1:4.}
 
 \item{species}{a vector of valid aphia code of the species to download, if NULL all species are included.}
+
+\item{fix_types}{logical, apply the DATRAS type to columns. Takes package default 
+unless specified. Use \code{SetDatrasDefaults()} to change 
+default across all functions.}
+
+\item{new_names}{logical, apply the new DATRAS naming convention to output. 
+Takes package default unless specified. Use 
+\code{SetDatrasDefaults()} to change default across all functions.}
 }
 \value{
 A data frame.
@@ -24,6 +51,11 @@ A data frame.
 This function combines the functionality of getHHdata, getHLdata, and getCAdata.
 It supports querying many years and quarters in one function call.
 }
+\section{Functions}{
+\itemize{
+\item \code{getDATRASCatched()}: cached version of getDATRAS
+
+}}
 \examples{
 \dontrun{
 hhdata <- getDATRAS(record = "HH", survey = "ROCKALL", years = 2002, quarters = 3)

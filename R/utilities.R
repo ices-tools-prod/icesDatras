@@ -139,6 +139,68 @@ simplify <- function(x) {
   x
 }
 
+# function to apply type fixes and new naming convention. 
+# Falls back to package default settings if arguments not provided
+formatDatras <- function(df, record = NULL, new_names = getOption("icesDatras.new_names"), fix_types = getOption("icesDatras.fix_types")){
+  stopifnot(new_names %in% c(TRUE, FALSE))
+  stopifnot(fix_types %in% c(TRUE, FALSE))
+  
+  if (fix_types) {
+    df <- applyDatrasTypeSchema(df, record = record)
+  }
+  
+  if (new_names) {
+    df <- applyDatrasNameSchema(df, record = record)
+  }
+  df
+}
+
+#Applies correct column types to DATRAS output
+applyDatrasTypeSchema <- function(df, record = NULL) {
+  
+  datras_field_list <- getDatrasFieldList()
+  
+  if (!is.null(record)) {
+    datras_field_list <- datras_field_list[datras_field_list["RecordHeader"] == record,]
+  }
+  
+  char_cols <- c(datras_field_list[datras_field_list[["DataFormat"]] == "char", "FieldNameOld"],
+                 datras_field_list[datras_field_list[["DataFormat"]] == "char", "FieldName"])
+  
+  int_cols <-  c(datras_field_list[datras_field_list[["DataFormat"]] == "int", "FieldNameOld"],
+                 datras_field_list[datras_field_list[["DataFormat"]] == "int", "FieldName"])
+  
+  dbl_cols <-  c(datras_field_list[datras_field_list[["DataFormat"]] == "decimal", "FieldNameOld"],
+                 datras_field_list[datras_field_list[["DataFormat"]] == "decimal", "FieldName"])
+  
+  char_cols <- intersect(char_cols, names(df))
+  int_cols  <- intersect(int_cols, names(df))
+  dbl_cols  <- intersect(dbl_cols, names(df))
+  
+  df[char_cols] <- lapply(df[char_cols], as.character)
+  df[int_cols]  <- lapply(df[int_cols], as.integer)
+  df[dbl_cols]  <- lapply(df[dbl_cols], as.numeric)
+  
+  df
+}
+
+# Applies new DATRAS column names to Datras output
+applyDatrasNameSchema <- function(df, record = NULL) {
+  
+  datras_field_list <- getDatrasFieldList()
+  
+  if (!is.null(record)) {
+    datras_field_list <- datras_field_list[datras_field_list[["RecordHeader"]] == record,]
+  }
+  
+  cols <- intersect(datras_field_list$FieldNameOld, names(df))
+  row_ids <- match(cols, datras_field_list$FieldNameOld)
+  match_ids <- match(cols, names(df))
+  names(df)[match_ids] <- datras_field_list$FieldName[row_ids]
+  df
+}
+
+
 
 # returns TRUE if correct operating system is passed as an argument
 os.type <- function (type = c("unix", "windows", "other"))
