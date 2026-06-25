@@ -1,3 +1,18 @@
+# icesDatras 1.5.2 (2026-06-25)
+
+- Add getDatrasFieldList, formatDatras & SetDatrasDefaults to enable type fixing of columns and application of new Datras names.
+- icesDatras now enables users to set defaults options for column names and types. Use`icesDatras::SetDatrasDefaults()` to change the defaults
+  -   Set new_names=TRUE to adopt the new DATRAS naming convention
+  -   Set fix_types=FALSE to revert to the prior icesDATRAS behaviour (It is recommended to update your workflow rather than choosing this option)
+
+# icesDatras 1.5.1 
+
+- Add getDatrasUnaggregated function to get unaggregated haul and biological information, quickly
+    
+# icesDatras 1.5.0 (2025-01-31)
+
+- Add species argument to getHLdata, getCAdata and getDatras
+  
 # icesDatras 1.4.1 (2023-05-08)
 
 - Fixed bug in getFlexFile.
