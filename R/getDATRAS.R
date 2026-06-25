@@ -105,7 +105,7 @@ getDATRAS <- function(record = "HH", survey, years, quarters, species = NULL, fi
   out <- lapply(url,
                 function(x) {
                   x <- readDatras(x)
-                  x <- parseDatras(x)
+                  parseDatras(x)
                 })
   out <- do.call(rbind, out)
   out <- formatDatras(out, record = record,
