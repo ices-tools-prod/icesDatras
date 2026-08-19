@@ -113,11 +113,11 @@ getDatrasUnaggregated <- function(recordtype, survey, year, quarter, data.table.
   }
 }
 
-#' Download unaggregated DATRAS survey data
+#' Download unaggregated DATRAS survey data (Deprecated)
 #'
 #' Downloads unaggregated haul- and biological-level data from the
 #' ICES DATRAS Download API.
-
+#' Now deprecated, use getDatrasUnaggregated
 #' @author Vaishav Soni, International Council for the Exploration of the Sea (ICES)
 #' @param recordtype Character. One of `"HH"`, `"HL"`, or `"CA"`.
 #' @param survey Character. Survey acronym (e.g. `"NS-IBTS"`).
