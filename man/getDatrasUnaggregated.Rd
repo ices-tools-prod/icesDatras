@@ -4,7 +4,15 @@
 \alias{getDatrasUnaggregated}
 \title{Download unaggregated DATRAS survey data}
 \usage{
-getDatrasUnaggregated(recordtype, survey, year, quarter)
+getDatrasUnaggregated(
+  recordtype,
+  survey,
+  year,
+  quarter,
+  data.table.output = TRUE,
+  fix_types = getOption("icesDatras.fix_types"),
+  new_names = getOption("icesDatras.new_names")
+)
 }
 \arguments{
 \item{recordtype}{Character. One of `"HH"`, `"HL"`, or `"CA"`.}
@@ -14,9 +22,19 @@ getDatrasUnaggregated(recordtype, survey, year, quarter)
 \item{year}{Character. Year or range (e.g. `"2020"` or `"1965:2025"`).}
 
 \item{quarter}{Character. Quarter or range (e.g. `"1"` or `"1:4"`).}
+
+\item{data.table.output}{Logical, return output as data.table if TRUE, otherwise as data.frame.}
+
+\item{fix_types}{logical, apply the DATRAS type to columns. Takes package default 
+unless specified. Use \code{SetDatrasDefaults()} to change 
+default across all functions}
+
+\item{new_names}{logical, apply the new DATRAS naming convention to output. 
+Takes package default unless specified. Use 
+\code{SetDatrasDefaults()} to change default across all functions}
 }
 \value{
-A `data.table` containing the requested DATRAS data.
+A `data.table`, optionally a `data.frame`, containing the requested DATRAS data.
 }
 \description{
 Downloads unaggregated haul- and biological-level data from the
@@ -24,17 +42,37 @@ ICES DATRAS Download API.
 }
 \details{
 The function downloads a zipped CSV file from the official ICES DATRAS API,
-extracts it locally, and reads it using fixed column classes to avoid
-costly type guessing.
+extracts it locally, applies the requested naming and type convention and provides
+outputs as a data.table or data.frame.
 }
 \examples{
 \dontrun{
-df <- get_datras_unaggregated_data(
+#' # Download HH records for all quarters in 2024
+df_datrasHH <- get_datras_unaggregated_data(
   recordtype = "HH",
   survey = "NS-IBTS",
-  year = "1965:2025",
+  year = "2024:2025",
   quarter = "1:4"
 )
+
+# Download HL records for Quarter 1 of the 2020 NS-IBTS survey
+df_datrasHL <- get_datras_unaggregated_data(
+  recordtype = "HL",
+  survey = "NS-IBTS",
+  year = "2020:2020",
+  quarter = "1"
+)
+
+head(df_datrasHL)
+
+# Download CA records for multiple years
+df_datrasCA <- get_datras_unaggregated_data(
+  recordtype = "CA",
+  survey = "NS-IBTS",
+  year = "2020:2024",
+  quarter = "1"
+)
+
 }
 
 }

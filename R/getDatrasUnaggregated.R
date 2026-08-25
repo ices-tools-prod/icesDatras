@@ -8,27 +8,54 @@
 #' @param survey Character. Survey acronym (e.g. `"NS-IBTS"`).
 #' @param year Character. Year or range (e.g. `"2020"` or `"1965:2025"`).
 #' @param quarter Character. Quarter or range (e.g. `"1"` or `"1:4"`).
+#' @param data.table.output Logical, return output as data.table if TRUE, otherwise as data.frame.
+#' @param fix_types logical, apply the DATRAS type to columns. Takes package default 
+#'                  unless specified. Use \code{SetDatrasDefaults()} to change 
+#'                  default across all functions 
+#' @param new_names logical, apply the new DATRAS naming convention to output. 
+#'                  Takes package default unless specified. Use 
+#'                  \code{SetDatrasDefaults()} to change default across all functions
 #'
-#' @return A `data.table` containing the requested DATRAS data.
+#' @return A `data.table`, optionally a `data.frame`, containing the requested DATRAS data.
 #'
 #' @details
 #' The function downloads a zipped CSV file from the official ICES DATRAS API,
-#' extracts it locally, and reads it using fixed column classes to avoid
-#' costly type guessing.
+#' extracts it locally, applies the requested naming and type convention and provides
+#' outputs as a data.table or data.frame.
 #'
 #' @examples
 #' \dontrun{
-#' df <- get_datras_unaggregated_data(
+#' #Download HH records for all quarters in 2024
+#' df_datrasHH <- get_datras_unaggregated_data(
 #'   recordtype = "HH",
 #'   survey = "NS-IBTS",
-#'   year = "1965:2025",
+#'   year = "2024:2025",
 #'   quarter = "1:4"
 #' )
+#'
+#' # Download HL records for Quarter 1 of the 2020 NS-IBTS survey
+#' df_datrasHL <- get_datras_unaggregated_data(
+#'   recordtype = "HL",
+#'   survey = "NS-IBTS",
+#'   year = "2020:2020",
+#'   quarter = "1"
+#' )
+#'
+#' head(df_datrasHL)
+#'
+#' # Download CA records for multiple years
+#' df_datrasCA <- get_datras_unaggregated_data(
+#'   recordtype = "CA",
+#'   survey = "NS-IBTS",
+#'   year = "2020:2024",
+#'   quarter = "1"
+#' )
+#'
 #' }
 #'
 #' @export
-#' @importFrom data.table setDTthreads fread
-getDatrasUnaggregated <- function(recordtype, survey, year, quarter) {
+#' @importFrom data.table setDTthreads fread as.data.table
+getDatrasUnaggregated <- function(recordtype, survey, year, quarter, data.table.output = TRUE, fix_types = getOption("icesDatras.fix_types"), new_names = getOption("icesDatras.new_names")) {
   
   if (!recordtype %in% c("HH", "HL", "CA")) {
     stop("recordtype must be one of 'HH', 'HL', or 'CA'")
@@ -43,8 +70,6 @@ getDatrasUnaggregated <- function(recordtype, survey, year, quarter) {
     "&year=", year,
     "&quarter=", quarter
   )
-  
-  col_classes <- .datras_column_classes(recordtype)
   
   tmp_zip <- tempfile(fileext = ".zip")
   tmp_dir <- tempfile()
@@ -67,18 +92,25 @@ getDatrasUnaggregated <- function(recordtype, survey, year, quarter) {
   }
   
   message("Reading data...")
-  data.table::setDTthreads(0)
-
-  df <- data.table::fread(
+  setDTthreads(0)
+  
+  df <- fread(
     csv_file,
-    colClasses = col_classes,
     fill = TRUE,
     showProgress = FALSE,
-    blank.lines.skip = TRUE
+    blank.lines.skip = TRUE,
+    data.table = FALSE
   )
   
   unlink(c(tmp_zip, tmp_dir), recursive = TRUE)
-  df
+  df <- formatDatras(df, 
+                     fix_types = fix_types,
+                     new_names = new_names)
+  if (data.table.output) {
+    as.data.table(df)
+  } else {
+    df
+  }
 }
 
 #' Download unaggregated DATRAS survey data (Deprecated)
@@ -91,108 +123,53 @@ getDatrasUnaggregated <- function(recordtype, survey, year, quarter) {
 #' @param survey Character. Survey acronym (e.g. `"NS-IBTS"`).
 #' @param year Character. Year or range (e.g. `"2020"` or `"1965:2025"`).
 #' @param quarter Character. Quarter or range (e.g. `"1"` or `"1:4"`).
+#' @param data.table.output Logical, return output as data.table if TRUE, otherwise as data.frame.
+#' @param fix_types logical, apply the DATRAS type to columns. Takes package default 
+#'                  unless specified. Use \code{SetDatrasDefaults()} to change 
+#'                  default across all functions 
+#' @param new_names logical, apply the new DATRAS naming convention to output. 
+#'                  Takes package default unless specified. Use 
+#'                  \code{SetDatrasDefaults()} to change default across all functions
 #'
-#' @return A `data.table` containing the requested DATRAS data.
+#' @return A `data.table`, optionally a `data.frame`, containing the requested DATRAS data.
 #'
 #' @details
 #' The function downloads a zipped CSV file from the official ICES DATRAS API,
-#' extracts it locally, and reads it using fixed column classes to avoid
-#' costly type guessing.
-#' @seealso [getDatrasUnaggregated()]
+#' extracts it locally, applies the requested naming and type convention and provides
+#' outputs as a data.table or data.frame.
 #'
 #' @examples
 #' \dontrun{
-#' df <- get_datras_unaggregated_data(
+#' # Download HH records for all quarters in 2024
+#' df_datrasHH <- get_datras_unaggregated_data(
 #'   recordtype = "HH",
 #'   survey = "NS-IBTS",
-#'   year = "1965:2025",
+#'   year = "2024:2025",
 #'   quarter = "1:4"
 #' )
+#'
+#' # Download HL records for Quarter 1 of the 2020 NS-IBTS survey
+#' df_datrasHL <- get_datras_unaggregated_data(
+#'   recordtype = "HL",
+#'   survey = "NS-IBTS",
+#'   year = "2020:2020",
+#'   quarter = "1"
+#' )
+#'
+#' head(df_datrasHL)
+#'
+#' # Download CA records for multiple years
+#' df_datrasCA <- get_datras_unaggregated_data(
+#'   recordtype = "CA",
+#'   survey = "NS-IBTS",
+#'   year = "2020:2024",
+#'   quarter = "1"
+#' )
+#'
 #' }
 #'
 #' @export
-get_datras_unaggregated_data <- function(recordtype, survey, year, quarter) {
+get_datras_unaggregated_data <- function(recordtype, survey, year, quarter, data.table.output = TRUE, fix_types = getOption("icesDatras.fix_types"), new_names = getOption("icesDatras.new_names")) {
   .Deprecated(new = "getDatrasUnaggregated")
-  getDatrasUnaggregated(recordtype, survey, year, quarter)
-}
-
-
-# -------------------------------------------------------------------------
-# Internal helper functions (not exported)
-# -------------------------------------------------------------------------
-
-.datras_column_classes <- function(recordtype) {
-  
-  classes <- list(
-    
-    HH = list(
-      character = c(
-        "RecordHeader","Country","Platform","Gear","GearExceptions",
-        "DoorType","StationName","Year","StartTime","DepthStratum",
-        "StatisticalRectangle","HydrographicStationID",
-        "StandardSpeciesCode","BycatchSpeciesCode","Rigging",
-        "DayNight","ThermoCline","PelagicSamplingType",
-        "Survey","DateofCalculation"
-      ),
-      integer = c(
-        "Quarter","SweepLength","HaulNumber","Month","Day",
-        "HaulDuration","WarpLength","WarpDiameter","WarpDensity",
-        "DoorWeight","Buoyancy","TowDirection",
-        "SurfaceCurrentDirection","BottomCurrentDirection",
-        "WindDirection","WindSpeed","SwellDirection",
-        "ThermoClineDepth","TidePhase","MinTrawlDepth",
-        "MaxTrawlDepth"
-      ),
-      numeric = c(
-        "ShootLatitude","ShootLongitude","HaulLatitude",
-        "HaulLongitude","NetOpening","Distance","DoorSurface",
-        "DoorSpread","WingSpread","KiteArea","GroundRopeWeight",
-        "SpeedGround","SpeedWater","SurfaceCurrentSpeed",
-        "BottomCurrentSpeed","SwellHeight","SurfaceTemperature",
-        "BottomTemperature","SurfaceSalinity","BottomSalinity",
-        "SecchiDepth","Turbidity","TideSpeed","SurveyIndexArea"
-      )
-    ),
-    
-    HL = list(
-      character = c(
-        "RecordHeader","Country","Platform","Gear","GearExceptions",
-        "DoorType","StationName","Year","SpeciesCodeType",
-        "SpeciesCode","SpeciesValidity","SpeciesSex",
-        "LengthCode","DevelopmentStage","LengthType",
-        "Survey","ScientificName_WoRMS","DateofCalculation"
-      ),
-      integer = c(
-        "Quarter","SweepLength","HaulNumber","SpeciesCategory",
-        "SubsampledNumber","SubsampleWeight",
-        "SpeciesCategoryWeight","LengthClass","ValidAphiaID"
-      ),
-      numeric = c(
-        "TotalNumber","SubsamplingFactor","NumberAtLength"
-      )
-    ),
-    
-    CA = list(
-      character = c(
-        "RecordHeader","Country","Platform","Gear","GearExceptions",
-        "DoorType","StationName","Year","SpeciesCodeType",
-        "SpeciesCode","AreaType","AreaCode","LengthCode",
-        "IndividualSex","IndividualMaturity","AgePlusGroup",
-        "MaturityScale","FishID","GeneticSamplingFlag",
-        "StomachSamplingFlag","AgeSource",
-        "AgePreparationMethod","OtolithGrading",
-        "ParasiteSamplingFlag","Survey",
-        "ScientificName_WoRMS","DateofCalculation"
-      ),
-      integer = c(
-        "Quarter","SweepLength","HaulNumber","LengthClass",
-        "IndividualAge","NumberAtLength","ValidAphiaID"
-      ),
-      numeric = c(
-        "IndividualWeight","LiverWeight"
-      )
-    )
-  )
-  
-  classes[[recordtype]]
+  getDatrasUnaggregated(recordtype, survey, year, quarter, data.table.output = data.table.output, fix_types = fix_types, new_names = new_names)
 }
