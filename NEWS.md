@@ -1,3 +1,8 @@
+# icesDatras 1.5.4
+
+- Fixed getDatrasUnaggregated returning HH data with DateofCalculation values in the EDOM column and DateofCalculation as NA (#63). The DATRAS download API lists EDOM and ReasonHaulDisruption in the HH header without supplying values for them; these columns are now returned as NA, with a warning.
+- getDatrasUnaggregated now stops with an error if the column names and data returned by DATRAS do not match, rather than silently padding.
+
 # icesDatras 1.5.2 (2026-06-25)
 
 - Add getDatrasFieldList, formatDatras & SetDatrasDefaults to enable type fixing of columns and application of new Datras names.

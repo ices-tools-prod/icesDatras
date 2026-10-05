@@ -94,13 +94,7 @@ getDatrasUnaggregated <- function(recordtype, survey, year, quarter, data.table.
   message("Reading data...")
   setDTthreads(0)
   
-  df <- fread(
-    csv_file,
-    fill = TRUE,
-    showProgress = FALSE,
-    blank.lines.skip = TRUE,
-    data.table = FALSE
-  )
+  df <- readDatrasUnaggregated(csv_file, recordtype)
   
   unlink(c(tmp_zip, tmp_dir), recursive = TRUE)
   df <- formatDatras(df, 
@@ -172,4 +166,59 @@ getDatrasUnaggregated <- function(recordtype, survey, year, quarter, data.table.
 get_datras_unaggregated_data <- function(recordtype, survey, year, quarter, data.table.output = TRUE, fix_types = getOption("icesDatras.fix_types"), new_names = getOption("icesDatras.new_names")) {
   .Deprecated(new = "getDatrasUnaggregated")
   getDatrasUnaggregated(recordtype, survey, year, quarter, data.table.output = data.table.output, fix_types = fix_types, new_names = new_names)
+}
+
+# fields the download API lists in the csv header but supplies no values for,
+# see https://github.com/ices-tools-prod/icesDatras/issues/63
+datras_header_only_fields <- list(
+  HH = c("EDOM", "ReasonHaulDisruption")
+)
+
+# reads the csv file from the download API, checking that the header matches
+# the data rows rather than letting fread pad short rows and shift values into
+# the wrong columns
+readDatrasUnaggregated <- function(csv_file, recordtype) {
+  
+  con <- file(csv_file, encoding = "UTF-8-BOM")
+  on.exit(close(con))
+  header <- scan(con, what = "", sep = ",", nlines = 1, quiet = TRUE)
+  
+  # no data rows, only a header
+  if (length(readLines(csv_file, n = 2)) < 2) {
+    return(fread(csv_file, showProgress = FALSE, data.table = FALSE))
+  }
+  
+  df <- fread(
+    csv_file,
+    skip = 1,
+    header = FALSE,
+    showProgress = FALSE,
+    blank.lines.skip = TRUE,
+    data.table = FALSE
+  )
+  
+  if (ncol(df) == length(header)) {
+    names(df) <- header
+    return(df)
+  }
+  
+  absent <- datras_header_only_fields[[recordtype]]
+  if (length(absent) == 0 || !all(absent %in% header) ||
+      ncol(df) != length(header) - length(absent)) {
+    stop(
+      "DATRAS returned a ", recordtype, " file with ", length(header),
+      " column names but ", ncol(df), " columns of data, ",
+      "so columns cannot be reliably identified. Please report this at ",
+      "https://github.com/ices-tools-prod/icesDatras/issues"
+    )
+  }
+  
+  warning(
+    "DATRAS lists ", paste(absent, collapse = " and "), " in the ", recordtype,
+    " header but supplies no values for them, these columns are returned as NA",
+    call. = FALSE
+  )
+  names(df) <- setdiff(header, absent)
+  df[absent] <- rep(NA_character_, nrow(df))
+  df[header]
 }
