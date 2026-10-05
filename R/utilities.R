@@ -170,8 +170,8 @@ applyDatrasTypeSchema <- function(df, record = NULL) {
   int_cols <-  c(datras_field_list[datras_field_list[["DataFormat"]] == "int", "FieldNameOld"],
                  datras_field_list[datras_field_list[["DataFormat"]] == "int", "FieldName"])
   
-  dbl_cols <-  c(datras_field_list[datras_field_list[["DataFormat"]] == "decimal", "FieldNameOld"],
-                 datras_field_list[datras_field_list[["DataFormat"]] == "decimal", "FieldName"])
+  dbl_cols <-  c(datras_field_list[datras_field_list[["DataFormat"]] %in% c("decimal", "float"), "FieldNameOld"],
+                 datras_field_list[datras_field_list[["DataFormat"]] %in% c("decimal", "float"), "FieldName"])
   
   char_cols <- intersect(char_cols, names(df))
   int_cols  <- intersect(int_cols, names(df))

@@ -2,6 +2,9 @@
 
 - Fixed getDatrasUnaggregated returning HH data with DateofCalculation values in the EDOM column and DateofCalculation as NA (#63). The DATRAS download API lists EDOM and ReasonHaulDisruption in the HH header without supplying values for them; these columns are now returned as NA, with a warning.
 - getDatrasUnaggregated now stops with an error if the column names and data returned by DATRAS do not match, rather than silently padding.
+- Fixed getDatrasUnaggregated truncating fractional NumberAtLength values in HL data to integers (#65).
+- getDatrasUnaggregated now reads fields that DATRAS defines as text as character, so codes such as the statistical rectangle "13E1" or a station "007" are no longer converted to numbers (#65). This applies whether or not fix_types is set.
+- Fields with the DATRAS format "float" are now converted to numeric when fix_types is set.
 
 # icesDatras 1.5.2 (2026-06-25)
 

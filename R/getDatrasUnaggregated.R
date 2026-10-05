@@ -98,6 +98,7 @@ getDatrasUnaggregated <- function(recordtype, survey, year, quarter, data.table.
   
   unlink(c(tmp_zip, tmp_dir), recursive = TRUE)
   df <- formatDatras(df, 
+                     record = recordtype,
                      fix_types = fix_types,
                      new_names = new_names)
   if (data.table.output) {
@@ -176,7 +177,8 @@ datras_header_only_fields <- list(
 
 # reads the csv file from the download API, checking that the header matches
 # the data rows rather than letting fread pad short rows and shift values into
-# the wrong columns
+# the wrong columns. Fields DATRAS defines as text are read as character, as
+# fread would otherwise guess codes like "13E1" and "007" to be numbers
 readDatrasUnaggregated <- function(csv_file, recordtype) {
   
   con <- file(csv_file, encoding = "UTF-8-BOM")
@@ -188,37 +190,47 @@ readDatrasUnaggregated <- function(csv_file, recordtype) {
     return(fread(csv_file, showProgress = FALSE, data.table = FALSE))
   }
   
+  ncol_data <- ncol(
+    fread(csv_file, skip = 1, header = FALSE, nrows = 1, showProgress = FALSE)
+  )
+  
+  absent <- character(0)
+  if (ncol_data != length(header)) {
+    absent <- datras_header_only_fields[[recordtype]]
+    if (length(absent) == 0 || !all(absent %in% header) ||
+        ncol_data != length(header) - length(absent)) {
+      stop(
+        "DATRAS returned a ", recordtype, " file with ", length(header),
+        " column names but ", ncol_data, " columns of data, ",
+        "so columns cannot be reliably identified. Please report this at ",
+        "https://github.com/ices-tools-prod/icesDatras/issues"
+      )
+    }
+    
+    warning(
+      "DATRAS lists ", paste(absent, collapse = " and "), " in the ", recordtype,
+      " header but supplies no values for them, these columns are returned as NA",
+      call. = FALSE
+    )
+  }
+  col_names <- setdiff(header, absent)
+  
+  datras_field_list <- getDatrasFieldList()
+  datras_field_list <- datras_field_list[datras_field_list[["RecordHeader"]] == recordtype,]
+  char_cols <- c(datras_field_list[datras_field_list[["DataFormat"]] == "char", "FieldNameOld"],
+                 datras_field_list[datras_field_list[["DataFormat"]] == "char", "FieldName"])
+  
   df <- fread(
     csv_file,
     skip = 1,
     header = FALSE,
+    colClasses = list(character = which(col_names %in% char_cols)),
     showProgress = FALSE,
     blank.lines.skip = TRUE,
     data.table = FALSE
   )
   
-  if (ncol(df) == length(header)) {
-    names(df) <- header
-    return(df)
-  }
-  
-  absent <- datras_header_only_fields[[recordtype]]
-  if (length(absent) == 0 || !all(absent %in% header) ||
-      ncol(df) != length(header) - length(absent)) {
-    stop(
-      "DATRAS returned a ", recordtype, " file with ", length(header),
-      " column names but ", ncol(df), " columns of data, ",
-      "so columns cannot be reliably identified. Please report this at ",
-      "https://github.com/ices-tools-prod/icesDatras/issues"
-    )
-  }
-  
-  warning(
-    "DATRAS lists ", paste(absent, collapse = " and "), " in the ", recordtype,
-    " header but supplies no values for them, these columns are returned as NA",
-    call. = FALSE
-  )
-  names(df) <- setdiff(header, absent)
+  names(df) <- col_names
   df[absent] <- rep(NA_character_, nrow(df))
   df[header]
 }
