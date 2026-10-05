@@ -2,7 +2,7 @@
 % Please edit documentation in R/getDatrasUnaggregated.R
 \name{get_datras_unaggregated_data}
 \alias{get_datras_unaggregated_data}
-\title{Download unaggregated DATRAS survey data}
+\title{Download unaggregated DATRAS survey data (Deprecated)}
 \usage{
 get_datras_unaggregated_data(
   recordtype,
@@ -39,6 +39,7 @@ A `data.table`, optionally a `data.frame`, containing the requested DATRAS data.
 \description{
 Downloads unaggregated haul- and biological-level data from the
 ICES DATRAS Download API.
+Now deprecated, use getDatrasUnaggregated
 }
 \details{
 The function downloads a zipped CSV file from the official ICES DATRAS API,
@@ -47,7 +48,7 @@ outputs as a data.table or data.frame.
 }
 \examples{
 \dontrun{
-#' # Download HH records for all quarters in 2024
+# Download HH records for all quarters in 2024
 df_datrasHH <- get_datras_unaggregated_data(
   recordtype = "HH",
   survey = "NS-IBTS",

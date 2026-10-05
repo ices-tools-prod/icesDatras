@@ -47,7 +47,7 @@ outputs as a data.table or data.frame.
 }
 \examples{
 \dontrun{
-#' # Download HH records for all quarters in 2024
+#Download HH records for all quarters in 2024
 df_datrasHH <- get_datras_unaggregated_data(
   recordtype = "HH",
   survey = "NS-IBTS",
